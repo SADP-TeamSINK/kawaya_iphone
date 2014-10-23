@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A41CF5CC19F2731000F6B49C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A41CF5CB19F2731000F6B49C /* main.m */; };
+		A41CF5CF19F2731000F6B49C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A41CF5CE19F2731000F6B49C /* AppDelegate.m */; };
+		A41CF5D219F2731000F6B49C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A41CF5D119F2731000F6B49C /* ViewController.m */; };
+		A41CF5D519F2731000F6B49C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A41CF5D319F2731000F6B49C /* Main.storyboard */; };
+		A41CF5D719F2731000F6B49C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A41CF5D619F2731000F6B49C /* Images.xcassets */; };
+		A41CF5DA19F2731000F6B49C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41CF5D819F2731000F6B49C /* LaunchScreen.xib */; };
+		A41CF5E619F2731000F6B49C /* RestyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A41CF5E519F2731000F6B49C /* RestyTests.m */; };
+		A41CF5F119F2738B00F6B49C /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF5F019F2738B00F6B49C /* GoogleMaps.framework */; };
+		A41CF5F319F2739C00F6B49C /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A41CF5F219F2739C00F6B49C /* GoogleMaps.bundle */; };
+		A41CF5F519F273DB00F6B49C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF5F419F273DB00F6B49C /* AVFoundation.framework */; };
+		A41CF5F719F273E400F6B49C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF5F619F273E400F6B49C /* CoreData.framework */; };
+		A41CF5F919F273EC00F6B49C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF5F819F273EC00F6B49C /* CoreLocation.framework */; };
+		A41CF5FB19F273F400F6B49C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF5FA19F273F400F6B49C /* CoreText.framework */; };
+		A41CF5FD19F273FC00F6B49C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF5FC19F273FC00F6B49C /* GLKit.framework */; };
+		A41CF5FF19F2740400F6B49C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF5FE19F2740400F6B49C /* ImageIO.framework */; };
+		A41CF60119F2740C00F6B49C /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF60019F2740C00F6B49C /* libc++.dylib */; };
+		A41CF60319F2741300F6B49C /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF60219F2741300F6B49C /* libicucore.dylib */; };
+		A41CF60519F2741C00F6B49C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF60419F2741C00F6B49C /* libz.dylib */; };
+		A41CF60719F2742500F6B49C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF60619F2742500F6B49C /* OpenGLES.framework */; };
+		A41CF60919F2742D00F6B49C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF60819F2742D00F6B49C /* QuartzCore.framework */; };
+		A41CF60B19F2743400F6B49C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF60A19F2743400F6B49C /* SystemConfiguration.framework */; };
+		A41CF62119F28ACB00F6B49C /* th_picture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A41CF62019F28ACB00F6B49C /* th_picture.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A41CF5E019F2731000F6B49C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A41CF5BE19F2731000F6B49C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A41CF5C519F2731000F6B49C;
+			remoteInfo = Resty;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A41CF5C619F2731000F6B49C /* Resty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A41CF5CA19F2731000F6B49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A41CF5CB19F2731000F6B49C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A41CF5CD19F2731000F6B49C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A41CF5CE19F2731000F6B49C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A41CF5D019F2731000F6B49C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A41CF5D119F2731000F6B49C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A41CF5D419F2731000F6B49C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A41CF5D619F2731000F6B49C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A41CF5D919F2731000F6B49C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		A41CF5DF19F2731000F6B49C /* RestyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A41CF5E419F2731000F6B49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A41CF5E519F2731000F6B49C /* RestyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestyTests.m; sourceTree = "<group>"; };
+		A41CF5F019F2738B00F6B49C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		A41CF5F219F2739C00F6B49C /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		A41CF5F419F273DB00F6B49C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A41CF5F619F273E400F6B49C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A41CF5F819F273EC00F6B49C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A41CF5FA19F273F400F6B49C /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		A41CF5FC19F273FC00F6B49C /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		A41CF5FE19F2740400F6B49C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		A41CF60019F2740C00F6B49C /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		A41CF60219F2741300F6B49C /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		A41CF60419F2741C00F6B49C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A41CF60619F2742500F6B49C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A41CF60819F2742D00F6B49C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A41CF60A19F2743400F6B49C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A41CF62019F28ACB00F6B49C /* th_picture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = th_picture.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A41CF5C319F2731000F6B49C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A41CF60B19F2743400F6B49C /* SystemConfiguration.framework in Frameworks */,
+				A41CF60919F2742D00F6B49C /* QuartzCore.framework in Frameworks */,
+				A41CF60719F2742500F6B49C /* OpenGLES.framework in Frameworks */,
+				A41CF60519F2741C00F6B49C /* libz.dylib in Frameworks */,
+				A41CF60319F2741300F6B49C /* libicucore.dylib in Frameworks */,
+				A41CF60119F2740C00F6B49C /* libc++.dylib in Frameworks */,
+				A41CF5FF19F2740400F6B49C /* ImageIO.framework in Frameworks */,
+				A41CF5FD19F273FC00F6B49C /* GLKit.framework in Frameworks */,
+				A41CF5FB19F273F400F6B49C /* CoreText.framework in Frameworks */,
+				A41CF5F919F273EC00F6B49C /* CoreLocation.framework in Frameworks */,
+				A41CF5F719F273E400F6B49C /* CoreData.framework in Frameworks */,
+				A41CF5F519F273DB00F6B49C /* AVFoundation.framework in Frameworks */,
+				A41CF5F119F2738B00F6B49C /* GoogleMaps.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A41CF5DC19F2731000F6B49C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A41CF5BD19F2731000F6B49C = {
+			isa = PBXGroup;
+			children = (
+				A41CF5C819F2731000F6B49C /* Resty */,
+				A41CF5E219F2731000F6B49C /* RestyTests */,
+				A41CF5EF19F2737000F6B49C /* Frameworks */,
+				A41CF5C719F2731000F6B49C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A41CF5C719F2731000F6B49C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A41CF5C619F2731000F6B49C /* Resty.app */,
+				A41CF5DF19F2731000F6B49C /* RestyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A41CF5C819F2731000F6B49C /* Resty */ = {
+			isa = PBXGroup;
+			children = (
+				A41CF5CD19F2731000F6B49C /* AppDelegate.h */,
+				A41CF5CE19F2731000F6B49C /* AppDelegate.m */,
+				A41CF5D019F2731000F6B49C /* ViewController.h */,
+				A41CF5D119F2731000F6B49C /* ViewController.m */,
+				A41CF5D319F2731000F6B49C /* Main.storyboard */,
+				A41CF5D619F2731000F6B49C /* Images.xcassets */,
+				A41CF5D819F2731000F6B49C /* LaunchScreen.xib */,
+				A41CF62019F28ACB00F6B49C /* th_picture.jpg */,
+				A41CF5C919F2731000F6B49C /* Supporting Files */,
+			);
+			path = Resty;
+			sourceTree = "<group>";
+		};
+		A41CF5C919F2731000F6B49C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A41CF5CA19F2731000F6B49C /* Info.plist */,
+				A41CF5CB19F2731000F6B49C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A41CF5E219F2731000F6B49C /* RestyTests */ = {
+			isa = PBXGroup;
+			children = (
+				A41CF5E519F2731000F6B49C /* RestyTests.m */,
+				A41CF5E319F2731000F6B49C /* Supporting Files */,
+			);
+			path = RestyTests;
+			sourceTree = "<group>";
+		};
+		A41CF5E319F2731000F6B49C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A41CF5E419F2731000F6B49C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A41CF5EF19F2737000F6B49C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A41CF60A19F2743400F6B49C /* SystemConfiguration.framework */,
+				A41CF60819F2742D00F6B49C /* QuartzCore.framework */,
+				A41CF60619F2742500F6B49C /* OpenGLES.framework */,
+				A41CF60419F2741C00F6B49C /* libz.dylib */,
+				A41CF60219F2741300F6B49C /* libicucore.dylib */,
+				A41CF60019F2740C00F6B49C /* libc++.dylib */,
+				A41CF5FE19F2740400F6B49C /* ImageIO.framework */,
+				A41CF5FC19F273FC00F6B49C /* GLKit.framework */,
+				A41CF5FA19F273F400F6B49C /* CoreText.framework */,
+				A41CF5F819F273EC00F6B49C /* CoreLocation.framework */,
+				A41CF5F619F273E400F6B49C /* CoreData.framework */,
+				A41CF5F419F273DB00F6B49C /* AVFoundation.framework */,
+				A41CF5F219F2739C00F6B49C /* GoogleMaps.bundle */,
+				A41CF5F019F2738B00F6B49C /* GoogleMaps.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A41CF5C519F2731000F6B49C /* Resty */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A41CF5E919F2731000F6B49C /* Build configuration list for PBXNativeTarget "Resty" */;
+			buildPhases = (
+				A41CF5C219F2731000F6B49C /* Sources */,
+				A41CF5C319F2731000F6B49C /* Frameworks */,
+				A41CF5C419F2731000F6B49C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Resty;
+			productName = Resty;
+			productReference = A41CF5C619F2731000F6B49C /* Resty.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A41CF5DE19F2731000F6B49C /* RestyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A41CF5EC19F2731000F6B49C /* Build configuration list for PBXNativeTarget "RestyTests" */;
+			buildPhases = (
+				A41CF5DB19F2731000F6B49C /* Sources */,
+				A41CF5DC19F2731000F6B49C /* Frameworks */,
+				A41CF5DD19F2731000F6B49C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A41CF5E119F2731000F6B49C /* PBXTargetDependency */,
+			);
+			name = RestyTests;
+			productName = RestyTests;
+			productReference = A41CF5DF19F2731000F6B49C /* RestyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A41CF5BE19F2731000F6B49C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Kazuma Nagaya";
+				TargetAttributes = {
+					A41CF5C519F2731000F6B49C = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					A41CF5DE19F2731000F6B49C = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = A41CF5C519F2731000F6B49C;
+					};
+				};
+			};
+			buildConfigurationList = A41CF5C119F2731000F6B49C /* Build configuration list for PBXProject "Resty" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A41CF5BD19F2731000F6B49C;
+			productRefGroup = A41CF5C719F2731000F6B49C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A41CF5C519F2731000F6B49C /* Resty */,
+				A41CF5DE19F2731000F6B49C /* RestyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A41CF5C419F2731000F6B49C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A41CF5D519F2731000F6B49C /* Main.storyboard in Resources */,
+				A41CF5DA19F2731000F6B49C /* LaunchScreen.xib in Resources */,
+				A41CF5D719F2731000F6B49C /* Images.xcassets in Resources */,
+				A41CF5F319F2739C00F6B49C /* GoogleMaps.bundle in Resources */,
+				A41CF62119F28ACB00F6B49C /* th_picture.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A41CF5DD19F2731000F6B49C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A41CF5C219F2731000F6B49C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A41CF5D219F2731000F6B49C /* ViewController.m in Sources */,
+				A41CF5CF19F2731000F6B49C /* AppDelegate.m in Sources */,
+				A41CF5CC19F2731000F6B49C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A41CF5DB19F2731000F6B49C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A41CF5E619F2731000F6B49C /* RestyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A41CF5E119F2731000F6B49C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A41CF5C519F2731000F6B49C /* Resty */;
+			targetProxy = A41CF5E019F2731000F6B49C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A41CF5D319F2731000F6B49C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A41CF5D419F2731000F6B49C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A41CF5D819F2731000F6B49C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A41CF5D919F2731000F6B49C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A41CF5E719F2731000F6B49C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A41CF5E819F2731000F6B49C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A41CF5EA19F2731000F6B49C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Resty/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A41CF5EB19F2731000F6B49C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Resty/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A41CF5ED19F2731000F6B49C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RestyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Resty.app/Resty";
+			};
+			name = Debug;
+		};
+		A41CF5EE19F2731000F6B49C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RestyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Resty.app/Resty";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A41CF5C119F2731000F6B49C /* Build configuration list for PBXProject "Resty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A41CF5E719F2731000F6B49C /* Debug */,
+				A41CF5E819F2731000F6B49C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A41CF5E919F2731000F6B49C /* Build configuration list for PBXNativeTarget "Resty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A41CF5EA19F2731000F6B49C /* Debug */,
+				A41CF5EB19F2731000F6B49C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A41CF5EC19F2731000F6B49C /* Build configuration list for PBXNativeTarget "RestyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A41CF5ED19F2731000F6B49C /* Debug */,
+				A41CF5EE19F2731000F6B49C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A41CF5BE19F2731000F6B49C /* Project object */;
+}
