@@ -1,4 +1,5 @@
-#iPhoneアプリ制作
+#iPhoneアプリ制作チーム
+iOSアプリの制作を行う
 + Xcode6
 + Objective-C
 
