@@ -29,6 +29,8 @@
 		A41CF60919F2742D00F6B49C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF60819F2742D00F6B49C /* QuartzCore.framework */; };
 		A41CF60B19F2743400F6B49C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF60A19F2743400F6B49C /* SystemConfiguration.framework */; };
 		A41CF62119F28ACB00F6B49C /* th_picture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A41CF62019F28ACB00F6B49C /* th_picture.jpg */; };
+		A47E26071A00195300254347 /* resty_350x1.png in Resources */ = {isa = PBXBuildFile; fileRef = A47E26061A00195300254347 /* resty_350x1.png */; };
+		FE520AC242D5205E7B9CC9F6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A732996E51BD08F5221DFB69 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EBB1079551F0EAE9FB33ACB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A41CF5C619F2731000F6B49C /* Resty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41CF5CA19F2731000F6B49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A41CF5CB19F2731000F6B49C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -70,6 +73,9 @@
 		A41CF60819F2742D00F6B49C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A41CF60A19F2743400F6B49C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A41CF62019F28ACB00F6B49C /* th_picture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = th_picture.jpg; sourceTree = "<group>"; };
+		A47E26061A00195300254347 /* resty_350x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resty_350x1.png; sourceTree = "<group>"; };
+		A732996E51BD08F5221DFB69 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFA6A6D971746DFF7A6D743 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 				A41CF5F719F273E400F6B49C /* CoreData.framework in Frameworks */,
 				A41CF5F519F273DB00F6B49C /* AVFoundation.framework in Frameworks */,
 				A41CF5F119F2738B00F6B49C /* GoogleMaps.framework in Frameworks */,
+				FE520AC242D5205E7B9CC9F6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +117,7 @@
 				A41CF5E219F2731000F6B49C /* RestyTests */,
 				A41CF5EF19F2737000F6B49C /* Frameworks */,
 				A41CF5C719F2731000F6B49C /* Products */,
+				EAC5BBB3080B654D2CD61298 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +133,7 @@
 		A41CF5C819F2731000F6B49C /* Resty */ = {
 			isa = PBXGroup;
 			children = (
+				A47E25FD1A0017FA00254347 /* images */,
 				A41CF5CD19F2731000F6B49C /* AppDelegate.h */,
 				A41CF5CE19F2731000F6B49C /* AppDelegate.m */,
 				A41CF5D019F2731000F6B49C /* ViewController.h */,
@@ -181,8 +190,26 @@
 				A41CF5F419F273DB00F6B49C /* AVFoundation.framework */,
 				A41CF5F219F2739C00F6B49C /* GoogleMaps.bundle */,
 				A41CF5F019F2738B00F6B49C /* GoogleMaps.framework */,
+				A732996E51BD08F5221DFB69 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A47E25FD1A0017FA00254347 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				A47E26061A00195300254347 /* resty_350x1.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		EAC5BBB3080B654D2CD61298 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CBFA6A6D971746DFF7A6D743 /* Pods.debug.xcconfig */,
+				2EBB1079551F0EAE9FB33ACB /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,9 +219,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A41CF5E919F2731000F6B49C /* Build configuration list for PBXNativeTarget "Resty" */;
 			buildPhases = (
+				EFA1412BC8814EC461F03C09 /* Check Pods Manifest.lock */,
 				A41CF5C219F2731000F6B49C /* Sources */,
 				A41CF5C319F2731000F6B49C /* Frameworks */,
 				A41CF5C419F2731000F6B49C /* Resources */,
+				4FC14FC4866BA6242041B058 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A41CF5D519F2731000F6B49C /* Main.storyboard in Resources */,
+				A47E26071A00195300254347 /* resty_350x1.png in Resources */,
 				A41CF5DA19F2731000F6B49C /* LaunchScreen.xib in Resources */,
 				A41CF5D719F2731000F6B49C /* Images.xcassets in Resources */,
 				A41CF5F319F2739C00F6B49C /* GoogleMaps.bundle in Resources */,
@@ -281,6 +311,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4FC14FC4866BA6242041B058 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFA1412BC8814EC461F03C09 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A41CF5C219F2731000F6B49C /* Sources */ = {
@@ -409,6 +472,7 @@
 		};
 		A41CF5EA19F2731000F6B49C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBFA6A6D971746DFF7A6D743 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -416,6 +480,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resty/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -424,6 +489,7 @@
 		};
 		A41CF5EB19F2731000F6B49C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EBB1079551F0EAE9FB33ACB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -431,6 +497,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resty/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -489,6 +556,7 @@
 				A41CF5EB19F2731000F6B49C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A41CF5EC19F2731000F6B49C /* Build configuration list for PBXNativeTarget "RestyTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +565,7 @@
 				A41CF5EE19F2731000F6B49C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

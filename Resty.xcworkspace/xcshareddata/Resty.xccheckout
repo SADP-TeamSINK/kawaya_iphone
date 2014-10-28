@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>EB5D5D8C-C14F-4253-8E09-8525ACE9A1AE</string>
+	<string>D0E0F1FF-B26F-429D-BCF8-2CE98DE19685</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Resty</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -16,13 +16,13 @@
 		<string>github.com:SADP-TeamSINK/kawaya_iphone.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Resty.xcodeproj</string>
+	<string>Resty.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C41DEB7866250016F0DA2B0035BFEA968B6DD206</key>
-		<string>../../../Dropbox</string>
-		<key>C928D38018217A3B11257E11E612625166CD78FD</key>
 		<string>../..</string>
+		<key>C928D38018217A3B11257E11E612625166CD78FD</key>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:SADP-TeamSINK/kawaya_iphone.git</string>
@@ -38,7 +38,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>C41DEB7866250016F0DA2B0035BFEA968B6DD206</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Dropbox</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
