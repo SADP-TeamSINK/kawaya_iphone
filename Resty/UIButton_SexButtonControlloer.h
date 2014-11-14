@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  UIButton_SexButtonControlloer.h
 //  Resty
 //
-//  Created by Kazuma Nagaya on 2014/10/18.
+//  Created by Imamori Daichi on 2014/11/14.
 //  Copyright (c) 2014年 Kazuma Nagaya. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface UIButton ()
 
 @end
-
