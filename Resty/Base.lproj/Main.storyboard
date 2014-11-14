@@ -1,110 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mg2-cv-mWr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--多目的トイレ-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--View Controller-->
+        <scene sceneID="Ked-RJ-4D8">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="XSj-R8-CMU" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="nwi-eN-i2H"/>
+                        <viewControllerLayoutGuide type="bottom" id="xYs-yQ-P2P"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="多目的トイレ" image="th_person.jpg" id="ctX-ZC-chS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1047" y="104"/>
-        </scene>
-        <!--空-->
-        <scene sceneID="25O-Qw-KGe">
-            <objects>
-                <viewController id="ohh-ol-ogT" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6xJ-AR-YTC"/>
-                        <viewControllerLayoutGuide type="bottom" id="LNF-WI-Ggv"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="g5a-60-X8G">
+                    <view key="view" contentMode="scaleToFill" id="hIB-Mp-fwa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2f4-1p-r0e">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="522"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                </variation>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="空" image="th_vacant.jpg" id="uac-Fo-kFd"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nw5-Ss-vj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qiC-y9-Tse" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1153" y="496"/>
-        </scene>
-        <!--ウォシュレット-->
-        <scene sceneID="jk6-dm-a29">
-            <objects>
-                <viewController id="BAY-be-wrI" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Mzn-yh-Rik"/>
-                        <viewControllerLayoutGuide type="bottom" id="vSd-xz-75O"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1Jk-TQ-Awa">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="ウォシュレット" id="ajd-Py-SRe"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bJb-QY-aqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1227" y="598"/>
-        </scene>
-        <!--写真-->
-        <scene sceneID="tL6-yb-Rri">
-            <objects>
-                <viewController id="rB8-cu-2tg" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="g9J-9c-kth"/>
-                        <viewControllerLayoutGuide type="bottom" id="cRY-gU-fr4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uTa-QM-G8J">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="写真" id="RWP-bc-eQ2"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RuW-ZM-Vtn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1309" y="696"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="xKU-xd-cbm">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="mg2-cv-mWr" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="ozf-Bt-HYC">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="Pka-u3-EUC"/>
-                        <segue destination="ohh-ol-ogT" kind="relationship" relationship="viewControllers" id="dPl-Lp-Rqk"/>
-                        <segue destination="BAY-be-wrI" kind="relationship" relationship="viewControllers" id="iHw-06-E0F"/>
-                        <segue destination="rB8-cu-2tg" kind="relationship" relationship="viewControllers" id="tyH-2x-OYh"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J29-Qs-HeU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="245" y="258"/>
+            <point key="canvasLocation" x="271" y="269"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="th_person.jpg" width="46" height="60"/>
-        <image name="th_vacant.jpg" width="60" height="60"/>
-    </resources>
 </document>
