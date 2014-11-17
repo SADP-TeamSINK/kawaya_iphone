@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "MapViewController.h"
+#import "APIController.h"
+#import "Const.m"
 
 
 @interface MapController : NSObject <GMSMapViewDelegate>

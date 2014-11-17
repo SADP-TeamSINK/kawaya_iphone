@@ -12,7 +12,7 @@
 
 
 @interface APIController : NSObject
-- (id) initWithURL:(NSURL *)url;
+- (id) initWithUrl:(NSURL *)url;
 - (NSString *) call:(CLLocationCoordinate2D)topLeftCoordinate BottomRightCoordinate:(CLLocationCoordinate2D)bottomRightCoordinate;
-- (unsigned int) getMeshNumberFromCoordinate:(CLLocationCoordinate2D)coordinate;
+- (NSUInteger) getMeshNumberFromCoordinate:(CLLocationCoordinate2D)coordinate;
 @end

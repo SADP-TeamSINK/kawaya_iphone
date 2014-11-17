@@ -17,8 +17,8 @@
     FilteringButtonController *filteringButtonController_;
     NSData *dammyJson_;
     NSDictionary *toiletData_;
-    int height_;
-    int width_;
+    NSInteger height_;
+    NSInteger width_;
     MapController *mapController_;
 }
 
@@ -51,7 +51,6 @@
     
     
     self.view = mapView_;
-
     
     // ボタンがタップされた時のメソッド登録
     [btnSex             addTarget:self action:@selector(pushBtnSex:)            forControlEvents:UIControlEventTouchDown];

@@ -13,11 +13,13 @@
 @implementation MapController : NSObject
 //MapViewController *mapViewController_;
 GMSMapView *mapView_;
-int height_;
-int width_;
+NSInteger height_;
+NSInteger width_;
+APIController *aPIController_;
 
 - (id) init{
     self = [super self];
+    aPIController_ = [[APIController alloc] initWithUrl:[NSURL URLWithString:API_URL]];
     //画面サイズ取得
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
@@ -79,6 +81,7 @@ int width_;
  */
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     NSLog(@"didChangeCameraPosition %f,%f", position.target.latitude, position.target.longitude);
+    [aPIController_ call:[self getTopLeftCoordinate] BottomRightCoordinate:[self getBottomRightCoordinate]];
 }
 
 

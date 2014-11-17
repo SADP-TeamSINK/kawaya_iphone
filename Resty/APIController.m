@@ -12,7 +12,7 @@
 @implementation APIController : NSObject
 NSURL * url_;
 
-- (id) initWithURL:(NSURL *) url{
+- (id) initWithUrl:(NSURL *) url{
     self = [super self];
     url_ = url;
     return self;
@@ -26,17 +26,17 @@ NSURL * url_;
 
     for (double latitude = bottomRightLatitude; latitude < topLeftLatitude; latitude += 0.01f) {
         for (double longitude = topLeftLongitude; longitude < bottomRightLongitude; longitude += 0.01f) {
-            NSLog(@"(%f, %f)", latitude, longitude);
+            NSLog(@"get mesh(%f, %f)", latitude, longitude);
         }
     }
     return @"API Called!";
 }
 
-- (unsigned int) getMeshNumberFromCoordinate:(CLLocationCoordinate2D)coordinate{
+- (NSUInteger) getMeshNumberFromCoordinate:(CLLocationCoordinate2D)coordinate{
     double latitude = coordinate.latitude;
     double longitude = coordinate.longitude;
 
-    unsigned int meshNumber = ((unsigned int)(latitude * 100) * 10^5) + ((unsigned int)(longitude * 100));
+    NSUInteger meshNumber = ((NSUInteger)(latitude * 100) * 10^5) + ((NSUInteger)(longitude * 100));
     
     return meshNumber;
 }

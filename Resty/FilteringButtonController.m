@@ -15,11 +15,11 @@ Boolean stateOfEmpty;
 Boolean stateOfWash;
 Boolean stateOfMultipurpose;
 UIViewController *parent;
-int height;
-int width;
-int heightButton = 30;
-int widthButton = 30;
-int numberOfButton = 4;
+NSInteger height;
+NSInteger width;
+NSInteger heightButton = 30;
+NSInteger widthButton = 30;
+NSInteger numberOfButton = 4;
 
 - (id) initWithState:(Sex)sex empty:(Boolean)empty wash:(Boolean)wash multipurpose:(Boolean)multipurpose parent:(UIViewController*)p
 {
@@ -43,8 +43,8 @@ int numberOfButton = 4;
     self.multipurposeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
     //ボタンの配置とサイズ設定
-    int margin = (width - widthButton * numberOfButton) / (numberOfButton + 1);
-    int margin_bottom = 30;
+    NSInteger margin = (width - widthButton * numberOfButton) / (numberOfButton + 1);
+    NSInteger margin_bottom = 30;
     self.sexButton.frame = CGRectMake(margin * 1 + widthButton * (1 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
     self.emptyButton.frame = CGRectMake(margin * 2 + widthButton * (2 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
     self.washButton.frame = CGRectMake(margin * 3 + widthButton * (3 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
