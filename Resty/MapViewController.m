@@ -51,16 +51,7 @@
     
     
     self.view = mapView_;
-    
-    // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(35.026111, 135.780833);
-    marker.title = @"kyoto University";
-    marker.snippet = @"Japan";
-    marker.map = mapView_;
 
-    
-    
     
     // ボタンがタップされた時のメソッド登録
     [btnSex             addTarget:self action:@selector(pushBtnSex:)            forControlEvents:UIControlEventTouchDown];

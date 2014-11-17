@@ -10,8 +10,12 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "MapViewController.h"
 
-@interface MapController : NSObject
+
+@interface MapController : NSObject <GMSMapViewDelegate>
 
 - (id) init;
 - (GMSMapView *) makeMapView;
+- (CLLocationCoordinate2D) getTopLeftCoordinate;
+- (CLLocationCoordinate2D) getBottomRightCoordinate;
+
 @end
