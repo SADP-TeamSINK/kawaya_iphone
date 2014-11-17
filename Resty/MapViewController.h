@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "FilteringButtonController.h"
+#import "MapController.h"
 
 
 @interface MapViewController : UIViewController
-
 
 @end
 

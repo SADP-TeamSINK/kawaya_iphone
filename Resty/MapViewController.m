@@ -15,24 +15,41 @@
 @implementation MapViewController{
     GMSMapView *mapView_;
     FilteringButtonController *filteringButtonController_;
+    NSData *dammyJson_;
+    NSDictionary *toiletData_;
+    int height_;
+    int width_;
+    MapController *mapController_;
 }
 
 
 - (void)loadView {
-
+    
+    mapController_ = [[MapController alloc] init];
+    
+    //画面サイズ取得
+    height_ = [[UIScreen mainScreen] bounds].size.height;
+    width_ = [[UIScreen mainScreen] bounds].size.width;
+    
+    // ダミーデータの読み込み
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"dammy" ofType:@"json"];
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:filePath];
+    dammyJson_ = [fileHandle readDataToEndOfFile];
+    
+    NSError* error;
+    toiletData_ = [NSJSONSerialization JSONObjectWithData:dammyJson_ options:NSJSONReadingMutableContainers error:&error];
+    NSLog(@"%@ %@", toiletData_, error);
+    
+    
     filteringButtonController_ = [[FilteringButtonController alloc] initWithState:BOTH empty:FALSE wash:TRUE multipurpose:FALSE parent:self];
     UIButton *btnSex = filteringButtonController_.sexButton;
     UIButton *btnEmpty = filteringButtonController_.emptyButton;
     UIButton *btnWash = filteringButtonController_.washButton;
     UIButton *btnMultipurpose = filteringButtonController_.multipurposeButton;
     
-    // Create a GMSCameraPosition that tells the map to display the
-    // coordinate -33.86,151.20 at zoom level 6.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:35.026111
-                                                            longitude:135.780833
-                                                                 zoom:16];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.myLocationEnabled = YES;
+    mapView_ = [mapController_ makeMapView];
+    
+    
     self.view = mapView_;
     
     // Creates a marker in the center of the map.
@@ -42,6 +59,9 @@
     marker.snippet = @"Japan";
     marker.map = mapView_;
 
+    
+    
+    
     // ボタンがタップされた時のメソッド登録
     [btnSex             addTarget:self action:@selector(pushBtnSex:)            forControlEvents:UIControlEventTouchDown];
     [btnEmpty           addTarget:self action:@selector(pushBtnEmpty:)          forControlEvents:UIControlEventTouchDown];
