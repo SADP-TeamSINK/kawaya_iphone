@@ -62,8 +62,6 @@ int numberOfButton = 4;
 - (void)tappedSexButton:(UIButton*)button{
     if(stateOfSex == MAN){
         stateOfSex = WOMAN;
-    }else if(stateOfSex == WOMAN){
-        stateOfSex = BOTH;
     }else{
         stateOfSex = MAN;
     }
@@ -104,10 +102,8 @@ int numberOfButton = 4;
 - (void) changeSexButton{
     if (stateOfSex == MAN) {
         [self.sexButton setTitle:@"男" forState:UIControlStateNormal];
-    }else if(stateOfSex == WOMAN){
-        [self.sexButton setTitle:@"女" forState:UIControlStateNormal];
     }else{
-        [self.sexButton setTitle:@"共用" forState:UIControlStateNormal];
+        [self.sexButton setTitle:@"女" forState:UIControlStateNormal];
     }
 }
 

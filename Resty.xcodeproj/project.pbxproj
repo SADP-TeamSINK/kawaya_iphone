@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5D3133A41A19F57400D7B2EF /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3133A31A19F57400D7B2EF /* MapController.m */; };
+		5D3133A71A19FBE600D7B2EF /* kyoto-u.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5D3133A61A19FBE600D7B2EF /* kyoto-u.gpx */; };
+		5D3133A91A19FDB200D7B2EF /* APIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3133A81A19FDB200D7B2EF /* APIController.m */; };
 		5D3BCAA11A16FB6100C07CA8 /* dammy.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D3BCAA01A16FB6100C07CA8 /* dammy.json */; };
 		5DD64EBF1A16452C00FECE1A /* FilteringButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD64EBE1A16452C00FECE1A /* FilteringButtonController.m */; };
 		5DD64EC21A1647BD00FECE1A /* Const.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD64EC11A1647BD00FECE1A /* Const.m */; };
@@ -51,6 +53,9 @@
 		2EBB1079551F0EAE9FB33ACB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5D3133A31A19F57400D7B2EF /* MapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
 		5D3133A51A19F58400D7B2EF /* MapController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
+		5D3133A61A19FBE600D7B2EF /* kyoto-u.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "kyoto-u.gpx"; sourceTree = "<group>"; };
+		5D3133A81A19FDB200D7B2EF /* APIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIController.m; sourceTree = "<group>"; };
+		5D3133AB1A19FDD000D7B2EF /* APIController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIController.h; sourceTree = "<group>"; };
 		5D3BCAA01A16FB6100C07CA8 /* dammy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dammy.json; sourceTree = "<group>"; };
 		5DD64EBE1A16452C00FECE1A /* FilteringButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringButtonController.m; sourceTree = "<group>"; };
 		5DD64EC01A1645DE00FECE1A /* FilteringButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringButtonController.h; sourceTree = "<group>"; };
@@ -160,6 +165,9 @@
 				5D3BCAA01A16FB6100C07CA8 /* dammy.json */,
 				5D3133A31A19F57400D7B2EF /* MapController.m */,
 				5D3133A51A19F58400D7B2EF /* MapController.h */,
+				5D3133A61A19FBE600D7B2EF /* kyoto-u.gpx */,
+				5D3133A81A19FDB200D7B2EF /* APIController.m */,
+				5D3133AB1A19FDD000D7B2EF /* APIController.h */,
 			);
 			path = Resty;
 			sourceTree = "<group>";
@@ -311,6 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D3133A71A19FBE600D7B2EF /* kyoto-u.gpx in Resources */,
 				A41CF5D519F2731000F6B49C /* Main.storyboard in Resources */,
 				A47E26071A00195300254347 /* resty_350x1.png in Resources */,
 				5D3BCAA11A16FB6100C07CA8 /* dammy.json in Resources */,
@@ -368,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D3133A91A19FDB200D7B2EF /* APIController.m in Sources */,
 				5DD64EC21A1647BD00FECE1A /* Const.m in Sources */,
 				5DD64EBF1A16452C00FECE1A /* FilteringButtonController.m in Sources */,
 				A41CF5D219F2731000F6B49C /* MapViewController.m in Sources */,

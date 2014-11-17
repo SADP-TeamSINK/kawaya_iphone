@@ -32,6 +32,8 @@ int width_;
                                                                  zoom:17];
     mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, width_, height_) camera:camera];
     mapView_.myLocationEnabled = YES;
+    //mapView_.settings.myLocationButton  = YES;
+    
     
     // 画面左上の座標を取得
     CGPoint topLeftPoint = CGPointMake(0, 0);
