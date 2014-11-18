@@ -21,6 +21,7 @@ NSMutableSet *obtainedMeshMutableSet_;
 }
 
 - (NSString *) callFromCoordinate:(CLLocationCoordinate2D)topLeftCoordinate BottomRightCoordinate:(CLLocationCoordinate2D)bottomRightCoordinate{
+    NSString *json = @"{}";
     double topLeftLatitude = topLeftCoordinate.latitude;
     double topLeftLongitude = topLeftCoordinate.longitude;
     double bottomRightLatitude = bottomRightCoordinate.latitude;
@@ -50,10 +51,10 @@ NSMutableSet *obtainedMeshMutableSet_;
     
     // 送るべきメッシュの配列が空でなければAPIを叩く
     if([meshArrayToSend count] > 0){
-        [self call:meshArrayToSend];
+        json = [self call:meshArrayToSend];
     }
     
-    return @"API not Called!";
+    return json;
 }
 
 - (NSUInteger) getMeshNumberFromCoordinate:(CLLocationCoordinate2D)coordinate{

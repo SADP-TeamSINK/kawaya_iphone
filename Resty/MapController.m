@@ -99,6 +99,7 @@ dispatch_queue_t sub_queue_;
         NSString *json = [aPIController_ callFromCoordinate:topLeftCoordinate  BottomRightCoordinate:bottomRightCoordinate];
 
         dispatch_async(main_queue_, ^{
+            // ここはメインスレッド
             // APIを叩いたあとの処理をここへ記述
             NSLog(@"API response: %@", json);
         });
