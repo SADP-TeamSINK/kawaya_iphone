@@ -53,7 +53,7 @@ NSMutableSet *obtainedMeshMutableSet_;
         [self call:meshArrayToSend];
     }
     
-    return @"API Called!";
+    return @"API not Called!";
 }
 
 - (NSUInteger) getMeshNumberFromCoordinate:(CLLocationCoordinate2D)coordinate{
@@ -65,7 +65,8 @@ NSMutableSet *obtainedMeshMutableSet_;
     return meshNumber;
 }
 
-- (void) call:(NSMutableArray *)meshArray{
+- (NSString *) call:(NSMutableArray *)meshArray{
+    NSString *returnedJson = @"{}";
     NSLog(@"Called call in APIController: %@", meshArray);
 
     //送信するパラメータの組み立て
@@ -74,34 +75,41 @@ NSMutableSet *obtainedMeshMutableSet_;
     
     NSError *error;
     if([NSJSONSerialization isValidJSONObject:mutableDic]){
-        NSData *json = [NSJSONSerialization dataWithJSONObject:mutableDic options:NSJSONWritingPrettyPrinted error:&error];
-        NSLog(@"json %@", [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding] );
+        NSData *json = [NSJSONSerialization dataWithJSONObject:mutableDic
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+        NSLog(@"json %@", [[NSString alloc] initWithData:json
+                                                encoding:NSUTF8StringEncoding]);
     
-    NSMutableURLRequest *request;
-    request =
-    [NSMutableURLRequest requestWithURL:[NSURL URLWithString:API_URL]
-                            cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    
-    //HTTPメソッドは"POST"
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/json"
-   forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%ld",
-                       [json length]] forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody: json];
-    
-    //レスポンス
-    NSURLResponse *resp;  
-    NSError *err;  
-    
-    //HTTPリクエスト送信  
-    NSData *result = [NSURLConnection sendSynchronousRequest:request   
-                                           returningResponse:&resp error:&err];
-        NSLog(@"Result: %@, err: %@", result, err);
+        NSMutableURLRequest *request;
+        request =
+        [NSMutableURLRequest requestWithURL:[NSURL URLWithString:API_URL]
+                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                timeoutInterval:60.0];
+
+        //HTTPメソッドは"POST"
+        [request setHTTPMethod:@"POST"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:[NSString stringWithFormat:@"%ld", [json length]] forHTTPHeaderField:@"Content-Length"];
+        [request setHTTPBody: json];
+
+        //レスポンス
+        NSURLResponse *resp;  
+        NSError *err;  
+
+        //HTTPリクエスト送信  
+        NSData *result = [NSURLConnection sendSynchronousRequest:request   
+                                               returningResponse:&resp error:&err];
+        returnedJson = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+        //NSLog(@"Result: %@, err: %@", returnedJson, err);
+        
     }else{
         NSLog(@"!!!The Array can not convert json!!!");
     }
+    return returnedJson;
 }
+
+
 
 @end

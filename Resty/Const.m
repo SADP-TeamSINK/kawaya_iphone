@@ -15,4 +15,4 @@ typedef NS_ENUM (NSInteger, Sex){
     OTHER
 };
 
-static NSString * const API_URL= @"http://sadp/test/";
+static NSString * const API_URL= @"http://apple.com";

@@ -16,6 +16,8 @@ GMSMapView *mapView_;
 NSInteger height_;
 NSInteger width_;
 APIController *aPIController_;
+dispatch_queue_t main_queue_;
+dispatch_queue_t sub_queue_;
 
 - (id) init{
     self = [super self];
@@ -23,6 +25,12 @@ APIController *aPIController_;
     //画面サイズ取得
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
+    
+    // マルチスレッド処理の準備
+    // メインスレッド用で処理を実行するキューを定義するする
+    main_queue_ = dispatch_get_main_queue();
+    // サブスレッドで実行するキューを定義する
+    sub_queue_ = dispatch_queue_create("sadp.team.sink.toiletApi", 0);
     return self;
 }
 
@@ -81,7 +89,20 @@ APIController *aPIController_;
  */
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     NSLog(@"didChangeCameraPosition %f,%f", position.target.latitude, position.target.longitude);
-    [aPIController_ callFromCoordinate:[self getTopLeftCoordinate] BottomRightCoordinate:[self getBottomRightCoordinate]];
+    
+    CLLocationCoordinate2D topLeftCoordinate = [self getTopLeftCoordinate];
+    CLLocationCoordinate2D bottomRightCoordinate = [self getBottomRightCoordinate];
+
+    // 並列処理開始
+    dispatch_async(sub_queue_, ^{
+        //ここはサブスレッド
+        NSString *json = [aPIController_ callFromCoordinate:topLeftCoordinate  BottomRightCoordinate:bottomRightCoordinate];
+
+        dispatch_async(main_queue_, ^{
+            // APIを叩いたあとの処理をここへ記述
+            NSLog(@"API response: %@", json);
+        });
+    });
 }
 
 
