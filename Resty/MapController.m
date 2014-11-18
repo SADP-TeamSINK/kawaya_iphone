@@ -89,7 +89,10 @@ dispatch_queue_t sub_queue_;
  */
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     NSLog(@"didChangeCameraPosition %f,%f", position.target.latitude, position.target.longitude);
-    
+
+    // 縮小しすぎている場合はAPIを叩かない
+    if (mapView.camera.zoom < 15) return;
+
     CLLocationCoordinate2D topLeftCoordinate = [self getTopLeftCoordinate];
     CLLocationCoordinate2D bottomRightCoordinate = [self getBottomRightCoordinate];
 
