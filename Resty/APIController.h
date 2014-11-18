@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import "Const.m"
 
 
 @interface APIController : NSObject
 - (id) initWithUrl:(NSURL *)url;
-- (NSString *) call:(CLLocationCoordinate2D)topLeftCoordinate BottomRightCoordinate:(CLLocationCoordinate2D)bottomRightCoordinate;
+- (void) call:(NSMutableArray *) meshArray;
+- (NSString *) callFromCoordinate:(CLLocationCoordinate2D)topLeftCoordinate BottomRightCoordinate:(CLLocationCoordinate2D)bottomRightCoordinate;
 - (NSUInteger) getMeshNumberFromCoordinate:(CLLocationCoordinate2D)coordinate;
 @end

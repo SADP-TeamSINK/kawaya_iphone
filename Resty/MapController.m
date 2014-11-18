@@ -81,7 +81,7 @@ APIController *aPIController_;
  */
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     NSLog(@"didChangeCameraPosition %f,%f", position.target.latitude, position.target.longitude);
-    [aPIController_ call:[self getTopLeftCoordinate] BottomRightCoordinate:[self getBottomRightCoordinate]];
+    [aPIController_ callFromCoordinate:[self getTopLeftCoordinate] BottomRightCoordinate:[self getBottomRightCoordinate]];
 }
 
 
@@ -114,7 +114,7 @@ APIController *aPIController_;
  * 独自のウィンドウを返すことができる。
  */
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(id)marker {
-    UIView *mWindow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    UIView *mWindow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
     mWindow.backgroundColor = [UIColor redColor];
     return mWindow;
 }
