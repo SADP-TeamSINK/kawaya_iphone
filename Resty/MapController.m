@@ -18,6 +18,8 @@ NSInteger width_;
 APIController *aPIController_;
 dispatch_queue_t main_queue_;
 dispatch_queue_t sub_queue_;
+CGRect windowRect_;
+UIScrollView * listView_;
 
 - (id) init{
     self = [super self];
@@ -29,8 +31,15 @@ dispatch_queue_t sub_queue_;
     // マルチスレッド処理の準備
     // メインスレッド用で処理を実行するキューを定義するする
     main_queue_ = dispatch_get_main_queue();
+
     // サブスレッドで実行するキューを定義する
     sub_queue_ = dispatch_queue_create("sadp.team.sink.toiletApi", 0);
+
+    // リストの初期化
+    //listView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, height_ * (1 - MAP_RATIO), width_, height_ * (1 - MAP_RATIO))];
+    listView_ = [[UIScrollView alloc] initWithFrame:mapView_.bounds];
+    listView_.backgroundColor = [UIColor cyanColor];
+    
     return self;
 }
 
@@ -124,7 +133,17 @@ dispatch_queue_t sub_queue_;
  */
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id)marker {
     NSLog(@"didTapMarker title:%@, snippet:%@", [marker title], [marker snippet]);
-    return NO;
+    
+    [UIView animateWithDuration:0.1f animations:^{
+        mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
+    } completion:^(BOOL finished){
+        [mapView_ animateToLocation:((GMSMarker*)marker).position];
+    }];
+
+    // TODO: マーカーがすべて入るようにズーム
+    
+    
+    return YES;
 }
 
 /**
@@ -139,9 +158,7 @@ dispatch_queue_t sub_queue_;
  * 独自のウィンドウを返すことができる。
  */
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(id)marker {
-    UIView *mWindow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-    mWindow.backgroundColor = [UIColor redColor];
-    return mWindow;
+    return nil;
 }
 
 

@@ -20,6 +20,7 @@
     NSInteger height_;
     NSInteger width_;
     MapController *mapController_;
+    UIView *backView_;
 }
 
 
@@ -31,6 +32,10 @@
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
     
+    // 背景のviewの初期化
+    backView_ = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.view = backView_;
+
     // ダミーデータの読み込み
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"dammy" ofType:@"json"];
     NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:filePath];
@@ -50,7 +55,7 @@
     mapView_ = [mapController_ makeMapView];
     
     
-    self.view = mapView_;
+    [self.view addSubview:mapView_];
     
     // ボタンがタップされた時のメソッド登録
     [btnSex             addTarget:self action:@selector(pushBtnSex:)            forControlEvents:UIControlEventTouchDown];

@@ -16,3 +16,4 @@ typedef NS_ENUM (NSInteger, Sex){
 };
 
 static NSString * const API_URL= @"http://apple.com";
+static double const MAP_RATIO = 0.4;
