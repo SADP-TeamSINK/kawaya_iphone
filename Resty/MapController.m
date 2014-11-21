@@ -50,7 +50,7 @@ dispatch_queue_t sub_queue_;
     marker.position = CLLocationCoordinate2DMake(35.026111, 135.780833);
     marker.title = @"kyoto University";
     marker.snippet = @"Japan";
-    marker.map = mapView_;
+    //marker.map = mapView_;
     
 
     
