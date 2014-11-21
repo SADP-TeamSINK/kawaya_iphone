@@ -42,7 +42,7 @@ ListViewController *listViewContoroller_;
     mapView_ = [self makeMapView];
     
     // MapViewにListViewを追加
-    [mapView_ addSubview:[listViewContoroller_ getListView]];
+    //[mapView_ addSubview:[listViewContoroller_ getListView]];
     
     return self;
 }
@@ -144,10 +144,23 @@ ListViewController *listViewContoroller_;
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id)marker {
     NSLog(@"didTapMarker title:%@, snippet:%@", [marker title], [marker snippet]);
     
+    // マーカーの位置から，中心に来るべき座標を計算する．
+    // mapは画面の "縦サイズ * MAP_RATIO" の表示領域になるので，
+    // その表示領域の中心にマーカーの座標が来るように計算した．
+    CLLocationCoordinate2D center;
+    center.latitude = ((GMSMarker *)marker).position.latitude
+                      - ([self getLatitudeGapOnScreen]
+                      * (0.5f - MAP_RATIO/2.0f));
+    NSLog(@"%f", center.latitude);
+    center.longitude = ((GMSMarker *)marker).position.longitude;
+    [mapView_ animateToLocation:center];
+    
+    // ListViewを下から出すアニメーション
     [UIView animateWithDuration:0.1f animations:^{
-        mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
+        //mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
+
     } completion:^(BOOL finished){
-        [mapView_ animateToLocation:((GMSMarker*)marker).position];
+
     }];
 
     // TODO: マーカーがすべて入るようにズーム
@@ -191,6 +204,11 @@ ListViewController *listViewContoroller_;
     return bottomRightLocation;
 }
 
+- (double) getLatitudeGapOnScreen{
+    CLLocationCoordinate2D topLeft = [self getTopLeftCoordinate];
+    CLLocationCoordinate2D bottomRight = [self getBottomRightCoordinate];
+    return topLeft.latitude - bottomRight.latitude;
+}
 
 @end
 

@@ -23,7 +23,7 @@ NSInteger width_;
     width_ = [[UIScreen mainScreen] bounds].size.width;
     
     // リストの初期化
-    listView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, height_ * (MAP_RATIO*0.1), width_, height_ * (1 - MAP_RATIO))];
+    listView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, height_ * (MAP_RATIO), width_, height_ * (1 - MAP_RATIO))];
     listView_.backgroundColor = [UIColor cyanColor];
     
     return self;
