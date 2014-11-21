@@ -16,5 +16,6 @@
 
 - (id) init;
 - (UIView *) getListView;
+- (void) onScreen;
 
 @end

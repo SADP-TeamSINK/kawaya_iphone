@@ -42,7 +42,7 @@ ListViewController *listViewContoroller_;
     mapView_ = [self makeMapView];
     
     // MapViewにListViewを追加
-    //[mapView_ addSubview:[listViewContoroller_ getListView]];
+    [mapView_ addSubview:[listViewContoroller_ getListView]];
     
     return self;
 }
@@ -158,7 +158,7 @@ ListViewController *listViewContoroller_;
     // ListViewを下から出すアニメーション
     [UIView animateWithDuration:0.1f animations:^{
         //mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
-
+        [listViewContoroller_ onScreen];
     } completion:^(BOOL finished){
 
     }];
