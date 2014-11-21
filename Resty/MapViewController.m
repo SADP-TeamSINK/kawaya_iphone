@@ -20,7 +20,6 @@
     NSInteger height_;
     NSInteger width_;
     MapController *mapController_;
-    UIView *backView_;
 }
 
 
@@ -33,8 +32,9 @@
     width_ = [[UIScreen mainScreen] bounds].size.width;
     
     // 背景のviewの初期化
-    backView_ = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.view = backView_;
+    UIView *backView;
+    backView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.view = backView;
 
     // ダミーデータの読み込み
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"dammy" ofType:@"json"];
@@ -52,7 +52,7 @@
     UIButton *btnWash = filteringButtonController_.washButton;
     UIButton *btnMultipurpose = filteringButtonController_.multipurposeButton;
     
-    mapView_ = [mapController_ makeMapView];
+    mapView_ = [mapController_ getMapView];
     
     
     [self.view addSubview:mapView_];

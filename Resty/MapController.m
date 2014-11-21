@@ -11,7 +11,6 @@
 
 
 @implementation MapController : NSObject
-//MapViewController *mapViewController_;
 GMSMapView *mapView_;
 NSInteger height_;
 NSInteger width_;
@@ -19,7 +18,7 @@ APIController *aPIController_;
 dispatch_queue_t main_queue_;
 dispatch_queue_t sub_queue_;
 CGRect windowRect_;
-UIScrollView * listView_;
+ListViewController *listViewContoroller_;
 
 - (id) init{
     self = [super self];
@@ -27,6 +26,9 @@ UIScrollView * listView_;
     //画面サイズ取得
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
+
+    // ListViewControllerの初期化
+    listViewContoroller_ = [[ListViewController alloc] init];
     
     // マルチスレッド処理の準備
     // メインスレッド用で処理を実行するキューを定義するする
@@ -34,11 +36,13 @@ UIScrollView * listView_;
 
     // サブスレッドで実行するキューを定義する
     sub_queue_ = dispatch_queue_create("sadp.team.sink.toiletApi", 0);
-
-    // リストの初期化
-    //listView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, height_ * (1 - MAP_RATIO), width_, height_ * (1 - MAP_RATIO))];
-    listView_ = [[UIScrollView alloc] initWithFrame:mapView_.bounds];
-    listView_.backgroundColor = [UIColor cyanColor];
+    
+    
+    // MapViewの作成
+    mapView_ = [self makeMapView];
+    
+    // MapViewにListViewを追加
+    [mapView_ addSubview:[listViewContoroller_ getListView]];
     
     return self;
 }
@@ -83,6 +87,10 @@ UIScrollView * listView_;
     return mapView_;
 }
 
+- (GMSMapView *) getMapView{
+    return mapView_;
+}
+
 /**
  * 地図上の特定座標をタップした際に通知される。
  * マーカーをタップした際には通知されない。
@@ -98,6 +106,8 @@ UIScrollView * listView_;
  */
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     NSLog(@"didChangeCameraPosition %f,%f", position.target.latitude, position.target.longitude);
+    [mapView_ bringSubviewToFront:[listViewContoroller_ getListView]];
+    
 
     // 縮小しすぎている場合はAPIを叩かない
     if (mapView.camera.zoom < 15) return;

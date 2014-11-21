@@ -11,12 +11,12 @@
 #import "MapViewController.h"
 #import "APIController.h"
 #import "Const.m"
-
+#import "ListViewController.h"
 
 @interface MapController : NSObject <GMSMapViewDelegate>
 
 - (id) init;
-- (GMSMapView *) makeMapView;
+- (GMSMapView *) getMapView;
 - (CLLocationCoordinate2D) getTopLeftCoordinate;
 - (CLLocationCoordinate2D) getBottomRightCoordinate;
 

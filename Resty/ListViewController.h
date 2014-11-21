@@ -6,8 +6,15 @@
 //  Copyright (c) 2014年 Kazuma Nagaya. All rights reserved.
 //
 
-#ifndef Resty_ListViewController_h
-#define Resty_ListViewController_h
+#import <UIKit/UIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
+#import "MapViewController.h"
+#import "Const.m"
 
 
-#endif
+@interface ListViewController : NSObject <GMSMapViewDelegate>
+
+- (id) init;
+- (UIView *) getListView;
+
+@end
