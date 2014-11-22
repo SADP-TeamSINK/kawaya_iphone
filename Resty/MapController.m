@@ -20,6 +20,7 @@ dispatch_queue_t sub_queue_;
 CGRect windowRect_;
 ListViewController *listViewContoroller_;
 
+
 - (id) init{
     self = [super self];
     aPIController_ = [[APIController alloc] initWithUrl:[NSURL URLWithString:API_URL]];
@@ -123,7 +124,7 @@ ListViewController *listViewContoroller_;
         dispatch_async(main_queue_, ^{
             // ここはメインスレッド
             // APIを叩いたあとの処理をここへ記述
-            NSLog(@"API response: %@", json);
+            NSLog(@"API responset");
         });
     });
 }

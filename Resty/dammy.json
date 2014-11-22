@@ -1,13 +1,88 @@
 [
   {
-    "building"  : "7号館",
-    "floor" :
+    "id": 1,
+    "building"  : "京都大学工学部7号館",
+    "floor_size" : 4,
+    "toilet": [
       [
-        [
-          {}
-        ]
-      ],
-    "latitude"  : 35.027541,
-    "longitude" : 135.783740
-  }
+	  {
+	    "id": 1, 
+	    "floor": 1,
+	    "store_name": "",
+	    "room": [
+	      {"id": 1, "avalable": true, "washlet": true, "multipurpose": false},
+	      {"id": 2, "avalable": true, "washlet": true, "multipurpose": false},
+	      {"id": 3, "avalable": true, "washlet": true, "multipurpose": false},
+	      {"id": 4, "avalable": true, "washlet": true, "multipurpose": false},
+	      {"id": 5, "avalable": true, "washlet": true, "multipurpose": false},
+	      {"id": 6, "avalable": true, "washlet": true, "multipurpose": false}
+	    ],
+	    "latitude": 35.027531,
+	    "longitude" : 135.783817,
+	    "sex": 0
+	  },
+          {
+            "id": 2,
+	        "floor": 2,
+            "store_name": "",
+	        "room": [
+              {"id": 7, "avalable": true, "washlet": true, "multipurpose": false},
+              {"id": 8, "avalable": true, "washlet": false, "multipurpose": false},
+              {"id": 9, "avalable": true, "washlet": false, "multipurpose": false},
+              {"id": 10, "avalable": true, "washlet": false, "multipurpose": false},
+              {"id": 11, "avalable": true, "washlet": true, "multipurpose": false},
+              {"id": 12, "avalable": true, "washlet": true, "multipurpose": false}
+            ],
+	    "latitude": 35.027531,
+	    "longitude" : 135.783817,
+	    "sex": 1
+          }
+      ]
+    ],
+    "latitude"  : 35.027452,
+    "longitude" : 135.783750
+  },
+ {
+ "id": 1,
+ "building"  : "京都大学工学部8号館",
+ "floor_size" : 4,
+ "toilet": [
+            [
+             {
+             "id": 1,
+             "floor": 1,
+             "store_name": "",
+             "room": [
+                      {"id": 13, "avalable": true, "washlet": true, "multipurpose": false},
+                      {"id": 14, "avalable": true, "washlet": true, "multipurpose": false},
+                      {"id": 15, "avalable": true, "washlet": true, "multipurpose": false},
+                      {"id": 16, "avalable": true, "washlet": true, "multipurpose": false},
+                      {"id": 17, "avalable": true, "washlet": false, "multipurpose": false},
+                      {"id": 18, "avalable": true, "washlet": true, "multipurpose": false}
+                      ],
+             "latitude": 35.026675,
+             "longitude" : 135.781893,
+             "sex": 0
+             },
+             {
+             "id": 2,
+             "floor": 2,
+             "store_name": "",
+             "room": [
+                      {"id": 19, "avalable": true, "washlet": true, "multipurpose": false},
+                      {"id": 20, "avalable": true, "washlet": false, "multipurpose": false},
+                      {"id": 21, "avalable": true, "washlet": false, "multipurpose": false},
+                      {"id": 22, "avalable": true, "washlet": false, "multipurpose": false},
+                      {"id": 23, "avalable": true, "washlet": true, "multipurpose": false},
+                      {"id": 24, "avalable": true, "washlet": true, "multipurpose": false}
+                      ],
+             "latitude": 35.026675,
+             "longitude" : 135.781893,
+             "sex": 1
+             }
+             ]
+            ],
+ "latitude"  : 35.026662,
+ "longitude" : 135.781842
+ }
 ]
