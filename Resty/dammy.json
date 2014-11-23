@@ -9,8 +9,8 @@
 	    "floor": 1,
 	    "store_name": "エレベータ横",
 	    "room": [
-	      {"id": 1, "available": true, "washlet": true, "multipurpose": false},
-	      {"id": 2, "available": true, "washlet": true, "multipurpose": false},
+	      {"id": 1, "available": false, "washlet": true, "multipurpose": false},
+	      {"id": 2, "available": false, "washlet": true, "multipurpose": false},
 	      {"id": 3, "available": true, "washlet": true, "multipurpose": false},
 	      {"id": 4, "available": true, "washlet": true, "multipurpose": false},
 	      {"id": 5, "available": true, "washlet": true, "multipurpose": false},
@@ -29,7 +29,7 @@
               {"id": 8, "available": true, "washlet": false, "multipurpose": false},
               {"id": 9, "available": true, "washlet": false, "multipurpose": false},
               {"id": 10, "available": true, "washlet": false, "multipurpose": false},
-              {"id": 11, "available": true, "washlet": true, "multipurpose": false},
+              {"id": 11, "available": false, "washlet": true, "multipurpose": false},
               {"id": 12, "available": true, "washlet": true, "multipurpose": false}
             ],
 	    "latitude": 35.027531,
@@ -50,11 +50,11 @@
              "floor": 1,
              "store_name": "",
              "room": [
-                      {"id": 13, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 14, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 15, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 16, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 17, "available": true, "washlet": false, "multipurpose": false},
+                      {"id": 13, "available": false, "washlet": true, "multipurpose": false},
+                      {"id": 14, "available": false, "washlet": true, "multipurpose": false},
+                      {"id": 15, "available": false, "washlet": true, "multipurpose": false},
+                      {"id": 16, "available": false, "washlet": true, "multipurpose": false},
+                      {"id": 17, "available": false, "washlet": false, "multipurpose": false},
                       {"id": 18, "available": true, "washlet": true, "multipurpose": false}
                       ],
              "latitude": 35.026675,

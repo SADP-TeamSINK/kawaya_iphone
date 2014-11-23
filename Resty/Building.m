@@ -86,4 +86,20 @@
     return buildings;
 }
 
+- (NSNumber *) getUtillization{
+    double sizeAllRoom = 0;
+    double sizeUnavailableRoom = 0;
+    for (NSMutableArray *toiletsByFloor in self.toilets) {
+        for (Toilet *toilet in toiletsByFloor) {
+            for (Room *room in toilet.rooms) {
+                sizeAllRoom++;
+                if(!room.available){
+                    sizeUnavailableRoom++;
+                }
+            }
+        }
+    }
+    return [[NSNumber alloc] initWithDouble:(sizeUnavailableRoom / sizeAllRoom)];
+}
+
 @end

@@ -181,6 +181,9 @@ ListViewController *listViewContoroller_;
 
     }];
 
+    NSLog(@"Utillization: %@", ((GMSMarker *)marker).userData);
+    
+    
     // TODO: マーカーがすべて入るようにズーム
     
     
@@ -234,6 +237,7 @@ ListViewController *listViewContoroller_;
         GMSMarker *marker = [GMSMarker markerWithPosition:position];
         marker.title = building.name;
         marker.map = mapView_;
+        marker.userData = [building getUtillization];
     }
 }
 
