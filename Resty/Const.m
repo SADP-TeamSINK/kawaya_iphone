@@ -17,9 +17,12 @@ typedef NS_ENUM (NSInteger, Sex){
 
 static NSString * const API_URL= @"http://apple.com";
 
+static double const FLOOR_MARGIN_RATIO = 0.03;
+
 static double const MAP_RATIO = 0.3;
 static double const PANE_WIDTH_RATIO = 0.8;
-static double const PANE_HEIGHT_RATIO = 0.05;
+static double const PANE_HEIGHT_RATIO = 0.1;
+static double const PANE_MARGIN_RATIO = 0.02;
 
 static NSInteger const BUTTON_WIDTH = 30;
 static NSInteger const BUTTON_HEIGHT = 30;

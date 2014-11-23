@@ -69,11 +69,21 @@
 }
 
 - (void) listUpToilets:(Building *)building{
+    double floorMargin = FLOOR_MARGIN_RATIO * height_;
     for (NSMutableArray *toiletByFloor in building.toilets) {
+        double margin = (PANE_MARGIN_RATIO * height_) * floorMargin;
         for (Toilet *toilet in toiletByFloor) {
             NSLog(@"floor: %ld, toilet: %@", (long)toilet.floor, toilet.storeName);
-            [listView_ addSubview:[toilet getToiletPane]];
+            UIView *pane = [toilet getToiletPane];
+            pane.transform = CGAffineTransformMakeTranslation(0, margin);
+            [listView_ addSubview:pane];
+
+            // マージンを確保
+            margin += PANE_HEIGHT_RATIO * height_;
+            margin += PANE_MARGIN_RATIO * height_;
         }
+        // マージンの確保
+        floorMargin += FLOOR_MARGIN_RATIO * height_;
     }
 }
 
