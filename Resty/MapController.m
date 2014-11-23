@@ -57,6 +57,7 @@ ListViewController *listViewContoroller_;
     NSMutableArray *buildings = [Building parseBuildingFromJson:dammyJsonString];
     
     // dammy json からパースした建物オブジェクトをマップ上にマーキング
+    // フィルタリングした結果を表示
     [self markBuildings:buildings];
 
     // ----------------------------------------------------
