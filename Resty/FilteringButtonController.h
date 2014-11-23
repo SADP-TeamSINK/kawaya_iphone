@@ -12,16 +12,15 @@
 
 @interface FilteringButtonController: NSObject
 @property UIButton *sexButton;
-@property UIButton *emptyButton;
+@property UIButton *updateButton;
 @property UIButton *washButton;
 @property UIButton *multipurposeButton;
 - (id) initWithState:(Sex)sex empty:(Boolean)empty wash:(Boolean)wash multipurpose:(Boolean)multipurpose parent:(UIViewController*)parent;
 - (void) changeSexButton;
-- (void) changeEmptyButton;
 - (void) changeWashButton;
 - (void) changeMultipurposeButton;
 - (void) tappedSexButton:(UIButton*)button;
-- (void) tappedEmptyButton:(UIButton*)button;
+- (void) tappedUpdateButton:(UIButton*)button;
 - (void) tappedWashButton:(UIButton*)button;
 - (void) tappedMultipurposeButton:(UIButton*)button;
 @end

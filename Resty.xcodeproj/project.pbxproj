@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D10C5531A1E4641004247BC /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D10C5521A1E4641004247BC /* ListViewController.m */; };
+		5D10C5561A20814B004247BC /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D10C5551A20814B004247BC /* Building.m */; };
+		5D10C5591A20847F004247BC /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D10C5581A20847F004247BC /* Room.m */; };
+		5D10C55C1A2089DC004247BC /* Toilet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D10C55B1A2089DC004247BC /* Toilet.m */; };
 		5D3133A41A19F57400D7B2EF /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3133A31A19F57400D7B2EF /* MapController.m */; };
 		5D3133A71A19FBE600D7B2EF /* kyoto-u.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5D3133A61A19FBE600D7B2EF /* kyoto-u.gpx */; };
 		5D3133A91A19FDB200D7B2EF /* APIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3133A81A19FDB200D7B2EF /* APIController.m */; };
@@ -51,6 +55,14 @@
 
 /* Begin PBXFileReference section */
 		2EBB1079551F0EAE9FB33ACB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5D10C5521A1E4641004247BC /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		5D10C5541A1E4657004247BC /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		5D10C5551A20814B004247BC /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
+		5D10C5571A208156004247BC /* Building.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
+		5D10C5581A20847F004247BC /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		5D10C55A1A208486004247BC /* Room.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		5D10C55B1A2089DC004247BC /* Toilet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toilet.m; sourceTree = "<group>"; };
+		5D10C55D1A2089EA004247BC /* Toilet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Toilet.h; sourceTree = "<group>"; };
 		5D3133A31A19F57400D7B2EF /* MapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
 		5D3133A51A19F58400D7B2EF /* MapController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
 		5D3133A61A19FBE600D7B2EF /* kyoto-u.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "kyoto-u.gpx"; sourceTree = "<group>"; };
@@ -168,6 +180,14 @@
 				5D3133A61A19FBE600D7B2EF /* kyoto-u.gpx */,
 				5D3133A81A19FDB200D7B2EF /* APIController.m */,
 				5D3133AB1A19FDD000D7B2EF /* APIController.h */,
+				5D10C5521A1E4641004247BC /* ListViewController.m */,
+				5D10C5541A1E4657004247BC /* ListViewController.h */,
+				5D10C5551A20814B004247BC /* Building.m */,
+				5D10C5571A208156004247BC /* Building.h */,
+				5D10C5581A20847F004247BC /* Room.m */,
+				5D10C55A1A208486004247BC /* Room.h */,
+				5D10C55B1A2089DC004247BC /* Toilet.m */,
+				5D10C55D1A2089EA004247BC /* Toilet.h */,
 			);
 			path = Resty;
 			sourceTree = "<group>";
@@ -377,11 +397,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D10C5591A20847F004247BC /* Room.m in Sources */,
 				5D3133A91A19FDB200D7B2EF /* APIController.m in Sources */,
 				5DD64EC21A1647BD00FECE1A /* Const.m in Sources */,
+				5D10C5561A20814B004247BC /* Building.m in Sources */,
+				5D10C5531A1E4641004247BC /* ListViewController.m in Sources */,
 				5DD64EBF1A16452C00FECE1A /* FilteringButtonController.m in Sources */,
 				A41CF5D219F2731000F6B49C /* MapViewController.m in Sources */,
 				A41CF5CF19F2731000F6B49C /* AppDelegate.m in Sources */,
+				5D10C55C1A2089DC004247BC /* Toilet.m in Sources */,
 				5D3133A41A19F57400D7B2EF /* MapController.m in Sources */,
 				A41CF5CC19F2731000F6B49C /* main.m in Sources */,
 			);

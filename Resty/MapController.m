@@ -10,27 +10,58 @@
 #import <Foundation/Foundation.h>
 
 
-@implementation MapController : NSObject
-//MapViewController *mapViewController_;
-GMSMapView *mapView_;
-NSInteger height_;
-NSInteger width_;
-APIController *aPIController_;
-dispatch_queue_t main_queue_;
-dispatch_queue_t sub_queue_;
+@implementation MapController {
+    GMSMapView *mapView_;
+    NSInteger height_;
+    NSInteger width_;
+    APIController *aPIController_;
+    dispatch_queue_t main_queue_;
+    dispatch_queue_t sub_queue_;
+    CGRect windowRect_;
+    ListViewController *listViewContoroller_;
+}
 
 - (id) init{
-    self = [super self];
+    self = [super init];
+    
     aPIController_ = [[APIController alloc] initWithUrl:[NSURL URLWithString:API_URL]];
     //画面サイズ取得
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
+
+    // ListViewControllerの初期化
+    listViewContoroller_ = [[ListViewController alloc] init];
     
     // マルチスレッド処理の準備
     // メインスレッド用で処理を実行するキューを定義するする
     main_queue_ = dispatch_get_main_queue();
+
     // サブスレッドで実行するキューを定義する
     sub_queue_ = dispatch_queue_create("sadp.team.sink.toiletApi", 0);
+    
+    
+    // MapViewの作成
+    mapView_ = [self makeMapView];
+    
+    // MapViewにListViewを追加
+    [mapView_ addSubview:[listViewContoroller_ getListView]];
+    
+    
+    // ----------------------------------------------------
+    // ダミーデータの読み込み
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"dammy" ofType:@"json"];
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:filePath];
+    NSData *dammyJsonData = [fileHandle readDataToEndOfFile];
+    
+    NSString *dammyJsonString = [[NSString alloc] initWithData:dammyJsonData encoding:NSUTF8StringEncoding];
+    NSMutableArray *buildings = [Building parseBuildingFromJson:dammyJsonString];
+    
+    // dammy json からパースした建物オブジェクトをマップ上にマーキング
+    // フィルタリングした結果を表示
+    [self markBuildings:buildings];
+
+    // ----------------------------------------------------
+    
     return self;
 }
 
@@ -74,6 +105,10 @@ dispatch_queue_t sub_queue_;
     return mapView_;
 }
 
+- (GMSMapView *) getMapView{
+    return mapView_;
+}
+
 /**
  * 地図上の特定座標をタップした際に通知される。
  * マーカーをタップした際には通知されない。
@@ -89,6 +124,8 @@ dispatch_queue_t sub_queue_;
  */
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     NSLog(@"didChangeCameraPosition %f,%f", position.target.latitude, position.target.longitude);
+    [mapView_ bringSubviewToFront:[listViewContoroller_ getListView]];
+    
 
     // 縮小しすぎている場合はAPIを叩かない
     if (mapView.camera.zoom < 15) return;
@@ -104,7 +141,7 @@ dispatch_queue_t sub_queue_;
         dispatch_async(main_queue_, ^{
             // ここはメインスレッド
             // APIを叩いたあとの処理をここへ記述
-            NSLog(@"API response: %@", json);
+            NSLog(@"API responset");
         });
     });
 }
@@ -124,7 +161,39 @@ dispatch_queue_t sub_queue_;
  */
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id)marker {
     NSLog(@"didTapMarker title:%@, snippet:%@", [marker title], [marker snippet]);
-    return NO;
+    
+    // 対応する建物オブジェクト
+    Building *building = (Building *)((GMSMarker *)marker).userData;
+    
+    // マーカーの位置から，中心に来るべき座標を計算する．
+    // mapは画面の "縦サイズ * MAP_RATIO" の表示領域になるので，
+    // その表示領域の中心にマーカーの座標が来るように計算した．
+    CLLocationCoordinate2D center;
+    center.latitude = ((GMSMarker *)marker).position.latitude
+                      - ([self getLatitudeGapOnScreen]
+                      * (0.5f - MAP_RATIO/2.0f));
+    NSLog(@"%f", center.latitude);
+    center.longitude = ((GMSMarker *)marker).position.longitude;
+    [mapView_ animateToLocation:center];
+    
+    // ListViewを下から出すアニメーション
+    [UIView animateWithDuration:0.1f animations:^{
+        //mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
+        [listViewContoroller_ onScreen];
+    } completion:^(BOOL finished){
+    }];
+
+    NSLog(@"Utillization: %@", [building getUtillization]);
+    
+    
+    // TODO: マーカーがすべて入るようにズーム
+    
+
+    // タップされたマーカに対応している建物のもつトイレを，ListViewにリストアップ
+    [listViewContoroller_ listUpToilets:building];
+    
+    
+    return YES;
 }
 
 /**
@@ -139,9 +208,7 @@ dispatch_queue_t sub_queue_;
  * 独自のウィンドウを返すことができる。
  */
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(id)marker {
-    UIView *mWindow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-    mWindow.backgroundColor = [UIColor redColor];
-    return mWindow;
+    return nil;
 }
 
 
@@ -164,6 +231,21 @@ dispatch_queue_t sub_queue_;
     return bottomRightLocation;
 }
 
+- (double) getLatitudeGapOnScreen{
+    CLLocationCoordinate2D topLeft = [self getTopLeftCoordinate];
+    CLLocationCoordinate2D bottomRight = [self getBottomRightCoordinate];
+    return topLeft.latitude - bottomRight.latitude;
+}
+
+- (void) markBuildings:(NSMutableArray *)buildings{
+    for (Building *building in buildings) {
+        CLLocationCoordinate2D position = CLLocationCoordinate2DMake(building.latitude.doubleValue, building.longitude.doubleValue);
+        GMSMarker *marker = [GMSMarker markerWithPosition:position];
+        marker.title = building.name;
+        marker.map = mapView_;
+        marker.userData = building;
+    }
+}
 
 @end
 

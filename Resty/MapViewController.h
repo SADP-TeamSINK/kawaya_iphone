@@ -10,6 +10,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "FilteringButtonController.h"
 #import "MapController.h"
+#import "Building.h"
 
 
 @interface MapViewController : UIViewController

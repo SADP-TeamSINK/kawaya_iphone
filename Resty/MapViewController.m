@@ -12,10 +12,9 @@
 
 @end
 
-@implementation MapViewController{
+@implementation MapViewController {
     GMSMapView *mapView_;
     FilteringButtonController *filteringButtonController_;
-    NSData *dammyJson_;
     NSDictionary *toiletData_;
     NSInteger height_;
     NSInteger width_;
@@ -31,35 +30,30 @@
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
     
-    // ダミーデータの読み込み
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"dammy" ofType:@"json"];
-    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:filePath];
-    dammyJson_ = [fileHandle readDataToEndOfFile];
-    
-    NSError* error;
-    toiletData_ = [NSJSONSerialization JSONObjectWithData:dammyJson_ options:NSJSONReadingMutableContainers error:&error];
-    NSLog(@"%@ %@", toiletData_, error);
-    
+    // 背景のviewの初期化
+    UIView *backView;
+    backView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.view = backView;
     
     filteringButtonController_ = [[FilteringButtonController alloc] initWithState:BOTH empty:FALSE wash:TRUE multipurpose:FALSE parent:self];
     UIButton *btnSex = filteringButtonController_.sexButton;
-    UIButton *btnEmpty = filteringButtonController_.emptyButton;
+    UIButton *btnUpdate = filteringButtonController_.updateButton;
     UIButton *btnWash = filteringButtonController_.washButton;
     UIButton *btnMultipurpose = filteringButtonController_.multipurposeButton;
     
-    mapView_ = [mapController_ makeMapView];
+    mapView_ = [mapController_ getMapView];
     
     
-    self.view = mapView_;
+    [self.view addSubview:mapView_];
     
     // ボタンがタップされた時のメソッド登録
     [btnSex             addTarget:self action:@selector(pushBtnSex:)            forControlEvents:UIControlEventTouchDown];
-    [btnEmpty           addTarget:self action:@selector(pushBtnEmpty:)          forControlEvents:UIControlEventTouchDown];
+    [btnUpdate           addTarget:self action:@selector(pushBtnUpdate:)          forControlEvents:UIControlEventTouchDown];
     [btnWash            addTarget:self action:@selector(pushBtnWash:)           forControlEvents:UIControlEventTouchDown];
     [btnMultipurpose    addTarget:self action:@selector(pushBtnMultipurpose:)   forControlEvents:UIControlEventTouchDown];
 
     [self.view addSubview:btnSex];
-    [self.view addSubview:btnEmpty];
+    [self.view addSubview:btnUpdate];
     [self.view addSubview:btnWash];
     [self.view addSubview:btnMultipurpose];
 }
@@ -69,8 +63,8 @@
     [filteringButtonController_ tappedSexButton:button];
 }
 
--(void)pushBtnEmpty:(UIButton*)button{
-    [filteringButtonController_ tappedEmptyButton:button];
+-(void)pushBtnUpdate:(UIButton*)button{
+    [filteringButtonController_ tappedUpdateButton:button];
 }
 
 -(void)pushBtnWash:(UIButton*)button{

@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM (NSInteger, Sex){
-    MAN = 1,
+    MAN = 0,
     WOMAN,
     BOTH,
     OTHER
 };
 
 static NSString * const API_URL= @"http://apple.com";
+static double const MAP_RATIO = 0.3;
