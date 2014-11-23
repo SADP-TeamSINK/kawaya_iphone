@@ -22,7 +22,8 @@ ListViewController *listViewContoroller_;
 
 
 - (id) init{
-    self = [super self];
+    self = [super init];
+    
     aPIController_ = [[APIController alloc] initWithUrl:[NSURL URLWithString:API_URL]];
     //画面サイズ取得
     height_ = [[UIScreen mainScreen] bounds].size.height;
@@ -44,6 +45,21 @@ ListViewController *listViewContoroller_;
     
     // MapViewにListViewを追加
     [mapView_ addSubview:[listViewContoroller_ getListView]];
+    
+    
+    // ----------------------------------------------------
+    // ダミーデータの読み込み
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"dammy" ofType:@"json"];
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:filePath];
+    NSData *dammyJsonData = [fileHandle readDataToEndOfFile];
+    
+    NSString *dammyJsonString = [[NSString alloc] initWithData:dammyJsonData encoding:NSUTF8StringEncoding];
+    NSMutableArray *buildings = [Building parseBuildingFromJson:dammyJsonString];
+    
+    // dammy json からパースした建物オブジェクトをマップ上にマーキング
+    [self markBuildings:buildings];
+
+    // ----------------------------------------------------
     
     return self;
 }
@@ -209,6 +225,15 @@ ListViewController *listViewContoroller_;
     CLLocationCoordinate2D topLeft = [self getTopLeftCoordinate];
     CLLocationCoordinate2D bottomRight = [self getBottomRightCoordinate];
     return topLeft.latitude - bottomRight.latitude;
+}
+
+- (void) markBuildings:(NSMutableArray *)buildings{
+    for (Building *building in buildings) {
+        CLLocationCoordinate2D position = CLLocationCoordinate2DMake(building.latitude.doubleValue, building.longitude.doubleValue);
+        GMSMarker *marker = [GMSMarker markerWithPosition:position];
+        marker.title = building.name;
+        marker.map = mapView_;
+    }
 }
 
 @end

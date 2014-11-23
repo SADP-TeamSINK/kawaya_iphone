@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM (NSInteger, Sex){
-    MAN = 1,
+    MAN = 0,
     WOMAN,
     BOTH,
     OTHER

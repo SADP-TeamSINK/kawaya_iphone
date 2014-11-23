@@ -12,7 +12,7 @@
 @implementation Room : NSObject
 
 - (id) initWithSetting:(NSInteger)roomID available:(BOOL)available washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose{
-    self = [super self];
+    self = [super init];
 
     self.roomID = roomID;
     self.available = available;

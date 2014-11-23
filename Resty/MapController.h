@@ -19,5 +19,5 @@
 - (GMSMapView *) getMapView;
 - (CLLocationCoordinate2D) getTopLeftCoordinate;
 - (CLLocationCoordinate2D) getBottomRightCoordinate;
-
+- (void) markBuildings:(NSMutableArray *)buildings;
 @end

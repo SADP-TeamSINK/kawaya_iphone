@@ -9,18 +9,23 @@
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "Const.m"
-
+#import "Toilet.h"
+#import "Building.h"
+#import "Room.h"
 
 @interface Building : NSObject
 
 @property (nonatomic) NSInteger buildingID;
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSInteger floorSize;
-@property (nonatomic) double latitude;
-@property (nonatomic) double longitude;
+@property (nonatomic) NSNumber *latitude;
+@property (nonatomic) NSNumber *longitude;
+@property (nonatomic) NSMutableArray *toilets;
 
-- (id) initWithSetting:(NSInteger) buildingID name:(NSString *)name floorSize:(NSInteger) floorSize latitude:(double)latitude longitude:(double)longitude;
+- (id) initWithSetting:(NSInteger) buildingID name:(NSString *)name floorSize:(NSInteger) floorSize latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 
+- (NSInteger) addToilet:(Toilet *)toilet;
 
++ (NSMutableArray *) parseBuildingFromJson:(NSString *)json;
 
 @end

@@ -15,7 +15,7 @@ NSMutableSet *obtainedMeshMutableSet_;
 
 - (id) initWithUrl:(NSURL *) url{
     obtainedMeshMutableSet_ = [NSMutableSet set];
-    self = [super self];
+    self = [super init];
     url_ = url;
     return self;
 }

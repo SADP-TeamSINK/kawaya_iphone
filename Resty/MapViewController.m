@@ -15,7 +15,6 @@
 @implementation MapViewController{
     GMSMapView *mapView_;
     FilteringButtonController *filteringButtonController_;
-    NSData *dammyJson_;
     NSDictionary *toiletData_;
     NSInteger height_;
     NSInteger width_;
@@ -35,16 +34,6 @@
     UIView *backView;
     backView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = backView;
-
-    // ダミーデータの読み込み
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"dammy" ofType:@"json"];
-    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:filePath];
-    dammyJson_ = [fileHandle readDataToEndOfFile];
-    
-    NSError* error;
-    toiletData_ = [NSJSONSerialization JSONObjectWithData:dammyJson_ options:NSJSONReadingMutableContainers error:&error];
-    NSLog(@"%@ %@", toiletData_, error);
-    
     
     filteringButtonController_ = [[FilteringButtonController alloc] initWithState:BOTH empty:FALSE wash:TRUE multipurpose:FALSE parent:self];
     UIButton *btnSex = filteringButtonController_.sexButton;
