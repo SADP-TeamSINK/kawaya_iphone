@@ -26,9 +26,9 @@
     parent = p;
 
     // ボタンの設定
-    heightButton = 30;
-    widthButton = 30;
-    numberOfButton = 4;
+    heightButton = BUTTON_HEIGHT;
+    widthButton = BUTTON_WIDTH;
+    numberOfButton = BUTTON_NUMBER;
     
     // 画面サイズ取得
     height = [[UIScreen mainScreen] bounds].size.height;
@@ -47,7 +47,7 @@
     
     // ボタンの配置とサイズ設定
     NSInteger margin = (width - widthButton * numberOfButton) / (numberOfButton + 1);
-    NSInteger margin_bottom = 30;
+    NSInteger margin_bottom = BUTTON_BOTTOM_MARGIN;
     self.sexButton.frame = CGRectMake(margin * 1 + widthButton * (1 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
     self.washButton.frame = CGRectMake(margin * 2 + widthButton * (2 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
     self.multipurposeButton.frame = CGRectMake(margin * 3 + widthButton * (3 - 1), height - heightButton - margin_bottom, widthButton, heightButton);

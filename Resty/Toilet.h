@@ -27,5 +27,6 @@
 
 - (NSInteger) addRoom:(Room*)room;
 - (NSNumber *) getUtillization;
+- (UIView *) getToiletPane;
 
 @end

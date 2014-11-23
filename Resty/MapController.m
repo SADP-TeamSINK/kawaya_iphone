@@ -33,7 +33,7 @@
     listViewContoroller_ = [[ListViewController alloc] init];
     
     // マルチスレッド処理の準備
-    // メインスレッド用で処理を実行するキューを定義するする
+    // メインスレッド用で処理を実行するキューを定義する
     main_queue_ = dispatch_get_main_queue();
 
     // サブスレッドで実行するキューを定義する
@@ -57,7 +57,7 @@
     NSMutableArray *buildings = [Building parseBuildingFromJson:dammyJsonString];
     
     // dammy json からパースした建物オブジェクトをマップ上にマーキング
-    // フィルタリングした結果を表示
+    // TODO: フィルタリングした結果を表示
     [self markBuildings:buildings];
 
     // ----------------------------------------------------
@@ -115,6 +115,12 @@
  */
 - (void)mapView:(GMSMapView *)mapVie didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     NSLog(@"didTapAtCoordinate %f,%f", coordinate.latitude, coordinate.longitude);
+
+    // ListViewを収納するアニメーション
+    [UIView animateWithDuration:0.1f animations:^{
+        [listViewContoroller_ offScreen];
+    } completion:^(BOOL finished){
+    }];
 }
 
 

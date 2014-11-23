@@ -17,5 +17,6 @@
 - (id) init;
 - (UIView *) getListView;
 - (void) onScreen;
+- (void) offScreen;
 - (void) listUpToilets:(Building *)building;
 @end

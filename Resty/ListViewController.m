@@ -24,13 +24,17 @@
     
     // リストの初期化
     listView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, height_, width_, height_ * (1 - MAP_RATIO))];
-    listView_.backgroundColor = [UIColor cyanColor];
+    listView_.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];//白
     
     return self;
 }
 
 - (void) onScreen{
     listView_.frame = CGRectMake(0, height_ * (MAP_RATIO), width_, height_ * (1 - MAP_RATIO));
+}
+
+- (void) offScreen{
+    listView_.frame = CGRectMake(0, height_, width_, height_ * (1 - MAP_RATIO));
 }
 
 - (UIView *) getListView{
@@ -41,9 +45,7 @@
     for (NSMutableArray *toiletByFloor in building.toilets) {
         for (Toilet *toilet in toiletByFloor) {
             NSLog(@"floor: %ld, toilet: %@", (long)toilet.floor, toilet.storeName);
-            for (Room *room in toilet.rooms) {
-                NSLog(@"room: available: %d", room.available);
-            }
+            [listView_ addSubview:[toilet getToiletPane]];
         }
     }
 }

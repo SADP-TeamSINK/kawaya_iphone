@@ -9,13 +9,17 @@
 #import "Toilet.h"
 #import <Foundation/Foundation.h>
 
-@implementation Toilet : NSObject {
-
+@implementation Toilet{
+    NSInteger width_;
+    NSInteger height_;
 }
 
 - (id) initWithSetting:(NSInteger)toiletID floor:(NSInteger)floor storeName:(NSString *)storeName latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude sex:(Sex)sex{
     self = [super init];
 
+    width_ = [[UIScreen mainScreen] bounds].size.width;
+    height_ = [[UIScreen mainScreen] bounds].size.height;
+    
     self.rooms = [NSMutableArray array];
 
     self.toiletID   = toiletID;
@@ -44,6 +48,19 @@
         }
     }
     return [[NSNumber alloc] initWithDouble:(sizeUnavailableRoom / sizeAllRoom)];
+}
+
+
+
+//---------------------------------------
+// トイレリストのViewを生成
+//---------------------------------------
+- (UIView *) getToiletPane{
+    CGRect rect = CGRectMake(0, 0, width_ * PANE_WIDTH_RATIO, height_ * PANE_HEIGHT_RATIO);
+    UIView *pane = [[UIView alloc] initWithFrame:rect];
+    pane.backgroundColor = [UIColor colorWithRed:255/255.0 green:100/255.0 blue:255/255.0 alpha:1.0];
+    
+    return pane;
 }
 
 @end
