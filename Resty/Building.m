@@ -9,20 +9,23 @@
 #import "Building.h"
 #import <Foundation/Foundation.h>
 
-@implementation Building : NSObject
-
+@implementation Building {
+    double utillization_;
+}
 
 -(id) initWithSetting:(NSInteger)buildingID name:(NSString *)name floorSize:(NSInteger)floorSize latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude{
     self = [super init];
     
-    self.toilets = [NSMutableArray array];
+    _toilets = [NSMutableArray array];
 
-    self.buildingID = buildingID;
-    self.name = name;
-    self.floorSize = floorSize;
-    self.latitude = latitude;
-    self.longitude = longitude;
+    _buildingID = buildingID;
+    _name = name;
+    _floorSize = floorSize;
+    _latitude = latitude;
+    _longitude = longitude;
 
+    utillization_ = -1;
+    
     for (int i = 0; i < self.floorSize * 2; i++) {
         [self.toilets addObject:[NSMutableArray array]];
     }
@@ -36,6 +39,24 @@
     return ((NSMutableArray *)self.toilets[floor]).count;
 }
 
+
+// 建物の持っているトイレの利用率の平均を，その建物のトイレ利用率とする
+// すでにutilizationを計算している場合は使い回し．
+- (NSNumber *) getUtillization{
+    if(utillization_ == -1){
+        double sum = 0;
+        double numberOfToilet = 0;
+        for (NSMutableArray *toiletsByFloor in self.toilets) {
+            for (Toilet *toilet in toiletsByFloor) {
+                numberOfToilet++;
+                sum += [toilet getUtillization].doubleValue;
+            }
+        }
+        utillization_ = sum / numberOfToilet;
+    }
+    return [[NSNumber alloc] initWithDouble:utillization_];
+}
+
 + (NSMutableArray *) parseBuildingFromJson:(NSString *)json{
     NSMutableArray *buildings = [NSMutableArray array];
     NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
@@ -47,26 +68,26 @@
     for (NSDictionary *building in dic) {
         NSLog(@"building: %@", building[@"building"]);
         Building *buildingObject
-            = [[Building alloc]
-               initWithSetting:[building[@"id"] integerValue]
-                          name:(NSString *)building[@"building"]
-                     floorSize:[building[@"floor_size"] integerValue]
-                      latitude:(NSNumber *)building[@"latitude"]
-                     longitude:(NSNumber *)building[@"longitude"]];
-
+        = [[Building alloc]
+           initWithSetting:[building[@"id"] integerValue]
+           name:(NSString *)building[@"building"]
+           floorSize:[building[@"floor_size"] integerValue]
+           latitude:(NSNumber *)building[@"latitude"]
+           longitude:(NSNumber *)building[@"longitude"]];
+        
         // トイレオブジェクトを読み込むためのループ
         for (NSDictionary *toilet in building[@"toilet"]) {
             NSLog(@"toilet: %@", toilet[@"store_name"]);
             
             Toilet *toiletObject
-                = [[Toilet alloc]
-                   initWithSetting:[toilet[@"id"] integerValue]
-                             floor:[toilet[@"floor"] integerValue]
-                         storeName:(NSString *)toilet[@"store_name"]
-                          latitude:(NSNumber *)toilet[@"latitude"]
-                         longitude:(NSNumber *)toilet[@"longitude"]
-                               sex:(Sex)[toilet[@"sex"] integerValue]];
-
+            = [[Toilet alloc]
+               initWithSetting:[toilet[@"id"] integerValue]
+               floor:[toilet[@"floor"] integerValue]
+               storeName:(NSString *)toilet[@"store_name"]
+               latitude:(NSNumber *)toilet[@"latitude"]
+               longitude:(NSNumber *)toilet[@"longitude"]
+               sex:(Sex)[toilet[@"sex"] integerValue]];
+            
             for (NSDictionary *room in toilet[@"room"]) {
                 NSLog(@"room: %d", (BOOL)room[@"available"]);
                 Room *roomObject
@@ -84,22 +105,6 @@
         [buildings addObject:buildingObject];
     }
     return buildings;
-}
-
-- (NSNumber *) getUtillization{
-    double sizeAllRoom = 0;
-    double sizeUnavailableRoom = 0;
-    for (NSMutableArray *toiletsByFloor in self.toilets) {
-        for (Toilet *toilet in toiletsByFloor) {
-            for (Room *room in toilet.rooms) {
-                sizeAllRoom++;
-                if(!room.available){
-                    sizeUnavailableRoom++;
-                }
-            }
-        }
-    }
-    return [[NSNumber alloc] initWithDouble:(sizeUnavailableRoom / sizeAllRoom)];
 }
 
 @end

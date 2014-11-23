@@ -21,12 +21,13 @@
 @property (nonatomic) NSNumber *latitude;
 @property (nonatomic) NSNumber *longitude;
 @property (nonatomic) NSMutableArray *toilets;
+//@property (nonatomic) NSNumber *utillization;
+
 
 - (id) initWithSetting:(NSInteger) buildingID name:(NSString *)name floorSize:(NSInteger) floorSize latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 
 - (NSInteger) addToilet:(Toilet *)toilet;
 - (NSNumber *) getUtillization;
-
 + (NSMutableArray *) parseBuildingFromJson:(NSString *)json;
 
 @end

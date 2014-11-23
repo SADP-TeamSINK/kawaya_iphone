@@ -10,11 +10,11 @@
 #import <Foundation/Foundation.h>
 
 
-@implementation ListViewController : NSObject
-UIScrollView * listView_;
-NSInteger height_;
-NSInteger width_;
-
+@implementation ListViewController : NSObject {
+    UIScrollView * listView_;
+    NSInteger height_;
+    NSInteger width_;
+}
 
 - (id) init{
     self = [super init];
@@ -36,5 +36,17 @@ NSInteger width_;
 - (UIView *) getListView{
     return listView_;
 }
+
+- (void) listUpToilets:(Building *)building{
+    for (NSMutableArray *toiletByFloor in building.toilets) {
+        for (Toilet *toilet in toiletByFloor) {
+            NSLog(@"floor: %ld, toilet: %@", (long)toilet.floor, toilet.storeName);
+            for (Room *room in toilet.rooms) {
+                NSLog(@"room: available: %d", room.available);
+            }
+        }
+    }
+}
+
 
 @end

@@ -12,7 +12,7 @@
 
 @end
 
-@implementation MapViewController{
+@implementation MapViewController {
     GMSMapView *mapView_;
     FilteringButtonController *filteringButtonController_;
     NSDictionary *toiletData_;

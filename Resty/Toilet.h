@@ -26,5 +26,6 @@
 - (id) initWithSetting:(NSInteger)toiletID floor:(NSInteger)floor storeName:(NSString*)storeName latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude sex:(Sex)sex;
 
 - (NSInteger) addRoom:(Room*)room;
+- (NSNumber *) getUtillization;
 
 @end

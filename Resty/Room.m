@@ -9,7 +9,8 @@
 #import "Room.h"
 #import <Foundation/Foundation.h>
 
-@implementation Room : NSObject
+@implementation Room : NSObject {
+}
 
 - (id) initWithSetting:(NSInteger)roomID available:(BOOL)available washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose{
     self = [super init];
@@ -21,4 +22,5 @@
 
     return self;
 }
+
 @end

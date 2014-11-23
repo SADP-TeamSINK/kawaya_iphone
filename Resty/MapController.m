@@ -10,16 +10,16 @@
 #import <Foundation/Foundation.h>
 
 
-@implementation MapController : NSObject
-GMSMapView *mapView_;
-NSInteger height_;
-NSInteger width_;
-APIController *aPIController_;
-dispatch_queue_t main_queue_;
-dispatch_queue_t sub_queue_;
-CGRect windowRect_;
-ListViewController *listViewContoroller_;
-
+@implementation MapController {
+    GMSMapView *mapView_;
+    NSInteger height_;
+    NSInteger width_;
+    APIController *aPIController_;
+    dispatch_queue_t main_queue_;
+    dispatch_queue_t sub_queue_;
+    CGRect windowRect_;
+    ListViewController *listViewContoroller_;
+}
 
 - (id) init{
     self = [super init];
@@ -162,6 +162,9 @@ ListViewController *listViewContoroller_;
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id)marker {
     NSLog(@"didTapMarker title:%@, snippet:%@", [marker title], [marker snippet]);
     
+    // 対応する建物オブジェクト
+    Building *building = (Building *)((GMSMarker *)marker).userData;
+    
     // マーカーの位置から，中心に来るべき座標を計算する．
     // mapは画面の "縦サイズ * MAP_RATIO" の表示領域になるので，
     // その表示領域の中心にマーカーの座標が来るように計算した．
@@ -178,13 +181,16 @@ ListViewController *listViewContoroller_;
         //mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
         [listViewContoroller_ onScreen];
     } completion:^(BOOL finished){
-
     }];
 
-    NSLog(@"Utillization: %@", ((GMSMarker *)marker).userData);
+    NSLog(@"Utillization: %@", [building getUtillization]);
     
     
     // TODO: マーカーがすべて入るようにズーム
+    
+
+    // タップされたマーカに対応している建物のもつトイレを，ListViewにリストアップ
+    [listViewContoroller_ listUpToilets:building];
     
     
     return YES;
@@ -237,7 +243,7 @@ ListViewController *listViewContoroller_;
         GMSMarker *marker = [GMSMarker markerWithPosition:position];
         marker.title = building.name;
         marker.map = mapView_;
-        marker.userData = [building getUtillization];
+        marker.userData = building;
     }
 }
 

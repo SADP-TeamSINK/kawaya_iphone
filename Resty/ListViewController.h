@@ -10,12 +10,12 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "MapViewController.h"
 #import "Const.m"
-
+#import "Building.h"
 
 @interface ListViewController : NSObject <GMSMapViewDelegate>
 
 - (id) init;
 - (UIView *) getListView;
 - (void) onScreen;
-
+- (void) listUpToilets:(Building *)building;
 @end

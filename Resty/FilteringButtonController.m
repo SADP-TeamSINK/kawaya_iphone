@@ -9,38 +9,43 @@
 #import <Foundation/Foundation.h>
 #import "FilteringButtonController.h"
 
-@implementation FilteringButtonController : NSObject
-Sex stateOfSex;
-Boolean stateOfWash;
-Boolean stateOfMultipurpose;
-UIViewController *parent;
-NSInteger height;
-NSInteger width;
-NSInteger heightButton = 30;
-NSInteger widthButton = 30;
-NSInteger numberOfButton = 4;
-
+@implementation FilteringButtonController {
+    Sex stateOfSex;
+    Boolean stateOfWash;
+    Boolean stateOfMultipurpose;
+    UIViewController *parent;
+    NSInteger height;
+    NSInteger width;
+    NSInteger heightButton;
+    NSInteger widthButton;
+    NSInteger numberOfButton;
+}
 - (id) initWithState:(Sex)sex empty:(Boolean)empty wash:(Boolean)wash multipurpose:(Boolean)multipurpose parent:(UIViewController*)p
 {
     self = [super init];
     parent = p;
+
+    // ボタンの設定
+    heightButton = 30;
+    widthButton = 30;
+    numberOfButton = 4;
     
-    //画面サイズ取得
+    // 画面サイズ取得
     height = [[UIScreen mainScreen] bounds].size.height;
     width = [[UIScreen mainScreen] bounds].size.width;
     
-    //状態の設定
+    // 状態の設定
     stateOfSex = sex;
     stateOfWash = wash;
     stateOfMultipurpose = multipurpose;
     
-    //ボタンの生成
+    // ボタンの生成
     self.sexButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.updateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.washButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.multipurposeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
-    //ボタンの配置とサイズ設定
+    // ボタンの配置とサイズ設定
     NSInteger margin = (width - widthButton * numberOfButton) / (numberOfButton + 1);
     NSInteger margin_bottom = 30;
     self.sexButton.frame = CGRectMake(margin * 1 + widthButton * (1 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
@@ -49,7 +54,7 @@ NSInteger numberOfButton = 4;
     self.updateButton.frame = CGRectMake(margin * 4 + widthButton * (4 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
 
     
-    //ボタンの表示設定
+    // ボタンの表示設定
     [self changeSexButton];
     [self changeWashButton];
     [self changeMultipurposeButton];
