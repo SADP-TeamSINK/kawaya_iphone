@@ -11,7 +11,6 @@
 
 @implementation FilteringButtonController : NSObject
 Sex stateOfSex;
-Boolean stateOfEmpty;
 Boolean stateOfWash;
 Boolean stateOfMultipurpose;
 UIViewController *parent;
@@ -32,13 +31,12 @@ NSInteger numberOfButton = 4;
     
     //状態の設定
     stateOfSex = sex;
-    stateOfEmpty = empty;
     stateOfWash = wash;
     stateOfMultipurpose = multipurpose;
     
     //ボタンの生成
     self.sexButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.emptyButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.updateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.washButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.multipurposeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
@@ -46,15 +44,16 @@ NSInteger numberOfButton = 4;
     NSInteger margin = (width - widthButton * numberOfButton) / (numberOfButton + 1);
     NSInteger margin_bottom = 30;
     self.sexButton.frame = CGRectMake(margin * 1 + widthButton * (1 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
-    self.emptyButton.frame = CGRectMake(margin * 2 + widthButton * (2 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
-    self.washButton.frame = CGRectMake(margin * 3 + widthButton * (3 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
-    self.multipurposeButton.frame = CGRectMake(margin * 4 + widthButton * (4 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
+    self.washButton.frame = CGRectMake(margin * 2 + widthButton * (2 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
+    self.multipurposeButton.frame = CGRectMake(margin * 3 + widthButton * (3 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
+    self.updateButton.frame = CGRectMake(margin * 4 + widthButton * (4 - 1), height - heightButton - margin_bottom, widthButton, heightButton);
 
+    
     //ボタンの表示設定
     [self changeSexButton];
-    [self changeEmptyButton];
     [self changeWashButton];
     [self changeMultipurposeButton];
+    [self.updateButton setTitle:@"更新" forState:UIControlStateNormal];
     
     return self;
 }
@@ -69,14 +68,8 @@ NSInteger numberOfButton = 4;
     [self changeSexButton];
 }
 
-- (void) tappedEmptyButton:(UIButton*)btn{
-    if(stateOfEmpty){
-        stateOfEmpty = FALSE;
-    }else{
-        stateOfEmpty = TRUE;
-    }
-    
-    [self changeEmptyButton];
+- (void) tappedUpdateButton:(UIButton*)btn{
+
 }
 
 - (void) tappedWashButton:(UIButton*)btn{
@@ -104,14 +97,6 @@ NSInteger numberOfButton = 4;
         [self.sexButton setTitle:@"男" forState:UIControlStateNormal];
     }else{
         [self.sexButton setTitle:@"女" forState:UIControlStateNormal];
-    }
-}
-
-- (void) changeEmptyButton{
-    if(stateOfEmpty){
-        [self.emptyButton setTitle:@"空入" forState:UIControlStateNormal];
-    }else{
-        [self.emptyButton setTitle:@"空無" forState:UIControlStateNormal];
     }
 }
 
