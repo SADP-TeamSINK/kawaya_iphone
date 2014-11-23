@@ -24,4 +24,9 @@ static double const PANE_HEIGHT_RATIO = 0.05;
 static NSInteger const BUTTON_WIDTH = 30;
 static NSInteger const BUTTON_HEIGHT = 30;
 static NSInteger const BUTTON_NUMBER = 4;
+static NSInteger const BUTTON_TOP_MARGIN = 10;
 static NSInteger const BUTTON_BOTTOM_MARGIN = 10;
+
+static NSInteger const LIST_TOP_BAR_HEIGHT = 25;
+
+
