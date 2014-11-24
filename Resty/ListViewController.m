@@ -22,6 +22,10 @@
     
     NSInteger baseHeignt_;
     NSInteger baseWidth_;
+    Building *building_;
+    
+    NSMutableArray *floorName;
+    NSMutableArray *floorData;
 }
 
 - (id) init{
@@ -35,7 +39,7 @@
     baseWidth_ = width_;
     
     // ベースとなるViewを作成
-    baseView_ = [[UIView alloc] initWithFrame:CGRectMake(0, height_, baseWidth_, baseHeignt_)];
+    baseView_ = [[UIView alloc] initWithFrame:CGRectMake(0, height_ * 0.6f, baseWidth_, baseHeignt_)];
     baseView_.backgroundColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1.0];//灰
     
     // リストのマージンを設定
@@ -52,6 +56,11 @@
     // baseViewにlistViewを追加
     [baseView_ addSubview:self.view];
     
+    
+    // list情報の初期化
+    floorName = [NSMutableArray array];
+    floorData = [NSMutableArray array];
+    
     return self;
 }
 
@@ -60,7 +69,7 @@
 }
 
 - (void) offScreen{
-    baseView_.frame = CGRectMake(0, height_, baseWidth_, baseHeignt_);
+    baseView_.frame = CGRectMake(0, height_ * 0.6f, baseWidth_, baseHeignt_);
 }
 
 - (UIView *) getListView{
@@ -68,11 +77,22 @@
 }
 
 - (void) listUpToilets:(Building *)building{
+    [floorName removeAllObjects];
+    [floorData removeAllObjects];
     for (NSMutableArray *toiletByFloor in building.toilets) {
         for (Toilet *toilet in toiletByFloor) {
+            // その階層にトイレが登録されていない場合は continue
             NSLog(@"floor: %ld, toilet: %@", (long)toilet.floor, toilet.storeName);
+            [floorName addObject:[NSString stringWithFormat:@"Floor%d", (int)toilet.floor]];
+
+            NSMutableArray *rooms = [NSMutableArray array];
+            for (Room *room in toilet.rooms) {
+                [rooms addObject:room];
+            }
+            [floorData addObject:rooms];
         }
     }
+    [self.tableView reloadData];
 }
 
 // テーブルが表示されるときに，データのリロードと選択業の削除を行う
@@ -99,7 +119,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // セルの内容はNSArray型の「items」にセットされているものとする
-    return 20;
+    return [floorData[section] count];
 }
 
 /**
@@ -118,7 +138,7 @@
     
     // セルにテキストを設定
     // セルの内容はNSArray型の「items」にセットされているものとする
-    cell.textLabel.text = @"aaaa";
+    cell.textLabel.text = [NSString stringWithFormat:@"Room: %ld", ((Room *)floorData[indexPath.section][indexPath.row]).roomID];
     
     return cell;
 }
@@ -128,7 +148,7 @@
  */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return [floorName count];
 }
 
 /**
@@ -136,7 +156,7 @@
  */
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"section";
+    return floorName[section];
 }
 
 /**

@@ -43,6 +43,8 @@
     // MapViewの作成
     mapView_ = [self makeMapView];
     
+    mapView_.clipsToBounds = NO;
+    
     // MapViewにListViewを追加
     [mapView_ addSubview:[listViewContoroller_ getListView]];
     
@@ -73,8 +75,6 @@
                                                                  zoom:17];
     mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, width_, height_) camera:camera];
     mapView_.myLocationEnabled = YES;
-    //mapView_.settings.myLocationButton  = YES;
-    
     
     // 京大にピンを設置
     GMSMarker *marker = [[GMSMarker alloc] init];
@@ -119,8 +119,15 @@
     // ListViewを収納するアニメーション
     [UIView animateWithDuration:0.1f animations:^{
         [listViewContoroller_ offScreen];
+        mapView_.frame = CGRectMake(0, 0, width_, height_);
     } completion:^(BOOL finished){
     }];
+    
+    // ズームを元に戻す
+    [mapView_ animateToZoom:17.0f];
+
+
+    NSLog(@"タップした場所: lati: %f, long: %f", coordinate.latitude, coordinate.longitude);
 }
 
 
@@ -171,28 +178,22 @@
     // 対応する建物オブジェクト
     Building *building = (Building *)((GMSMarker *)marker).userData;
     
-    // マーカーの位置から，中心に来るべき座標を計算する．
-    // mapは画面の "縦サイズ * MAP_RATIO" の表示領域になるので，
-    // その表示領域の中心にマーカーの座標が来るように計算した．
-    CLLocationCoordinate2D center;
-    center.latitude = ((GMSMarker *)marker).position.latitude
-                      - ([self getLatitudeGapOnScreen]
-                      * (0.5f - MAP_RATIO/2.0f));
-    NSLog(@"%f", center.latitude);
-    center.longitude = ((GMSMarker *)marker).position.longitude;
-    [mapView_ animateToLocation:center];
+    // TODO: マーカーがすべて入るようにズーム
+    float zoomLevel = 18;
     
     // ListViewを下から出すアニメーション
-    [UIView animateWithDuration:0.1f animations:^{
-        //mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
+    [UIView animateWithDuration:0.0f animations:^{
+        mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
         [listViewContoroller_ onScreen];
     } completion:^(BOOL finished){
+        // mapViewを縮小してから建物にフォーカス
+        [mapView_ animateToCameraPosition:[GMSCameraPosition cameraWithLatitude:building.latitude.doubleValue longitude:building.longitude.doubleValue zoom:zoomLevel]];
     }];
 
     NSLog(@"Utillization: %@", [building getUtillization]);
     
     
-    // TODO: マーカーがすべて入るようにズーム
+
     
 
     // タップされたマーカに対応している建物のもつトイレを，ListViewにリストアップ
