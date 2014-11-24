@@ -12,8 +12,7 @@
 #import "Const.m"
 #import "Building.h"
 
-@interface ListViewController : UITableView <GMSMapViewDelegate>
-
+@interface ListViewController : UITableViewController <GMSMapViewDelegate, UITableViewDelegate, UITableViewDataSource>
 - (id) init;
 - (UIView *) getListView;
 - (void) onScreen;

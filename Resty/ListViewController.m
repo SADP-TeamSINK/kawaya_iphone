@@ -11,7 +11,6 @@
 
 
 @implementation ListViewController{
-    UIScrollView * listView_;
     UIView * baseView_;
 
     NSInteger height_;
@@ -47,11 +46,11 @@
     listWidth_ = width_;
 
     // リストの初期化
-    listView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, listTopMargin_, listWidth_, listHeignt_)];
-    listView_.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];//白
+    self.view.frame = CGRectMake(0, listTopMargin_, listWidth_, listHeignt_);
+    self.view.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];//白
     
     // baseViewにlistViewを追加
-    [baseView_ addSubview:listView_];
+    [baseView_ addSubview:self.view];
     
     return self;
 }
@@ -69,23 +68,83 @@
 }
 
 - (void) listUpToilets:(Building *)building{
-    double floorMargin = FLOOR_MARGIN_RATIO * height_;
     for (NSMutableArray *toiletByFloor in building.toilets) {
-        double margin = (PANE_MARGIN_RATIO * height_) * floorMargin;
         for (Toilet *toilet in toiletByFloor) {
             NSLog(@"floor: %ld, toilet: %@", (long)toilet.floor, toilet.storeName);
-            UIView *pane = [toilet getToiletPane];
-            pane.transform = CGAffineTransformMakeTranslation(0, margin);
-            [listView_ addSubview:pane];
-
-            // マージンを確保
-            margin += PANE_HEIGHT_RATIO * height_;
-            margin += PANE_MARGIN_RATIO * height_;
         }
-        // マージンの確保
-        floorMargin += FLOOR_MARGIN_RATIO * height_;
     }
 }
 
+// テーブルが表示されるときに，データのリロードと選択業の削除を行う
+- (void)viewWillAppear:(BOOL)animated
+{
+    // Unselect the selected row if any
+    NSIndexPath*	selection = [self.tableView indexPathForSelectedRow];
+    if (selection)
+        [self.tableView deselectRowAtIndexPath:selection animated:YES];
+    
+    [self.tableView reloadData];
+}
+
+// テーブルが表示された後に，スクロールバーの点滅
+- (void)viewDidAppear:(BOOL)animated
+{
+    //	The scrollbars won't flash unless the tableview is long enough.
+    [self.tableView flashScrollIndicators];
+}
+
+/**
+ * テーブルのセルの数を返す
+ */
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // セルの内容はNSArray型の「items」にセットされているものとする
+    return 20;
+}
+
+/**
+ * 指定されたインデックスパスのセルを作成する
+ */
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    // セルが作成されていないか?
+    if (!cell) { // yes
+        // セルを作成
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    // セルにテキストを設定
+    // セルの内容はNSArray型の「items」にセットされているものとする
+    cell.textLabel.text = @"aaaa";
+    
+    return cell;
+}
+
+/**
+ * テーブル全体のセクションの数を返す
+ */
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 3;
+}
+
+/**
+ * 指定されたセクションのセクション名を返す
+ */
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"section";
+}
+
+/**
+ * セルが選択されたとき
+ */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"選択されました");
+}
 
 @end
