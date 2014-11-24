@@ -30,7 +30,7 @@
               {"id": 9, "available": true, "washlet": false, "multipurpose": false},
               {"id": 10, "available": true, "washlet": false, "multipurpose": false},
               {"id": 11, "available": false, "washlet": true, "multipurpose": false},
-              {"id": 12, "available": true, "washlet": true, "multipurpose": false}
+              {"id": 12, "available": true, "washlet": true, "multipurpose": true}
             ],
 	    "latitude": 35.027531,
 	    "longitude" : 135.783817,

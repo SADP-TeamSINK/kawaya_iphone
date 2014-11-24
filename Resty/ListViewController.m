@@ -127,6 +127,8 @@
     NSString *cellIdentifier = @"Cell";
     ToiletTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
+    Toilet *toilet = ((Toilet *)floorData[indexPath.section][indexPath.row]);
+    
     // セルが作成されていないか?
     if (!cell) { // yes
         // セルを作成
@@ -134,8 +136,17 @@
     }
     
     // セルの設定
-    cell.storeName.text = [NSString stringWithFormat:@"Toilet: %@", ((Toilet *)floorData[indexPath.section][indexPath.row]).storeName];
+    cell.storeName.text = [NSString stringWithFormat:@"Toilet: %@", toilet.storeName];
     
+    // ウォシュレットマーク
+    if(toilet.hasWashlet){
+        [cell.contentView addSubview:cell.washletImageView];
+    }
+    
+    // 多目的トイレマーク
+    if(toilet.hasMultipurpose){
+        [cell.contentView addSubview:cell.multipurposeImageView];
+    }
     return cell;
 }
 
