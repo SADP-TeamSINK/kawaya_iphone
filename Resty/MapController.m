@@ -124,7 +124,7 @@
     }];
     
     // ズームを元に戻す
-    [mapView_ animateToZoom:16.0f];
+    [mapView_ animateToZoom:17.0f];
 
 
     NSLog(@"タップした場所: lati: %f, long: %f", coordinate.latitude, coordinate.longitude);

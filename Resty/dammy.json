@@ -27,8 +27,8 @@
 	        "room": [
               {"id": 7, "available": true, "washlet": true, "multipurpose": false},
               {"id": 8, "available": true, "washlet": false, "multipurpose": false},
-              {"id": 9, "available": true, "washlet": false, "multipurpose": false},
-              {"id": 10, "available": true, "washlet": false, "multipurpose": false},
+              {"id": 9, "available": false, "washlet": false, "multipurpose": false},
+              {"id": 10, "available": false, "washlet": false, "multipurpose": false},
               {"id": 11, "available": false, "washlet": true, "multipurpose": false},
               {"id": 12, "available": true, "washlet": true, "multipurpose": true}
             ],
@@ -41,12 +41,12 @@
                "floor": 2,
                "store_name": "階段上がってすぐ",
                "room": [
-                        {"id": 7, "available": true, "washlet": true, "multipurpose": false},
-                        {"id": 8, "available": true, "washlet": false, "multipurpose": false},
-                        {"id": 9, "available": true, "washlet": false, "multipurpose": false},
-                        {"id": 10, "available": true, "washlet": false, "multipurpose": false},
+                        {"id": 7, "available": false, "washlet": true, "multipurpose": false},
+                        {"id": 8, "available": false, "washlet": false, "multipurpose": false},
+                        {"id": 9, "available": false, "washlet": false, "multipurpose": false},
+                        {"id": 10, "available": false, "washlet": false, "multipurpose": false},
                         {"id": 11, "available": false, "washlet": true, "multipurpose": false},
-                        {"id": 12, "available": true, "washlet": true, "multipurpose": false}
+                        {"id": 12, "available": false, "washlet": true, "multipurpose": false}
                         ],
                "latitude": 35.027531,
                "longitude" : 135.783817,

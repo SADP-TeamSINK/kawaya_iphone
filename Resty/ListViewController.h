@@ -12,6 +12,7 @@
 #import "Const.m"
 #import "Building.h"
 #import "ToiletTableViewCell.h"
+#import "Color.h"
 
 @interface ListViewController : UITableViewController <GMSMapViewDelegate, UITableViewDelegate, UITableViewDataSource>
 - (id) init;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Const.m"
+#import "Color.h"
 
 @interface ToiletTableViewCell : UITableViewCell
 @property (nonatomic) UILabel *storeName;
@@ -15,5 +16,10 @@
 @property (nonatomic) UIImageView *washletImageView;
 @property (nonatomic) UIImageView *multipurposeImageView;
 @property (nonatomic) UIImageView *markerImageView;
+@property (nonatomic) UIView *backView;
 
+- (void) setUtillizationMarker:(NSNumber *)utillization;
+- (void) setWashletMarker;
+- (void) setMultipurposeMarker;
 @end
+

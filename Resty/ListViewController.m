@@ -26,11 +26,14 @@
     
     NSMutableArray *floorName;
     NSMutableArray *floorData;
+    
+    Color *color_;
 }
 
 - (id) init{
     self = [super init];
 
+    color_ = [[Color alloc] init];
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
     
@@ -39,8 +42,8 @@
     baseWidth_ = width_;
     
     // ベースとなるViewを作成
-    baseView_ = [[UIView alloc] initWithFrame:CGRectMake(0, height_ * 0.6f, baseWidth_, baseHeignt_)];
-    baseView_.backgroundColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1.0];//灰
+    baseView_ = [[UIView alloc] initWithFrame:CGRectMake(0, height_, baseWidth_, baseHeignt_)];
+    baseView_.backgroundColor = color_.darkGray;
     
     // リストのマージンを設定
     listTopMargin_ = LIST_TOP_BAR_HEIGHT;
@@ -64,6 +67,12 @@
     // ToiletTableViewCellをtableViewに登録
     [self.tableView registerClass:[ToiletTableViewCell class] forCellReuseIdentifier:@"Cell"];
     
+    // cellの高さを設定
+    self.tableView.rowHeight = height_ * PANE_HEIGHT_RATIO;
+    
+    // 区切り線を消す
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     return self;
 }
 
@@ -72,7 +81,7 @@
 }
 
 - (void) offScreen{
-    baseView_.frame = CGRectMake(0, height_ * 0.6f, baseWidth_, baseHeignt_);
+    baseView_.frame = CGRectMake(0, height_, baseWidth_, baseHeignt_);
 }
 
 - (UIView *) getListView{
@@ -140,13 +149,17 @@
     
     // ウォシュレットマーク
     if(toilet.hasWashlet){
-        [cell.contentView addSubview:cell.washletImageView];
+        [cell setWashletMarker];
     }
     
     // 多目的トイレマーク
     if(toilet.hasMultipurpose){
-        [cell.contentView addSubview:cell.multipurposeImageView];
+        [cell setMultipurposeMarker];
     }
+    
+    // 利用率マーカの設定
+    [cell setUtillizationMarker:[toilet getUtillization]];
+    
     return cell;
 }
 
