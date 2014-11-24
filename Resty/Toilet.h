@@ -11,6 +11,7 @@
 #import "Const.m"
 #import "Room.h"
 
+@class Building;
 
 @interface Toilet : NSObject
 
@@ -24,11 +25,12 @@
 @property (nonatomic) BOOL hasMultipurpose;
 @property (nonatomic) Sex sex;
 
-
 - (id) initWithSetting:(NSInteger)toiletID floor:(NSInteger)floor storeName:(NSString*)storeName latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude sex:(Sex)sex;
 
 - (NSInteger) addRoom:(Room*)room;
 - (NSNumber *) getUtillization;
 - (UIView *) getToiletPane;
+- (void) setOwner:(Building *)building;
+- (Building *) getOwner;
 
 @end

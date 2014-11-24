@@ -36,7 +36,7 @@
 - (NSInteger) addToilet:(Toilet *)toilet{
     NSInteger floor = toilet.floor;
     [self.toilets[floor + self.floorSize] addObject:toilet];
-    return ((NSMutableArray *)self.toilets[floor]).count;
+    return ((NSMutableArray *)self.toilets[floor + self.floorSize]).count;
 }
 
 
@@ -87,6 +87,9 @@
                latitude:(NSNumber *)toilet[@"latitude"]
                longitude:(NSNumber *)toilet[@"longitude"]
                sex:(Sex)[toilet[@"sex"] integerValue]];
+            
+            // 所有している建物を登録
+            [toiletObject setOwner:buildingObject];
             
             for (NSDictionary *room in toilet[@"room"]) {
                 NSLog(@"room: %d", (BOOL)room[@"available"]);

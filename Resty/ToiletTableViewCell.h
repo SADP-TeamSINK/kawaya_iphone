@@ -18,8 +18,9 @@
 @property (nonatomic) UIImageView *markerImageView;
 @property (nonatomic) UIView *backView;
 
-- (void) setUtillizationMarker:(NSNumber *)utillization;
+- (void) setUtillization:(NSNumber *)utillization;
 - (void) setWashletMarker;
 - (void) setMultipurposeMarker;
+- (void) adjustStoreName;
 @end
 

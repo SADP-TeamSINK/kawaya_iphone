@@ -10,7 +10,6 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "Const.m"
 #import "Toilet.h"
-#import "Building.h"
 #import "Room.h"
 
 @interface Building : NSObject
@@ -21,7 +20,6 @@
 @property (nonatomic) NSNumber *latitude;
 @property (nonatomic) NSNumber *longitude;
 @property (nonatomic) NSMutableArray *toilets;
-//@property (nonatomic) NSNumber *utillization;
 
 
 - (id) initWithSetting:(NSInteger) buildingID name:(NSString *)name floorSize:(NSInteger) floorSize latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;

@@ -7,7 +7,7 @@
 	  {
 	    "id": 1, 
 	    "floor": 1,
-	    "store_name": "エレベータ横",
+	    "store_name": "エレベータ横エレベータ横エレベータ横エレベータ横エレベータ横エレベータ横エレベータ横エレベータ横",
 	    "room": [
 	      {"id": 1, "available": false, "washlet": true, "multipurpose": false},
 	      {"id": 2, "available": false, "washlet": true, "multipurpose": false},
@@ -92,7 +92,23 @@
              "latitude": 35.026675,
              "longitude" : 135.781893,
              "sex": 1
-             }
+             },
+            {
+            "id": 6,
+            "floor": -1,
+            "store_name": "食堂前",
+            "room": [
+                     {"id": 19, "available": true, "washlet": true, "multipurpose": false},
+                     {"id": 20, "available": false, "washlet": false, "multipurpose": false},
+                     {"id": 21, "available": false, "washlet": false, "multipurpose": false},
+                     {"id": 22, "available": false, "washlet": false, "multipurpose": false},
+                     {"id": 23, "available": false, "washlet": true, "multipurpose": true},
+                     {"id": 24, "available": false, "washlet": true, "multipurpose": false}
+                     ],
+            "latitude": 35.026675,
+            "longitude" : 135.781893,
+            "sex": 0
+            }
             ],
  "latitude"  : 35.026662,
  "longitude" : 135.781842

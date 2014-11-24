@@ -73,6 +73,9 @@
     // 区切り線を消す
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    // tableViewの背景を設定
+    self.tableView.backgroundColor = color_.gray;
+    
     return self;
 }
 
@@ -95,7 +98,7 @@
         if ([toiletByFloor count] == 0) continue;
         // その階層にトイレが登録されていない場合は continue
         NSLog(@"floor: %ld, toilet: %@", (long)((Toilet *)toiletByFloor[0]).floor, ((Toilet *)toiletByFloor[0]).storeName);
-        [floorName addObject:[NSString stringWithFormat:@"Floor%d", (int)((Toilet *)toiletByFloor[0]).floor]];
+        [floorName addObject:[NSString stringWithFormat:@"%d", (int)((Toilet *)toiletByFloor[0]).floor]];
         [floorData addObject:toiletByFloor];
     }
     [self.tableView reloadData];
@@ -144,8 +147,15 @@
         cell = [[ToiletTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    // セルの設定
-    cell.storeName.text = [NSString stringWithFormat:@"Toilet: %@", toilet.storeName];
+    // 店名の設定
+    NSString *storeName;
+    if([toilet.storeName isEqualToString:@""]){
+        storeName = [NSString stringWithFormat:@"%@", [toilet getOwner].name];
+    }else{
+        storeName = toilet.storeName;
+    }
+    cell.storeName.text = storeName;
+    [cell adjustStoreName];
     
     // ウォシュレットマーク
     if(toilet.hasWashlet){
@@ -158,7 +168,7 @@
     }
     
     // 利用率マーカの設定
-    [cell setUtillizationMarker:[toilet getUtillization]];
+    [cell setUtillization:[toilet getUtillization]];
     
     return cell;
 }
@@ -185,6 +195,60 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"選択されました");
+}
+
+/**
+ * ヘッダーの高さを返す
+ */
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return HEADER_HEIGHT;
+}
+
+/**
+ * ヘッダーをカスタマイズ
+ */
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    NSInteger floorNumber = [floorName[section] intValue];
+    BOOL isBasement = (floorNumber < 0);
+    NSString *floorNameString = [NSString stringWithFormat:@"%d", abs(floorNumber)];
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width_, HEADER_HEIGHT)];
+    
+    // 地下(B) or 地上(F)
+    UILabel *floorNameLabel = [[UILabel alloc]
+                  initWithFrame:CGRectMake(
+                                           HEADER_LEFT_MARGIN,
+                                           (HEADER_HEIGHT - HEADER_FONT_SIZE) * HEADER_TOP_MARGIN_RATIO,
+                                           width_,
+                                           HEADER_FONT_SIZE)];
+    floorNameLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    UIFont *font = [UIFont fontWithName:@"HiraKakuProN-W3"size:HEADER_FONT_SIZE];
+    [floorNameLabel setFont:font];
+    floorNameLabel.numberOfLines = 1;
+    floorNameLabel.textColor = color_.darkGray;
+    if(isBasement){
+        floorNameLabel.text = @"B";
+    }else{
+        floorNameLabel.text = @"F";
+    }
+    [view addSubview:floorNameLabel];
+    
+    // 数字
+    UILabel *floorNumberLabel = [[UILabel alloc]
+                               initWithFrame:CGRectMake(
+                                                        HEADER_LEFT_MARGIN + HEADER_FONT_SIZE * 0.6,
+                                                        (HEADER_HEIGHT - HEADER_FONT_SIZE) * HEADER_TOP_MARGIN_RATIO,
+                                                        HEADER_FONT_SIZE,
+                                                        HEADER_FONT_SIZE)];
+    floorNumberLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [floorNumberLabel setFont:font];
+    floorNumberLabel.numberOfLines = 1;
+    floorNumberLabel.textColor = color_.darkRed;
+    floorNumberLabel.text = floorNameString;
+    [view addSubview:floorNumberLabel];
+    
+    view.backgroundColor = color_.gray;
+    return view;
 }
 
 @end

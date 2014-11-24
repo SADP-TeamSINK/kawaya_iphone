@@ -22,6 +22,9 @@
     
     // Override point for customization after application launch.
     [GMSServices provideAPIKey:@"AIzaSyA5HZZyC2QXdcbWQ7XLoXC7bDNgeWT_Hkg"];
+
+    // フォントの指定
+    [[UILabel appearance] setFont:[UIFont fontWithName:@"YourFontName" size:17.0]];
     return YES;
 }
 

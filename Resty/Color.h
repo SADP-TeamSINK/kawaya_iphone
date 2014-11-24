@@ -14,6 +14,9 @@
 @property UIColor *green;
 @property UIColor *yellow;
 @property UIColor *red;
+@property UIColor *darkGreen;
+@property UIColor *darkYellow;
+@property UIColor *darkRed;
 @property UIColor *gray;
 @property UIColor *darkGray;
 @property UIColor *white;

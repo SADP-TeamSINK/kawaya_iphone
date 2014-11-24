@@ -205,10 +205,6 @@
     }];
 
     NSLog(@"Utillization: %@", [building getUtillization]);
-    
-    
-
-    
 
     // タップされたマーカに対応している建物のもつトイレを，ListViewにリストアップ
     [listViewContoroller_ listUpToilets:building];
