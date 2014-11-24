@@ -81,6 +81,7 @@
 
 - (void) onScreen{
     baseView_.frame = CGRectMake(0, height_ * (MAP_RATIO), baseWidth_, baseHeignt_);
+    [self.tableView flashScrollIndicators];
 }
 
 - (void) offScreen{
