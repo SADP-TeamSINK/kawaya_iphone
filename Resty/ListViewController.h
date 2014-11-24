@@ -12,7 +12,7 @@
 #import "Const.m"
 #import "Building.h"
 
-@interface ListViewController : NSObject <GMSMapViewDelegate>
+@interface ListViewController : UITableView <GMSMapViewDelegate>
 
 - (id) init;
 - (UIView *) getListView;
