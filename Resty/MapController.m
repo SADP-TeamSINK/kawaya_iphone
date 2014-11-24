@@ -59,6 +59,11 @@
     NSMutableArray *buildings = [Building parseBuildingFromJson:dammyJsonString];
     
     // dammy json からパースした建物オブジェクトをマップ上にマーキング
+    
+    //ウォシュレットがある建物をフィルタリング ++++++
+    if(stateOfWash){//FiltrerButtonControllerボタンの判定　(赤Error)
+    [self washFiltering:buildings];//フィルタリングメソッド呼び出し
+    }
     // TODO: フィルタリングした結果を表示
     [self markBuildings:buildings];
 
@@ -267,6 +272,20 @@
     CLLocationCoordinate2D bottomLeft = [self getBottomLeftCoordinate];
     return sqrt(pow(topLeft.latitude - bottomLeft.latitude, 2) + pow(topLeft.longitude - bottomLeft.longitude, 2));
 }
+
+
+
+//ウォシュレットフィルタリングのメソッド(ウォシュレットがない建物を抜き出す(削除する？)) ++
+- (NSMutableArray) washFiltering:(NSMutableArray *)buildings{     //返り値おかしい  (赤Error)
+    NSMutableArray *tmp = buildings; //ウォシュレットがある建物だけの配列の仮箱
+    for(Building *building in buildings){ //建物を順番に調べる
+        if(!(bool)toilet.hasWashlet){ //建物内のトイレにウォシュレットがあるかを調べる　 (赤Error)
+            [tmp removeObject:building]; //ウォシュレットを持ってなければその建物を削除
+        }
+    }
+    return *tmp; //ウォシュレットがある建物だけの配列を返す
+}
+
 
 - (void) markBuildings:(NSMutableArray *)buildings{
     for (Building *building in buildings) {
