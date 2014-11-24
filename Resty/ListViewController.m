@@ -61,6 +61,9 @@
     floorName = [NSMutableArray array];
     floorData = [NSMutableArray array];
     
+    // ToiletTableViewCellをtableViewに登録
+    [self.tableView registerClass:[ToiletTableViewCell class] forCellReuseIdentifier:@"Cell"];
+    
     return self;
 }
 
@@ -80,17 +83,11 @@
     [floorName removeAllObjects];
     [floorData removeAllObjects];
     for (NSMutableArray *toiletByFloor in building.toilets) {
-        for (Toilet *toilet in toiletByFloor) {
-            // その階層にトイレが登録されていない場合は continue
-            NSLog(@"floor: %ld, toilet: %@", (long)toilet.floor, toilet.storeName);
-            [floorName addObject:[NSString stringWithFormat:@"Floor%d", (int)toilet.floor]];
-
-            NSMutableArray *rooms = [NSMutableArray array];
-            for (Room *room in toilet.rooms) {
-                [rooms addObject:room];
-            }
-            [floorData addObject:rooms];
-        }
+        if ([toiletByFloor count] == 0) continue;
+        // その階層にトイレが登録されていない場合は continue
+        NSLog(@"floor: %ld, toilet: %@", (long)((Toilet *)toiletByFloor[0]).floor, ((Toilet *)toiletByFloor[0]).storeName);
+        [floorName addObject:[NSString stringWithFormat:@"Floor%d", (int)((Toilet *)toiletByFloor[0]).floor]];
+        [floorData addObject:toiletByFloor];
     }
     [self.tableView reloadData];
 }
@@ -128,17 +125,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    ToiletTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     // セルが作成されていないか?
     if (!cell) { // yes
         // セルを作成
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[ToiletTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    // セルにテキストを設定
-    // セルの内容はNSArray型の「items」にセットされているものとする
-    cell.textLabel.text = [NSString stringWithFormat:@"Room: %ld", ((Room *)floorData[indexPath.section][indexPath.row]).roomID];
+    // セルの設定
+    cell.storeName.text = [NSString stringWithFormat:@"Toilet: %@", ((Toilet *)floorData[indexPath.section][indexPath.row]).storeName];
     
     return cell;
 }

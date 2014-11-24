@@ -11,6 +11,7 @@
 #import "MapViewController.h"
 #import "Const.m"
 #import "Building.h"
+#import "ToiletTableViewCell.h"
 
 @interface ListViewController : UITableViewController <GMSMapViewDelegate, UITableViewDelegate, UITableViewDataSource>
 - (id) init;

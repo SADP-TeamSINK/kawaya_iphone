@@ -29,6 +29,9 @@
     self.longitude  = longitude;
     self.sex        = sex;
     
+    self.hasWashlet = false;
+    self.hasMultipurpose = false;
+    
     return self;
 }
 

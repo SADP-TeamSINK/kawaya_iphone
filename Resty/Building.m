@@ -96,6 +96,13 @@
                    available:(BOOL)[room[@"available"] boolValue]
                    washlet:(BOOL)[room[@"washlet"] boolValue]
                    multipurpose:(BOOL)[room[@"multipurpose"] boolValue]];
+                
+                // washletを持っているかの判定
+                if(roomObject.washlet){toiletObject.hasWashlet = true;}
+
+                // multipurposeを持っているかの判定
+                if(roomObject.multipurpose){toiletObject.hasMultipurpose = true;}
+
                 [toiletObject addRoom:roomObject];
             }
             

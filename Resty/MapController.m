@@ -124,7 +124,7 @@
     }];
     
     // ズームを元に戻す
-    [mapView_ animateToZoom:17.0f];
+    [mapView_ animateToZoom:16.0f];
 
 
     NSLog(@"タップした場所: lati: %f, long: %f", coordinate.latitude, coordinate.longitude);
@@ -181,13 +181,27 @@
     // TODO: マーカーがすべて入るようにズーム
     float zoomLevel = 18;
     
+    // マーカーの位置から，中心に来るべき座標を計算する．
+    // mapは画面の "縦サイズ * MAP_RATIO" の表示領域になるので，
+    // その表示領域の中心にマーカーの座標が来るように計算した．
+    CLLocationCoordinate2D center;
+    center.latitude = ((GMSMarker *)marker).position.latitude
+                      - (([self getLatitudeGapOnScreen]
+                      * (0.5f - MAP_RATIO/2.0f)) * pow(2, mapView_.camera.zoom - zoomLevel));
+    NSLog(@"%f", center.latitude);
+    center.longitude = ((GMSMarker *)marker).position.longitude;
+    [mapView_ animateToCameraPosition: [GMSCameraPosition
+                                        cameraWithTarget:center zoom:zoomLevel]];
+
     // ListViewを下から出すアニメーション
-    [UIView animateWithDuration:0.0f animations:^{
-        mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
+    [UIView animateWithDuration:0.1f animations:^{
+        //mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
         [listViewContoroller_ onScreen];
     } completion:^(BOOL finished){
         // mapViewを縮小してから建物にフォーカス
-        [mapView_ animateToCameraPosition:[GMSCameraPosition cameraWithLatitude:building.latitude.doubleValue longitude:building.longitude.doubleValue zoom:zoomLevel]];
+        //[mapView_ animateToCameraPosition:[GMSCameraPosition cameraWithLatitude:building.latitude.doubleValue longitude:building.longitude.doubleValue zoom:zoomLevel]];
+        
+        
     }];
 
     NSLog(@"Utillization: %@", [building getUtillization]);
@@ -238,10 +252,20 @@
     return bottomRightLocation;
 }
 
+- (CLLocationCoordinate2D)getBottomLeftCoordinate{
+    // 画面右下の座標を取得
+    CGPoint bottomLeftPoint =
+    CGPointMake(0, mapView_.frame.size.height);
+    CLLocationCoordinate2D bottomLeftLocation =
+    [mapView_.projection coordinateForPoint: bottomLeftPoint];
+    
+    return bottomLeftLocation;
+}
+
 - (double) getLatitudeGapOnScreen{
     CLLocationCoordinate2D topLeft = [self getTopLeftCoordinate];
-    CLLocationCoordinate2D bottomRight = [self getBottomRightCoordinate];
-    return topLeft.latitude - bottomRight.latitude;
+    CLLocationCoordinate2D bottomLeft = [self getBottomLeftCoordinate];
+    return sqrt(pow(topLeft.latitude - bottomLeft.latitude, 2) + pow(topLeft.longitude - bottomLeft.longitude, 2));
 }
 
 - (void) markBuildings:(NSMutableArray *)buildings{

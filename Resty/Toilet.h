@@ -20,6 +20,8 @@
 @property (nonatomic) NSNumber * latitude;
 @property (nonatomic) NSNumber * longitude;
 @property (nonatomic) NSMutableArray *rooms;
+@property (nonatomic) BOOL hasWashlet;
+@property (nonatomic) BOOL hasMultipurpose;
 @property (nonatomic) Sex sex;
 
 

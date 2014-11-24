@@ -23,6 +23,11 @@ static double const MAP_RATIO = 0.3;
 static double const PANE_WIDTH_RATIO = 0.8;
 static double const PANE_HEIGHT_RATIO = 0.1;
 static double const PANE_MARGIN_RATIO = 0.02;
+static NSInteger const PANE_TOP_PADDING = 5;
+static NSInteger const PANE_BOTTOM_PADDING = 5;
+static NSInteger const PANE_LEFT_PADDING = 5;
+static NSInteger const PANE_RIGHT_PADDING = 5;
+static NSInteger const STORE_NAME_FONT_SIZE = 15;
 
 static NSInteger const BUTTON_WIDTH = 30;
 static NSInteger const BUTTON_HEIGHT = 30;
