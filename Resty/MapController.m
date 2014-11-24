@@ -276,14 +276,14 @@
 
 
 //ウォシュレットフィルタリングのメソッド(ウォシュレットがない建物を抜き出す(削除する？)) ++
-- (NSMutableArray) washFiltering:(NSMutableArray *)buildings{     //返り値おかしい  (赤Error)
+- (NSMutableArray *) washFiltering:(NSMutableArray *)buildings{     //返り値おかしい  (赤Error)
     NSMutableArray *tmp = buildings; //ウォシュレットがある建物だけの配列の仮箱
     for(Building *building in buildings){ //建物を順番に調べる
         if(!(bool)toilet.hasWashlet){ //建物内のトイレにウォシュレットがあるかを調べる　 (赤Error)
             [tmp removeObject:building]; //ウォシュレットを持ってなければその建物を削除
         }
     }
-    return *tmp; //ウォシュレットがある建物だけの配列を返す
+    return tmp; //ウォシュレットがある建物だけの配列を返す
 }
 
 

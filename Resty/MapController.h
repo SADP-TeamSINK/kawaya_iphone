@@ -21,5 +21,5 @@
 - (CLLocationCoordinate2D) getBottomLeftCoordinate;
 - (CLLocationCoordinate2D) getBottomRightCoordinate;
 - (void) markBuildings:(NSMutableArray *)buildings;
-- (NSMutableArray) washFiltering:(NSMutableArray *)buildings; //+ (赤Error)
+- (NSMutableArray *) washFiltering:(NSMutableArray *)buildings; //+ (赤Error)
 @end
