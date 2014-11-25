@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "MapViewController.h"
 #import "APIController.h"

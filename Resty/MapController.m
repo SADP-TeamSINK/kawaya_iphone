@@ -19,6 +19,7 @@
     dispatch_queue_t sub_queue_;
     CGRect windowRect_;
     ListViewController *listViewContoroller_;
+    Boolean stateOfWash; //+
 }
 
 - (id) init{
@@ -61,9 +62,8 @@
     // dammy json からパースした建物オブジェクトをマップ上にマーキング
     
     //ウォシュレットがある建物をフィルタリング ++++++
-    if([_stateOfWash]){//FiltrerButtonControllerボタンの判定　(依然赤Error) //Use of undeclared identifier 'stateOfWash'
-        [self washFiltering:buildings];//フィルタリングメソッド呼び出し
-        [self markBuildings:buildings];//マークメソッドに渡す
+    if(stateOfWash){//FiltrerButtonControllerボタンの判定　(依然赤Error) //Use of undeclared identifier 'stateOfWash'
+        buildings = [self washFiltering:buildings];//フィルタリングメソッド呼び出し
     }
     // TODO: フィルタリングした結果を表示
     [self markBuildings:buildings];
@@ -280,8 +280,12 @@
 - (NSMutableArray *) washFiltering:(NSMutableArray *)buildings{
     NSMutableArray *tmp; //ウォシュレットがある建物だけの配列の仮箱
     for(Building *building in buildings){ //建物を順番に調べる
-        if((bool)toilet.hasWashlet){ //建物内のトイレにウォシュレットがあるかを調べる　 (依然赤Error) //Use of undeclared identifier 'toilet'
-            tmp = building; //ウォシュレットを持っていれば仮箱に追加 //警告 //Incompatible pointer types assigning to ‘NSMutableArray’ from ‘Building *'
+        for (NSMutableArray *toiletByFloor in building.toilets) {
+            for (Toilet *toilet in toiletByFloor) {
+                if(toilet.hasWashlet){ //建物内のトイレにウォシュレットがあるかを調べる　 (依然赤Error) //Use of undeclared identifier 'toilet'
+                    [tmp addObject:building];
+                }
+            }
         }
     }
     return tmp; //ウォシュレットがある建物だけの配列を返す
