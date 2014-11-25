@@ -31,7 +31,7 @@
 }
 
 - (id) init{
-    self = [super init];
+    self = [super initWithStyle:UITableViewStyleGrouped];
 
     color_ = [[Color alloc] init];
     height_ = [[UIScreen mainScreen] bounds].size.height;
@@ -49,7 +49,7 @@
     listTopMargin_ = LIST_TOP_BAR_HEIGHT;
     
     // リストのサイズを設定
-    listHeignt_ = height_ * (1 - MAP_RATIO) - BUTTON_BOTTOM_MARGIN - BUTTON_TOP_MARGIN - BUTTON_HEIGHT - LIST_TOP_BAR_HEIGHT;
+    listHeignt_ = height_ * (1 - MAP_RATIO) - BUTTON_BOTTOM_MARGIN - BUTTON_TOP_MARGIN - BUTTON_SIZE - LIST_TOP_BAR_HEIGHT;
     listWidth_ = width_;
 
     // リストの初期化
@@ -168,7 +168,7 @@
         [cell setMultipurposeMarker];
     }
     
-    // 利用率マーカの設定
+    // 利用率の設定
     [cell setUtillization:[toilet getUtillization]];
     
     return cell;
@@ -211,7 +211,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     NSInteger floorNumber = [floorName[section] intValue];
     BOOL isBasement = (floorNumber < 0);
-    NSString *floorNameString = [NSString stringWithFormat:@"%d", abs(floorNumber)];
+    NSString *floorNameString = [NSString stringWithFormat:@"%d", abs((int)floorNumber)];
 
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width_, HEADER_HEIGHT)];
     

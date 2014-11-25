@@ -24,6 +24,7 @@
 @property (nonatomic) BOOL hasWashlet;
 @property (nonatomic) BOOL hasMultipurpose;
 @property (nonatomic) Sex sex;
+@property (nonatomic) GMSMarker *markder;
 
 - (id) initWithSetting:(NSInteger)toiletID floor:(NSInteger)floor storeName:(NSString*)storeName latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude sex:(Sex)sex;
 
@@ -32,5 +33,6 @@
 - (UIView *) getToiletPane;
 - (void) setOwner:(Building *)building;
 - (Building *) getOwner;
+- (void) removeMarkder;
 
 @end

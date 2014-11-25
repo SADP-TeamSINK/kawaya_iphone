@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "FilteringButtonController.h"
 #import "MapController.h"
 #import "Building.h"
+#import "Color.h"
 
 
 @interface MapViewController : UIViewController

@@ -76,4 +76,11 @@
     return owner_;
 }
 
+- (void) removeMarkder{
+    if(!_markder){
+        _markder.map = nil;
+        _markder = nil;
+    }
+}
+
 @end

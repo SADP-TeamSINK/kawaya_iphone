@@ -117,4 +117,16 @@
     return buildings;
 }
 
+- (void) removeMarker{
+    if(!_marker){
+        _marker.map = nil;
+        _marker = nil;
+    }
+}
+
+- (void) putMarker:(GMSMapView *)mapView{
+    if(!_marker){
+        _marker.map = mapView;
+    }
+}
 @end

@@ -16,7 +16,7 @@
 	      {"id": 5, "available": true, "washlet": true, "multipurpose": false},
 	      {"id": 6, "available": true, "washlet": true, "multipurpose": false}
 	    ],
-	    "latitude": 35.027531,
+	    "latitude": 35.027541,
 	    "longitude" : 135.783817,
 	    "sex": 0
 	  },
@@ -33,7 +33,7 @@
               {"id": 12, "available": true, "washlet": true, "multipurpose": true}
             ],
 	    "latitude": 35.027531,
-	    "longitude" : 135.783817,
+	    "longitude" : 135.783827,
 	    "sex": 1
             },
             {
@@ -48,8 +48,8 @@
                         {"id": 11, "available": false, "washlet": true, "multipurpose": false},
                         {"id": 12, "available": false, "washlet": true, "multipurpose": false}
                         ],
-               "latitude": 35.027531,
-               "longitude" : 135.783817,
+               "latitude": 35.0275321,
+               "longitude" : 135.783847,
                "sex": 1
             }
     ],
@@ -73,8 +73,8 @@
                       {"id": 17, "available": false, "washlet": false, "multipurpose": false},
                       {"id": 18, "available": true, "washlet": true, "multipurpose": false}
                       ],
-             "latitude": 35.026675,
-             "longitude" : 135.781893,
+             "latitude": 35.026665,
+             "longitude" : 135.781873,
              "sex": 0
              },
              {
@@ -89,7 +89,7 @@
                       {"id": 23, "available": true, "washlet": true, "multipurpose": false},
                       {"id": 24, "available": true, "washlet": true, "multipurpose": false}
                       ],
-             "latitude": 35.026675,
+             "latitude": 35.026685,
              "longitude" : 135.781893,
              "sex": 1
              },
@@ -105,8 +105,8 @@
                      {"id": 23, "available": false, "washlet": true, "multipurpose": true},
                      {"id": 24, "available": false, "washlet": true, "multipurpose": false}
                      ],
-            "latitude": 35.026675,
-            "longitude" : 135.781893,
+            "latitude": 35.026685,
+            "longitude" : 135.781883,
             "sex": 0
             }
             ],
