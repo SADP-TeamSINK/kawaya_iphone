@@ -46,7 +46,7 @@
     
     // ベースとなるViewを作成
     baseView_ = [[UIView alloc] initWithFrame:CGRectMake(0, height_, baseWidth_, baseHeignt_)];
-    baseView_.backgroundColor = color_.gray;
+    baseView_.backgroundColor = color_.white;
     
     // ヘッダを設定
     headerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width_, LIST_TOP_BAR_HEIGHT)];
@@ -93,7 +93,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     // tableViewの背景を設定
-    self.tableView.backgroundColor = color_.gray;
+    self.tableView.backgroundColor = color_.white;
     
     return self;
 }
@@ -249,27 +249,13 @@
     floorNameLabel.numberOfLines = 1;
     floorNameLabel.textColor = color_.darkGray;
     if(isBasement){
-        floorNameLabel.text = @"B";
+        floorNameLabel.text = [NSString stringWithFormat:@"地下%@階", floorNameString];
     }else{
-        floorNameLabel.text = @"F";
+        floorNameLabel.text = [NSString stringWithFormat:@"%@階", floorNameString];
     }
     [view addSubview:floorNameLabel];
     
-    // 数字
-    UILabel *floorNumberLabel = [[UILabel alloc]
-                               initWithFrame:CGRectMake(
-                                                        HEADER_LEFT_MARGIN + HEADER_FONT_SIZE * 0.6,
-                                                        (HEADER_HEIGHT - HEADER_FONT_SIZE) * HEADER_TOP_MARGIN_RATIO,
-                                                        HEADER_FONT_SIZE,
-                                                        HEADER_FONT_SIZE)];
-    floorNumberLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [floorNumberLabel setFont:font];
-    floorNumberLabel.numberOfLines = 1;
-    floorNumberLabel.textColor = color_.darkRed;
-    floorNumberLabel.text = floorNameString;
-    [view addSubview:floorNumberLabel];
-    
-    view.backgroundColor = color_.gray;
+    view.backgroundColor = color_.white;
     return view;
 }
 

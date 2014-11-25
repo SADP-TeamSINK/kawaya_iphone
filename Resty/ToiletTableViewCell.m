@@ -25,7 +25,7 @@
         width_ = [[UIScreen mainScreen] bounds].size.width;
         
         self.contentView.frame = CGRectMake(0, 0, width_, height_ * PANE_HEIGHT_RATIO);
-        self.contentView.backgroundColor = color_.gray;
+        self.contentView.backgroundColor = color_.white;
         
         // 背景Viewの設定
         CGRect backRect
@@ -34,6 +34,9 @@
                          self.contentView.frame.size.width * INNER_PANE_WIDTH_RATIO,
                          self.contentView.frame.size.height * INNER_PANE_HEIGHT_RATIO);
         _backView = [[UIView alloc] initWithFrame:backRect];
+        _backView.layer.shadowOpacity = 0.4; // 濃さを指定
+        _backView.layer.shadowRadius = 1.0f;
+        _backView.layer.shadowOffset = CGSizeMake(0.0, 1); // 影までの距離を指定
         _backView.backgroundColor = color_.green;
         // 枠線の設定
         [[_backView layer] setBorderColor:[color_.white CGColor]];

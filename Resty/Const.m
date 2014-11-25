@@ -47,8 +47,8 @@ static double const RED_UTILLIZATION = 1.0;
 
 // paneの内側の設定
 static double const INNER_PANE_HEIGHT_RATIO = 0.8; //paneの高さとの比であることに注意
-static double const INNER_PANE_WIDTH_RATIO = 0.9; //paneの幅との比であることに注意
-static double const INNER_PANE_WIDTH_BIAS = 0.7;
+static double const INNER_PANE_WIDTH_RATIO = 0.95; //paneの幅との比であることに注意
+static double const INNER_PANE_WIDTH_BIAS = 0.5;
 static double const INNER_PANE_HEIGHT_BIAS = 0.8;
 static NSInteger const INNER_PANE_BORDER = 2;
 
