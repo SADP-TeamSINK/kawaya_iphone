@@ -19,12 +19,13 @@
     NSInteger height_;
     NSInteger width_;
     MapController *mapController_;
+    UIView *footer_;
+    Color *color_;
 }
 
 
 - (void)loadView {
-    
-    mapController_ = [[MapController alloc] init];
+    color_ = [[Color alloc] init];
     
     //画面サイズ取得
     height_ = [[UIScreen mainScreen] bounds].size.height;
@@ -35,26 +36,43 @@
     backView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = backView;
     
-    filteringButtonController_ = [[FilteringButtonController alloc] initWithState:BOTH empty:FALSE wash:TRUE multipurpose:FALSE parent:self];
+    filteringButtonController_ = [[FilteringButtonController alloc] initWithState:BOTH empty:FALSE washlet:TRUE multipurpose:FALSE parent:self];
     UIButton *btnSex = filteringButtonController_.sexButton;
     UIButton *btnUpdate = filteringButtonController_.updateButton;
-    UIButton *btnWash = filteringButtonController_.washButton;
+    UIButton *btnWashlet = filteringButtonController_.washletButton;
     UIButton *btnMultipurpose = filteringButtonController_.multipurposeButton;
     
+    
+    // MapControllerの初期化
+    mapController_ = [[MapController alloc] initWithFilteringButtonController:filteringButtonController_];
     mapView_ = [mapController_ getMapView];
     
     
     [self.view addSubview:mapView_];
     
+    
+    // フッターの背景Viewを作成
+    footer_ = [[UIView alloc] initWithFrame:CGRectMake(0,
+                                                       height_- BUTTON_BOTTOM_MARGIN - BUTTON_TOP_MARGIN - BUTTON_SIZE,
+                                                       width_,
+                                                       BUTTON_BOTTOM_MARGIN + BUTTON_TOP_MARGIN + BUTTON_SIZE)];
+    footer_.backgroundColor = color_.darkGray;
+    // 影の設定
+    footer_.layer.shadowOpacity = 0.6; // 濃さを指定
+    footer_.layer.shadowRadius = 2.0f;
+    footer_.layer.shadowOffset = CGSizeMake(0.0, -0.5); // 影までの距離を指定
+    [self.view addSubview:footer_];
+               
+    
     // ボタンがタップされた時のメソッド登録
     [btnSex             addTarget:self action:@selector(pushBtnSex:)            forControlEvents:UIControlEventTouchDown];
     [btnUpdate           addTarget:self action:@selector(pushBtnUpdate:)          forControlEvents:UIControlEventTouchDown];
-    [btnWash            addTarget:self action:@selector(pushBtnWash:)           forControlEvents:UIControlEventTouchDown];
+    [btnWashlet            addTarget:self action:@selector(pushBtnWashlet:)           forControlEvents:UIControlEventTouchDown];
     [btnMultipurpose    addTarget:self action:@selector(pushBtnMultipurpose:)   forControlEvents:UIControlEventTouchDown];
 
     [self.view addSubview:btnSex];
     [self.view addSubview:btnUpdate];
-    [self.view addSubview:btnWash];
+    [self.view addSubview:btnWashlet];
     [self.view addSubview:btnMultipurpose];
 }
 
@@ -67,8 +85,8 @@
     [filteringButtonController_ tappedUpdateButton:button];
 }
 
--(void)pushBtnWash:(UIButton*)button{
-    [filteringButtonController_ tappedWashButton:button];
+-(void)pushBtnWashlet:(UIButton*)button{
+    [filteringButtonController_ tappedWashletButton:button];
 }
 
 -(void)pushBtnMultipurpose:(UIButton*)button{

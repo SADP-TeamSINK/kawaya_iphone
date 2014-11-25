@@ -18,20 +18,27 @@
     dispatch_queue_t main_queue_;
     dispatch_queue_t sub_queue_;
     CGRect windowRect_;
-    ListViewController *listViewContoroller_;
-    Boolean stateOfWash; //+
+    ListViewController *listViewController_;
+    NSMutableArray *buildings_;
+    FilteringButtonController *filteringButtonController_;
+    Boolean stateOfWash;
 }
 
-- (id) init{
+- (id) initWithFilteringButtonController:(FilteringButtonController *)filteringButtonController{
     self = [super init];
     
+    filteringButtonController_ = filteringButtonController;
+
     aPIController_ = [[APIController alloc] initWithUrl:[NSURL URLWithString:API_URL]];
     //画面サイズ取得
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
 
+    // 建物オブジェクト群を格納する配列の確保
+    buildings_ = [NSMutableArray array];
+    
     // ListViewControllerの初期化
-    listViewContoroller_ = [[ListViewController alloc] init];
+    listViewController_ = [[ListViewController alloc] init];
     
     // マルチスレッド処理の準備
     // メインスレッド用で処理を実行するキューを定義する
@@ -43,11 +50,12 @@
     
     // MapViewの作成
     mapView_ = [self makeMapView];
+    mapView_.frame = CGRectMake(0, 0, width_, height_ - BUTTON_BOTTOM_MARGIN - BUTTON_TOP_MARGIN - BUTTON_SIZE);
     
     mapView_.clipsToBounds = NO;
     
     // MapViewにListViewを追加
-    [mapView_ addSubview:[listViewContoroller_ getListView]];
+    [mapView_ addSubview:[listViewController_ getListView]];
     
     
     // ----------------------------------------------------
@@ -67,7 +75,7 @@
     }
     // TODO: フィルタリングした結果を表示
     [self markBuildings:buildings];
-
+    [buildings_ addObjectsFromArray:buildings];
     // ----------------------------------------------------
     
     return self;
@@ -81,29 +89,7 @@
                                                                  zoom:17];
     mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, width_, height_) camera:camera];
     mapView_.myLocationEnabled = YES;
-    
-    // 京大にピンを設置
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(35.026111, 135.780833);
-    marker.title = @"kyoto University";
-    marker.snippet = @"Japan";
-    marker.map = mapView_;
-    
 
-    
-    // 画面左上にピンを設置
-    GMSMarker *topLeftMarker = [[GMSMarker alloc] init];
-    topLeftMarker.position = [self getTopLeftCoordinate];
-    topLeftMarker.title = @"Left top";
-    topLeftMarker.snippet = @"Japan";
-    topLeftMarker.map = mapView_;
-    
-    // 画面右上にピンを設置
-    GMSMarker *bottomRightMarker = [[GMSMarker alloc] init];
-    bottomRightMarker.position = [self getBottomRightCoordinate];
-    bottomRightMarker.title = @"Bottom right";
-    bottomRightMarker.snippet = @"Japan";
-    bottomRightMarker.map = mapView_;
     
     // delegateにこのMapControllerを設定
     mapView_.delegate = self;
@@ -124,15 +110,16 @@
 
     // ListViewを収納するアニメーション
     [UIView animateWithDuration:0.1f animations:^{
-        [listViewContoroller_ offScreen];
-        mapView_.frame = CGRectMake(0, 0, width_, height_);
+        [listViewController_ offScreen];
     } completion:^(BOOL finished){
     }];
     
     // ズームを元に戻す
-    [mapView_ animateToZoom:16.0f];
-
-
+    [mapView_ animateToZoom:17.0f];
+    
+    // 建物をリマーク
+    [mapView_ clear];
+    [self markBuildings:buildings_];
     NSLog(@"タップした場所: lati: %f, long: %f", coordinate.latitude, coordinate.longitude);
 }
 
@@ -143,7 +130,7 @@
  */
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     NSLog(@"didChangeCameraPosition %f,%f", position.target.latitude, position.target.longitude);
-    [mapView_ bringSubviewToFront:[listViewContoroller_ getListView]];
+    [mapView_ bringSubviewToFront:[listViewController_ getListView]];
     
 
     // 縮小しすぎている場合はAPIを叩かない
@@ -181,6 +168,11 @@
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(id)marker {
     NSLog(@"didTapMarker title:%@, snippet:%@", [marker title], [marker snippet]);
     
+    if([((GMSMarker *)marker).userData isKindOfClass:[Toilet class]]){
+        
+        return YES;
+    }
+    
     // 対応する建物オブジェクト
     Building *building = (Building *)((GMSMarker *)marker).userData;
     
@@ -194,7 +186,6 @@
     center.latitude = ((GMSMarker *)marker).position.latitude
                       - (([self getLatitudeGapOnScreen]
                       * (0.5f - MAP_RATIO/2.0f)) * pow(2, mapView_.camera.zoom - zoomLevel));
-    NSLog(@"%f", center.latitude);
     center.longitude = ((GMSMarker *)marker).position.longitude;
     [mapView_ animateToCameraPosition: [GMSCameraPosition
                                         cameraWithTarget:center zoom:zoomLevel]];
@@ -202,23 +193,17 @@
     // ListViewを下から出すアニメーション
     [UIView animateWithDuration:0.1f animations:^{
         //mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
-        [listViewContoroller_ onScreen];
+        [listViewController_ onScreen];
     } completion:^(BOOL finished){
-        // mapViewを縮小してから建物にフォーカス
-        //[mapView_ animateToCameraPosition:[GMSCameraPosition cameraWithLatitude:building.latitude.doubleValue longitude:building.longitude.doubleValue zoom:zoomLevel]];
-        
-        
     }];
 
     NSLog(@"Utillization: %@", [building getUtillization]);
-    
-    
-
-    
 
     // タップされたマーカに対応している建物のもつトイレを，ListViewにリストアップ
-    [listViewContoroller_ listUpToilets:building];
-    
+    // その際，すべてのマーカを一旦クリア
+    [mapView_ clear];
+    [listViewController_ listUpToilets:building];
+    [self markToilets:building];
     
     return YES;
 }
@@ -299,8 +284,58 @@
         marker.title = building.name;
         marker.map = mapView_;
         marker.userData = building;
+        marker.icon = [self getUIColorForMarker:[building getUtillization]];
+        marker.zIndex = (int)(1.0 - [building getUtillization].doubleValue);
+        building.marker = marker;
     }
 }
+
+- (void) markToilets:(Building *)building{
+    for (NSMutableArray *toiletsByFloor in building.toilets) {
+        for (Toilet *toilet in toiletsByFloor) {
+            CLLocationCoordinate2D position = CLLocationCoordinate2DMake(toilet.latitude.doubleValue, toilet.longitude.doubleValue);
+            GMSMarker *marker = [GMSMarker markerWithPosition:position];
+            marker.title = toilet.storeName;
+            marker.map = mapView_;
+            marker.userData = toilet;
+            marker.icon = [self getUIColorForMarker:[toilet getUtillization]];
+            marker.zIndex = (int)(1.0 - [toilet getUtillization].doubleValue);
+            toilet.markder = marker;
+        }
+    }
+}
+
+- (void) clearToilets:(Building *)building{
+    for (NSMutableArray *toiletsByFloor in building.toilets) {
+        for (Toilet *toilet in toiletsByFloor) {
+            [toilet removeMarkder];
+        }
+    }
+}
+
+- (UIImage *) getUIColorForMarker:(NSNumber *)utillization{
+    UIImage *markerImage;
+    
+    if(utillization.doubleValue < GREEN_UTILLIZATION){
+        markerImage = [UIImage imageNamed:@"greenMarkerSmall.png"];
+        
+    }else if(utillization.doubleValue < YELLOW_UTILLIZATION){
+        markerImage = [UIImage imageNamed:@"yellowMarkerSmall.png"];
+        
+    }else{
+        markerImage = [UIImage imageNamed:@"redMarkerSmall.png"];
+    }
+    
+    CGRect rect = CGRectMake(0, 0, MAP_MARKER_SIZE, MAP_MARKER_SIZE * markerImage.size.height / markerImage.size.width);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0);
+    [markerImage drawInRect:rect];
+    markerImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    
+    return markerImage;
+}
+
 
 @end
 

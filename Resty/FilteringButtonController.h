@@ -1,5 +1,5 @@
 //
-//  NSObject_SexButtonController.h
+//  MapController.h
 //  Resty
 //
 //  Created by Imamori Daichi on 2014/11/14.
@@ -13,16 +13,21 @@
 @interface FilteringButtonController: NSObject
 @property UIButton *sexButton;
 @property UIButton *updateButton;
-@property UIButton *washButton;
+@property UIButton *washletButton;
 @property UIButton *multipurposeButton;
-- (id) initWithState:(Sex)sex empty:(Boolean)empty wash:(Boolean)wash multipurpose:(Boolean)multipurpose parent:(UIViewController*)parent;
+@property Boolean stateOfWashlet;
+@property Boolean stateOfMultipurpose;
+@property Sex stateOfSex;
+
+- (id) initWithState:(Sex)sex empty:(Boolean)empty washlet:(Boolean)wash multipurpose:(Boolean)multipurpose parent:(UIViewController*)parent;
 - (void) changeSexButton;
-- (void) changeWashButton;
+- (void) changeWashletButton;
 - (void) changeMultipurposeButton;
 - (void) tappedSexButton:(UIButton*)button;
 - (void) tappedUpdateButton:(UIButton*)button;
-- (void) tappedWashButton:(UIButton*)button;
+- (void) tappedWashletButton:(UIButton*)button;
 - (void) tappedMultipurposeButton:(UIButton*)button;
+
 @end
 
 

@@ -36,7 +36,7 @@
 - (NSInteger) addToilet:(Toilet *)toilet{
     NSInteger floor = toilet.floor;
     [self.toilets[floor + self.floorSize] addObject:toilet];
-    return ((NSMutableArray *)self.toilets[floor]).count;
+    return ((NSMutableArray *)self.toilets[floor + self.floorSize]).count;
 }
 
 
@@ -88,6 +88,9 @@
                longitude:(NSNumber *)toilet[@"longitude"]
                sex:(Sex)[toilet[@"sex"] integerValue]];
             
+            // 所有している建物を登録
+            [toiletObject setOwner:buildingObject];
+            
             for (NSDictionary *room in toilet[@"room"]) {
                 NSLog(@"room: %d", (BOOL)room[@"available"]);
                 Room *roomObject
@@ -114,4 +117,16 @@
     return buildings;
 }
 
+- (void) removeMarker{
+    if(!_marker){
+        _marker.map = nil;
+        _marker = nil;
+    }
+}
+
+- (void) putMarker:(GMSMapView *)mapView{
+    if(!_marker){
+        _marker.map = mapView;
+    }
+}
 @end

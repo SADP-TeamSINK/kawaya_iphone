@@ -8,10 +8,12 @@
 
 #import "Toilet.h"
 #import <Foundation/Foundation.h>
+#import "Building.h"
 
 @implementation Toilet{
     NSInteger width_;
     NSInteger height_;
+    Building *owner_;
 }
 
 - (id) initWithSetting:(NSInteger)toiletID floor:(NSInteger)floor storeName:(NSString *)storeName latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude sex:(Sex)sex{
@@ -64,6 +66,21 @@
     pane.backgroundColor = [UIColor colorWithRed:255/255.0 green:100/255.0 blue:255/255.0 alpha:1.0];
     
     return pane;
+}
+
+- (void) setOwner:(Building *)building{
+    owner_ = building;
+}
+
+- (Building *) getOwner{
+    return owner_;
+}
+
+- (void) removeMarkder{
+    if(!_markder){
+        _markder.map = nil;
+        _markder = nil;
+    }
 }
 
 @end
