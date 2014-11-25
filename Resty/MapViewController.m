@@ -56,11 +56,11 @@
                                                        height_- BUTTON_BOTTOM_MARGIN - BUTTON_TOP_MARGIN - BUTTON_SIZE,
                                                        width_,
                                                        BUTTON_BOTTOM_MARGIN + BUTTON_TOP_MARGIN + BUTTON_SIZE)];
-    footer_.backgroundColor = color_.darkGray;
+    footer_.backgroundColor = color_.gray;
     // 影の設定
-    footer_.layer.shadowOpacity = 0.6; // 濃さを指定
+    footer_.layer.shadowOpacity = 0.4; // 濃さを指定
     footer_.layer.shadowRadius = 2.0f;
-    footer_.layer.shadowOffset = CGSizeMake(0.0, -0.5); // 影までの距離を指定
+    footer_.layer.shadowOffset = CGSizeMake(0.0, 0.0); // 影までの距離を指定
     [self.view addSubview:footer_];
                
     

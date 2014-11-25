@@ -25,8 +25,10 @@
     NSInteger baseWidth_;
     Building *building_;
     
-    NSMutableArray *floorName;
-    NSMutableArray *floorData;
+    NSMutableArray *floorName_;
+    NSMutableArray *floorData_;
+    
+    UILabel *buildingName_;
     
     Color *color_;
 }
@@ -44,15 +46,23 @@
     
     // ベースとなるViewを作成
     baseView_ = [[UIView alloc] initWithFrame:CGRectMake(0, height_, baseWidth_, baseHeignt_)];
-    baseView_.backgroundColor = color_.darkGray;
+    baseView_.backgroundColor = color_.gray;
     
     // ヘッダを設定
     headerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width_, LIST_TOP_BAR_HEIGHT)];
-    headerView_.backgroundColor = color_.darkGray;
-    headerView_.layer.shadowOpacity = 0.6; // 濃さを指定
+    headerView_.backgroundColor = color_.gray;
+    headerView_.layer.shadowOpacity = 0.4; // 濃さを指定
     headerView_.layer.shadowRadius = 2.0f;
-    headerView_.layer.shadowOffset = CGSizeMake(0.0, 0.5); // 影までの距離を指定
+    headerView_.layer.shadowOffset = CGSizeMake(0.0, 0); // 影までの距離を指定
     [baseView_ addSubview:headerView_];
+    
+    // buildingNameを準備
+    buildingName_ = [[UILabel alloc] initWithFrame:CGRectMake( width_ - BUILDING_NAME_RIGHT_MARGIN - BUILDING_NAME_WIDTH_RATIO * width_, 0, BUILDING_NAME_WIDTH_RATIO * width_, LIST_TOP_BAR_HEIGHT)];
+    UIFont *font = [UIFont fontWithName:@"HiraKakuProN-W3"size:BUILDING_NAME_FONT_SIZE];
+    [buildingName_ setFont:font];
+    [buildingName_ setTextAlignment:NSTextAlignmentRight];
+    buildingName_.textColor = color_.darkGray;
+    [headerView_ addSubview:buildingName_];
     
     // リストのマージンを設定
     listTopMargin_ = LIST_TOP_BAR_HEIGHT;
@@ -70,8 +80,8 @@
     
     
     // list情報の初期化
-    floorName = [NSMutableArray array];
-    floorData = [NSMutableArray array];
+    floorName_ = [NSMutableArray array];
+    floorData_ = [NSMutableArray array];
     
     // ToiletTableViewCellをtableViewに登録
     [self.tableView registerClass:[ToiletTableViewCell class] forCellReuseIdentifier:@"Cell"];
@@ -103,15 +113,16 @@
 }
 
 - (void) listUpToilets:(Building *)building{
-    [floorName removeAllObjects];
-    [floorData removeAllObjects];
+    [floorName_ removeAllObjects];
+    [floorData_ removeAllObjects];
     for (NSMutableArray *toiletByFloor in building.toilets) {
         if ([toiletByFloor count] == 0) continue;
         // その階層にトイレが登録されていない場合は continue
         NSLog(@"floor: %ld, toilet: %@", (long)((Toilet *)toiletByFloor[0]).floor, ((Toilet *)toiletByFloor[0]).storeName);
-        [floorName addObject:[NSString stringWithFormat:@"%d", (int)((Toilet *)toiletByFloor[0]).floor]];
-        [floorData addObject:toiletByFloor];
+        [floorName_ addObject:[NSString stringWithFormat:@"%d", (int)((Toilet *)toiletByFloor[0]).floor]];
+        [floorData_ addObject:toiletByFloor];
     }
+    buildingName_.text = building.name;
     [self.tableView reloadData];
 }
 
@@ -139,7 +150,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // セルの内容はNSArray型の「items」にセットされているものとする
-    return [floorData[section] count];
+    return [floorData_[section] count];
 }
 
 /**
@@ -150,7 +161,7 @@
     NSString *cellIdentifier = @"Cell";
     ToiletTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    Toilet *toilet = ((Toilet *)floorData[indexPath.section][indexPath.row]);
+    Toilet *toilet = ((Toilet *)floorData_[indexPath.section][indexPath.row]);
     
     // セルが作成されていないか?
     if (!cell) { // yes
@@ -189,7 +200,7 @@
  */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [floorName count];
+    return [floorName_ count];
 }
 
 /**
@@ -197,7 +208,7 @@
  */
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return floorName[section];
+    return floorName_[section];
 }
 
 /**
@@ -219,7 +230,7 @@
  * ヘッダーをカスタマイズ
  */
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    NSInteger floorNumber = [floorName[section] intValue];
+    NSInteger floorNumber = [floorName_[section] intValue];
     BOOL isBasement = (floorNumber < 0);
     NSString *floorNameString = [NSString stringWithFormat:@"%d", abs((int)floorNumber)];
 

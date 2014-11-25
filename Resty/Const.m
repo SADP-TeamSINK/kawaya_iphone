@@ -29,13 +29,13 @@ static NSInteger const PANE_LEFT_PADDING = 5;
 static NSInteger const PANE_RIGHT_PADDING = 10;
 static NSInteger const STORE_NAME_FONT_SIZE = 17;
 
-static NSInteger const BUTTON_SIZE = 45;
+static NSInteger const BUTTON_SIZE = 50;
 static NSInteger const BUTTON_NUMBER = 4;
 static NSInteger const BUTTON_TOP_MARGIN = 5;
 static NSInteger const BUTTON_BOTTOM_MARGIN = 5;
 static double const SEX_BUTTON_WIDTH_HEIGHT_RATIO = 1.665;
-static NSInteger const UPDATE_BUTTON_SIZE = 35;
-static double const BUTTON_LEFT_MARGIN_RATIO = 1.7;
+static NSInteger const UPDATE_BUTTON_SIZE = 50;
+static double const BUTTON_LEFT_MARGIN_RATIO = 1.5;
 
 static NSInteger const LIST_TOP_BAR_HEIGHT = 25;
 
@@ -72,3 +72,7 @@ static double const HEADER_TOP_MARGIN_RATIO = 0.8;
 
 // mapMarkerの設定
 static NSInteger const MAP_MARKER_SIZE = 40;
+
+static double const BUILDING_NAME_WIDTH_RATIO = 0.4;
+static double const BUILDING_NAME_RIGHT_MARGIN = 10;
+static NSInteger const BUILDING_NAME_FONT_SIZE = 10;

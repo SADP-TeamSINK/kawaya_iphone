@@ -11,23 +11,11 @@
 		5D10C5561A20814B004247BC /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D10C5551A20814B004247BC /* Building.m */; };
 		5D10C5591A20847F004247BC /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D10C5581A20847F004247BC /* Room.m */; };
 		5D10C55C1A2089DC004247BC /* Toilet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D10C55B1A2089DC004247BC /* Toilet.m */; };
-		5D2747F81A2470FA003A6D77 /* womanButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2747F51A2470FA003A6D77 /* womanButton.png */; };
-		5D2747FB1A247172003A6D77 /* manWomanButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2747F91A247172003A6D77 /* manWomanButton.png */; };
-		5D2747FC1A247172003A6D77 /* manButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2747FA1A247172003A6D77 /* manButton.png */; };
-		5D2748041A2474CD003A6D77 /* washletButtonOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2747FE1A2474CD003A6D77 /* washletButtonOff.png */; };
-		5D2748051A2474CD003A6D77 /* multipurposeButtonOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2747FF1A2474CD003A6D77 /* multipurposeButtonOff.png */; };
-		5D2748061A2474CD003A6D77 /* updateButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2748001A2474CD003A6D77 /* updateButton.png */; };
-		5D2748071A2474CD003A6D77 /* multipurposeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2748011A2474CD003A6D77 /* multipurposeButton.png */; };
-		5D2748081A2474CD003A6D77 /* washletButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2748021A2474CD003A6D77 /* washletButton.png */; };
-		5D27480C1A2475C3003A6D77 /* updateButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D27480B1A2475C3003A6D77 /* updateButtonHighlighted.png */; };
-		5D27480F1A24777E003A6D77 /* multipurposeButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D27480D1A24777E003A6D77 /* multipurposeButtonHighlighted.png */; };
-		5D2748101A24777E003A6D77 /* washletButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D27480E1A24777E003A6D77 /* washletButtonHighlighted.png */; };
 		5D2802161A230B89005C98DB /* ToiletTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2802151A230B89005C98DB /* ToiletTableViewCell.m */; };
 		5D28022E1A232E80005C98DB /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D28022D1A232E80005C98DB /* Color.m */; };
 		5D2802311A23563A005C98DB /* toilet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D2802301A23563A005C98DB /* toilet.jpg */; };
 		5D28023C1A23664E005C98DB /* UIFont+Font.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D28023B1A23664E005C98DB /* UIFont+Font.m */; };
 		5D28023E1A2368C1005C98DB /* washletMarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D28023D1A2368C1005C98DB /* washletMarker.png */; };
-		5D2802401A236EF0005C98DB /* multipurposeMarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D28023F1A236EF0005C98DB /* multipurposeMarker.png */; };
 		5D2802521A238A20005C98DB /* greenMarkerSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D28024F1A238A20005C98DB /* greenMarkerSmall.png */; };
 		5D2802531A238A20005C98DB /* yellowMarkerSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2802501A238A20005C98DB /* yellowMarkerSmall.png */; };
 		5D2802541A238A20005C98DB /* redMarkerSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2802511A238A20005C98DB /* redMarkerSmall.png */; };
@@ -37,6 +25,17 @@
 		5D3BCAA11A16FB6100C07CA8 /* dammy.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D3BCAA01A16FB6100C07CA8 /* dammy.json */; };
 		5DD64EBF1A16452C00FECE1A /* FilteringButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD64EBE1A16452C00FECE1A /* FilteringButtonController.m */; };
 		5DD64EC21A1647BD00FECE1A /* Const.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD64EC11A1647BD00FECE1A /* Const.m */; };
+		5DFDF1B71A24CDE400452336 /* womanButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1B61A24CDE400452336 /* womanButton.png */; };
+		5DFDF1BC1A24CF4600452336 /* manWomanButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1BA1A24CF4600452336 /* manWomanButton.png */; };
+		5DFDF1BD1A24CF4600452336 /* manButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1BB1A24CF4600452336 /* manButton.png */; };
+		5DFDF1C61A24D13500452336 /* updateButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1C01A24D13500452336 /* updateButtonHighlighted.png */; };
+		5DFDF1C71A24D13500452336 /* updateButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1C11A24D13500452336 /* updateButton.png */; };
+		5DFDF1C81A24D13500452336 /* multipurposeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1C21A24D13500452336 /* multipurposeButton.png */; };
+		5DFDF1C91A24D13500452336 /* washletButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1C31A24D13500452336 /* washletButton.png */; };
+		5DFDF1CC1A24D23D00452336 /* washletButtonOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1CA1A24D23D00452336 /* washletButtonOff.png */; };
+		5DFDF1CD1A24D23D00452336 /* multipurposeButtonOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1CB1A24D23D00452336 /* multipurposeButtonOff.png */; };
+		5DFDF1CF1A24D5F500452336 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1CE1A24D5F500452336 /* handle.png */; };
+		5DFDF1D31A24DD5F00452336 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1D21A24DD5F00452336 /* splash.png */; };
 		A41CF5CC19F2731000F6B49C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A41CF5CB19F2731000F6B49C /* main.m */; };
 		A41CF5CF19F2731000F6B49C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A41CF5CE19F2731000F6B49C /* AppDelegate.m */; };
 		A41CF5D219F2731000F6B49C /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A41CF5D119F2731000F6B49C /* MapViewController.m */; };
@@ -83,17 +82,6 @@
 		5D10C55A1A208486004247BC /* Room.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
 		5D10C55B1A2089DC004247BC /* Toilet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toilet.m; sourceTree = "<group>"; };
 		5D10C55D1A2089EA004247BC /* Toilet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Toilet.h; sourceTree = "<group>"; };
-		5D2747F51A2470FA003A6D77 /* womanButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womanButton.png; sourceTree = "<group>"; };
-		5D2747F91A247172003A6D77 /* manWomanButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manWomanButton.png; sourceTree = "<group>"; };
-		5D2747FA1A247172003A6D77 /* manButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manButton.png; sourceTree = "<group>"; };
-		5D2747FE1A2474CD003A6D77 /* washletButtonOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = washletButtonOff.png; sourceTree = "<group>"; };
-		5D2747FF1A2474CD003A6D77 /* multipurposeButtonOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multipurposeButtonOff.png; sourceTree = "<group>"; };
-		5D2748001A2474CD003A6D77 /* updateButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = updateButton.png; sourceTree = "<group>"; };
-		5D2748011A2474CD003A6D77 /* multipurposeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multipurposeButton.png; sourceTree = "<group>"; };
-		5D2748021A2474CD003A6D77 /* washletButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = washletButton.png; sourceTree = "<group>"; };
-		5D27480B1A2475C3003A6D77 /* updateButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = updateButtonHighlighted.png; sourceTree = "<group>"; };
-		5D27480D1A24777E003A6D77 /* multipurposeButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multipurposeButtonHighlighted.png; sourceTree = "<group>"; };
-		5D27480E1A24777E003A6D77 /* washletButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = washletButtonHighlighted.png; sourceTree = "<group>"; };
 		5D2802141A230B89005C98DB /* ToiletTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToiletTableViewCell.h; sourceTree = "<group>"; };
 		5D2802151A230B89005C98DB /* ToiletTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToiletTableViewCell.m; sourceTree = "<group>"; };
 		5D28022D1A232E80005C98DB /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
@@ -102,7 +90,6 @@
 		5D28023A1A23664E005C98DB /* UIFont+Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Font.h"; sourceTree = "<group>"; };
 		5D28023B1A23664E005C98DB /* UIFont+Font.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Font.m"; sourceTree = "<group>"; };
 		5D28023D1A2368C1005C98DB /* washletMarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = washletMarker.png; sourceTree = "<group>"; };
-		5D28023F1A236EF0005C98DB /* multipurposeMarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multipurposeMarker.png; sourceTree = "<group>"; };
 		5D28024F1A238A20005C98DB /* greenMarkerSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenMarkerSmall.png; sourceTree = "<group>"; };
 		5D2802501A238A20005C98DB /* yellowMarkerSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowMarkerSmall.png; sourceTree = "<group>"; };
 		5D2802511A238A20005C98DB /* redMarkerSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redMarkerSmall.png; sourceTree = "<group>"; };
@@ -115,6 +102,17 @@
 		5DD64EBE1A16452C00FECE1A /* FilteringButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringButtonController.m; sourceTree = "<group>"; };
 		5DD64EC01A1645DE00FECE1A /* FilteringButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringButtonController.h; sourceTree = "<group>"; };
 		5DD64EC11A1647BD00FECE1A /* Const.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Const.m; sourceTree = "<group>"; };
+		5DFDF1B61A24CDE400452336 /* womanButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womanButton.png; sourceTree = "<group>"; };
+		5DFDF1BA1A24CF4600452336 /* manWomanButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manWomanButton.png; sourceTree = "<group>"; };
+		5DFDF1BB1A24CF4600452336 /* manButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manButton.png; sourceTree = "<group>"; };
+		5DFDF1C01A24D13500452336 /* updateButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = updateButtonHighlighted.png; sourceTree = "<group>"; };
+		5DFDF1C11A24D13500452336 /* updateButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = updateButton.png; sourceTree = "<group>"; };
+		5DFDF1C21A24D13500452336 /* multipurposeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multipurposeButton.png; sourceTree = "<group>"; };
+		5DFDF1C31A24D13500452336 /* washletButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = washletButton.png; sourceTree = "<group>"; };
+		5DFDF1CA1A24D23D00452336 /* washletButtonOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = washletButtonOff.png; sourceTree = "<group>"; };
+		5DFDF1CB1A24D23D00452336 /* multipurposeButtonOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multipurposeButtonOff.png; sourceTree = "<group>"; };
+		5DFDF1CE1A24D5F500452336 /* handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handle.png; sourceTree = "<group>"; };
+		5DFDF1D21A24DD5F00452336 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		A41CF5C619F2731000F6B49C /* Resty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41CF5CA19F2731000F6B49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A41CF5CB19F2731000F6B49C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -293,21 +291,20 @@
 			isa = PBXGroup;
 			children = (
 				5D28023D1A2368C1005C98DB /* washletMarker.png */,
-				5D28023F1A236EF0005C98DB /* multipurposeMarker.png */,
 				5D2802301A23563A005C98DB /* toilet.jpg */,
-				5D2747F91A247172003A6D77 /* manWomanButton.png */,
-				5D2747FA1A247172003A6D77 /* manButton.png */,
-				5D27480D1A24777E003A6D77 /* multipurposeButtonHighlighted.png */,
-				5D27480E1A24777E003A6D77 /* washletButtonHighlighted.png */,
-				5D2747F51A2470FA003A6D77 /* womanButton.png */,
-				5D2747FE1A2474CD003A6D77 /* washletButtonOff.png */,
-				5D2747FF1A2474CD003A6D77 /* multipurposeButtonOff.png */,
-				5D27480B1A2475C3003A6D77 /* updateButtonHighlighted.png */,
-				5D2748001A2474CD003A6D77 /* updateButton.png */,
-				5D2748011A2474CD003A6D77 /* multipurposeButton.png */,
-				5D2748021A2474CD003A6D77 /* washletButton.png */,
 				5D28024F1A238A20005C98DB /* greenMarkerSmall.png */,
 				5D2802501A238A20005C98DB /* yellowMarkerSmall.png */,
+				5DFDF1BA1A24CF4600452336 /* manWomanButton.png */,
+				5DFDF1BB1A24CF4600452336 /* manButton.png */,
+				5DFDF1C01A24D13500452336 /* updateButtonHighlighted.png */,
+				5DFDF1D21A24DD5F00452336 /* splash.png */,
+				5DFDF1C11A24D13500452336 /* updateButton.png */,
+				5DFDF1CE1A24D5F500452336 /* handle.png */,
+				5DFDF1CA1A24D23D00452336 /* washletButtonOff.png */,
+				5DFDF1CB1A24D23D00452336 /* multipurposeButtonOff.png */,
+				5DFDF1C21A24D13500452336 /* multipurposeButton.png */,
+				5DFDF1C31A24D13500452336 /* washletButton.png */,
+				5DFDF1B61A24CDE400452336 /* womanButton.png */,
 				5D2802511A238A20005C98DB /* redMarkerSmall.png */,
 				A47E26061A00195300254347 /* resty_350x1.png */,
 			);
@@ -406,31 +403,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D2748081A2474CD003A6D77 /* washletButton.png in Resources */,
-				5D27480C1A2475C3003A6D77 /* updateButtonHighlighted.png in Resources */,
-				5D2748051A2474CD003A6D77 /* multipurposeButtonOff.png in Resources */,
+				5DFDF1CC1A24D23D00452336 /* washletButtonOff.png in Resources */,
+				5DFDF1B71A24CDE400452336 /* womanButton.png in Resources */,
+				5DFDF1C81A24D13500452336 /* multipurposeButton.png in Resources */,
 				5D3133A71A19FBE600D7B2EF /* kyoto-u.gpx in Resources */,
 				A41CF5D519F2731000F6B49C /* Main.storyboard in Resources */,
+				5DFDF1BC1A24CF4600452336 /* manWomanButton.png in Resources */,
 				A47E26071A00195300254347 /* resty_350x1.png in Resources */,
 				5D3BCAA11A16FB6100C07CA8 /* dammy.json in Resources */,
+				5DFDF1C71A24D13500452336 /* updateButton.png in Resources */,
 				5D2802531A238A20005C98DB /* yellowMarkerSmall.png in Resources */,
 				A41CF5DA19F2731000F6B49C /* LaunchScreen.xib in Resources */,
 				5D28023E1A2368C1005C98DB /* washletMarker.png in Resources */,
 				A41CF5D719F2731000F6B49C /* Images.xcassets in Resources */,
-				5D2748041A2474CD003A6D77 /* washletButtonOff.png in Resources */,
-				5D2748061A2474CD003A6D77 /* updateButton.png in Resources */,
-				5D2748071A2474CD003A6D77 /* multipurposeButton.png in Resources */,
-				5D2747FB1A247172003A6D77 /* manWomanButton.png in Resources */,
-				5D2747F81A2470FA003A6D77 /* womanButton.png in Resources */,
-				5D2747FC1A247172003A6D77 /* manButton.png in Resources */,
-				5D2748101A24777E003A6D77 /* washletButtonHighlighted.png in Resources */,
+				5DFDF1CF1A24D5F500452336 /* handle.png in Resources */,
 				5D2802521A238A20005C98DB /* greenMarkerSmall.png in Resources */,
-				5D2802401A236EF0005C98DB /* multipurposeMarker.png in Resources */,
 				A41CF5F319F2739C00F6B49C /* GoogleMaps.bundle in Resources */,
+				5DFDF1D31A24DD5F00452336 /* splash.png in Resources */,
+				5DFDF1BD1A24CF4600452336 /* manButton.png in Resources */,
+				5DFDF1CD1A24D23D00452336 /* multipurposeButtonOff.png in Resources */,
 				5D2802541A238A20005C98DB /* redMarkerSmall.png in Resources */,
 				5D2802311A23563A005C98DB /* toilet.jpg in Resources */,
-				5D27480F1A24777E003A6D77 /* multipurposeButtonHighlighted.png in Resources */,
 				A41CF62119F28ACB00F6B49C /* th_picture.jpg in Resources */,
+				5DFDF1C91A24D13500452336 /* washletButton.png in Resources */,
+				5DFDF1C61A24D13500452336 /* updateButtonHighlighted.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
