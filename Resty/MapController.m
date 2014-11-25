@@ -61,7 +61,7 @@
     // dammy json からパースした建物オブジェクトをマップ上にマーキング
     
     //ウォシュレットがある建物をフィルタリング ++++++
-    if(stateOfWash){//FiltrerButtonControllerボタンの判定　(依然赤Error) //Use of undeclared identifier 'stateOfWash'
+    if([_stateOfWash]){//FiltrerButtonControllerボタンの判定　(依然赤Error) //Use of undeclared identifier 'stateOfWash'
         [self washFiltering:buildings];//フィルタリングメソッド呼び出し
         [self markBuildings:buildings];//マークメソッドに渡す
     }

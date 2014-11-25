@@ -21,5 +21,5 @@
 - (CLLocationCoordinate2D) getBottomLeftCoordinate;
 - (CLLocationCoordinate2D) getBottomRightCoordinate;
 - (void) markBuildings:(NSMutableArray *)buildings;
-- (NSMutableArray *) washFiltering:(NSMutableArray *)buildings; //+ (依然赤Error) //Interface 'NSMustableArray' can be returned by value; did you forget * in 'NSMutableArray'?
+- (NSMutableArray *) washFiltering:(NSMutableArray *)buildings; //+
 @end
