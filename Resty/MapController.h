@@ -22,6 +22,5 @@
 - (CLLocationCoordinate2D) getBottomRightCoordinate;
 - (void) markBuildings:(NSMutableArray *)buildings;
 - (void) markToilets:(Building *)building;
-- (void) clearToiletsMarker:(Building *)building;
 - (UIImage *) getUIColorForMarker:(NSNumber *)utillization;
 @end

@@ -11,7 +11,8 @@
 
 
 @implementation ListViewController{
-    UIView * baseView_;
+    UIView *baseView_;
+    UIView *headerView_;
 
     NSInteger height_;
     NSInteger width_;
@@ -44,6 +45,14 @@
     // ベースとなるViewを作成
     baseView_ = [[UIView alloc] initWithFrame:CGRectMake(0, height_, baseWidth_, baseHeignt_)];
     baseView_.backgroundColor = color_.darkGray;
+    
+    // ヘッダを設定
+    headerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width_, LIST_TOP_BAR_HEIGHT)];
+    headerView_.backgroundColor = color_.darkGray;
+    headerView_.layer.shadowOpacity = 0.6; // 濃さを指定
+    headerView_.layer.shadowRadius = 2.0f;
+    headerView_.layer.shadowOffset = CGSizeMake(0.0, 0.5); // 影までの距離を指定
+    [baseView_ addSubview:headerView_];
     
     // リストのマージンを設定
     listTopMargin_ = LIST_TOP_BAR_HEIGHT;
@@ -81,6 +90,7 @@
 
 - (void) onScreen{
     baseView_.frame = CGRectMake(0, height_ * (MAP_RATIO), baseWidth_, baseHeignt_);
+    [baseView_ bringSubviewToFront:headerView_];
     [self.tableView flashScrollIndicators];
 }
 
