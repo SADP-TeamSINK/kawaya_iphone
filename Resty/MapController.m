@@ -30,6 +30,11 @@
     filteringButtonController_ = filteringButtonController;
 
     aPIController_ = [[APIController alloc] initWithUrl:[NSURL URLWithString:API_URL]];
+    
+    CLLocationCoordinate2D tmp;
+    tmp.latitude = 35.026685;
+    tmp.longitude = 135.781883;
+    NSLog(@"mesh: %lu", (unsigned long)[aPIController_ getMeshNumberFromCoordinate:tmp]);
     //画面サイズ取得
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
