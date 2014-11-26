@@ -58,7 +58,7 @@ NSMutableSet *obtainedMeshMutableSet_;
 }
 
 - (NSUInteger) getMeshNumberFromCoordinate:(CLLocationCoordinate2D)coordinate{
-    double latitude = coordinate.latitude + 180.0f;
+    double latitude = coordinate.latitude + 90.0f;
     double longitude = coordinate.longitude + 180.0f;
 
     NSUInteger meshNumber = ((NSUInteger)(latitude * 100) * 100000) + ((NSUInteger)(longitude * 100));
