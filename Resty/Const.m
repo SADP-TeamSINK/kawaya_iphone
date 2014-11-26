@@ -79,3 +79,6 @@ static double const BUILDING_NAME_RIGHT_MARGIN = 10;
 static NSInteger const BUILDING_NAME_FONT_SIZE = 10;
 
 static NSInteger const IN_MARKER_NUMBER_FONT_SIZE = 8;
+
+static NSInteger const HANDLE_WIDTH = 40;
+static NSInteger const HANDLE_TOP_MARGIN = 5;

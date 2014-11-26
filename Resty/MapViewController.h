@@ -10,12 +10,13 @@
 #import <QuartzCore/QuartzCore.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "FilteringButtonController.h"
+#import <CoreLocation/CoreLocation.h>
 #import "MapController.h"
 #import "Building.h"
 #import "Color.h"
 
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <CLLocationManagerDelegate>
 
 @end
 
