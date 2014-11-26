@@ -264,9 +264,10 @@
 //フィルタリングメソッド
 - (NSMutableArray *) filtering:(NSMutableArray *)buildings stateOfSex:(Sex)sex stateOfWashlet:(BOOL)washlet stateOfMultipurpose:(BOOL)multipurpose{
     
-    NSLog(@"stateOfSex初期値:%@", sex==0 ? @"男(0)" : @"女(1)"); //男
-    NSLog(@"stateOfWash初期値:%@", washlet ? @"true" : @"false"); //false
-    NSLog(@"stateOfMultipurpose初期値:%@", multipurpose ? @"true" : @"false"); //false
+    //初期状態のチェック
+    NSLog(@"stateOfSex初期値:%@", sex==0 ? @"男(0)" : @"女(1)"); //>>男
+    NSLog(@"stateOfWash初期値:%@", washlet ? @"true" : @"false"); //>>false
+    NSLog(@"stateOfMultipurpose初期値:%@", multipurpose ? @"true" : @"false"); //>>false
     
     //デバッグ用パラメータ
     sex = 0;
@@ -283,7 +284,7 @@
     BOOL buildingFrag;
     
     //ボタン状態に分けてフィルタリング
-    if(sex==0 && washlet==false && multipurpose==false){//男∧ウ×∧多×
+    if(sex==0 && washlet==false && multipurpose==false){//男 ∧ ウ× ∧多×
         for(Building *building in buildings){
             sexFrag=false; //建物ごとに初期化
             buildingFrag=false;
@@ -296,7 +297,7 @@
                     }
                 }
             }
-            if(sexFrag==true && buildingFrag==true){ //男のトイレがあるとわかっていればその建物を追加
+            if(sexFrag==true && buildingFrag==true){ //男性トイレがある場合その建物を追加
                 [filteringResultBuildings addObject:building]; //建物位置を追加
             }
         }
@@ -314,12 +315,12 @@
                     }
                 }
             }
-            if(sexFrag==true && buildingFrag==true){ //女のトイレがあるとわかっていればその建物を追加
+            if(sexFrag==true && buildingFrag==true){ //女性トイレがある場合その建物を追加
                 [filteringResultBuildings addObject:building];
             }
         }
     }
-    if(sex==0 && washlet==true){  //男 ∧ ウ◯ ∧ (多◯or×)
+    if(sex==0 && washlet==true){  //男 ∧ ウ◯ ∧ (多◯ or ×)
         for(Building *building in buildings){
             washletFrag=false;
             buildingFrag=false;
@@ -332,12 +333,12 @@
                     }
                 }
             }
-            if(washletFrag==true && buildingFrag==true){ //男・ウォシュレットがあるとわかっていればその建物を追加
+            if(washletFrag==true && buildingFrag==true){ //男性トイレかつウォシュレットがある場合その建物を追加
                 [filteringResultBuildings addObject:building];
             }
         }
     }
-    if(sex==1 && washlet==true){  //女 ∧ ウ◯ ∧ (多◯or×)
+    if(sex==1 && washlet==true){  //女 ∧ ウ◯ ∧ (多◯ or ×)
         for(Building *building in buildings){
             washletFrag=false;
             buildingFrag=false;
@@ -350,7 +351,7 @@
                     }
                 }
             }
-            if(washletFrag==true && buildingFrag==true){ //女・ウォシュレットがあるとわかっていればその建物を追加
+            if(washletFrag==true && buildingFrag==true){ //女性トイレかつウォシュレットがある場合その建物を追加
                 [filteringResultBuildings addObject:building];
             }
         }
@@ -369,7 +370,7 @@
                     }
                 }
             }
-            if(multipurposeFrag==true && buildingFrag==true){ //男・多目的トイレがあるとわかっていればその建物を追加
+            if(multipurposeFrag==true && buildingFrag==true){ //男性トイレかつ多目的トイレがある場合その建物を追加
                 [filteringResultBuildings addObject:building];
             }
         }
@@ -387,7 +388,7 @@
                     }
                 }
             }
-            if(multipurposeFrag==true && buildingFrag==true){ //女・多目的トイレがあるとわかっていればその建物を追加
+            if(multipurposeFrag==true && buildingFrag==true){ //女性トイレかつ多目的トイレがある場合その建物を追加
                 [filteringResultBuildings addObject:building];
             }
         }
