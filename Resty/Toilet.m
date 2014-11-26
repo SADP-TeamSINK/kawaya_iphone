@@ -77,9 +77,9 @@
 }
 
 - (void) removeMarkder{
-    if(!_markder){
-        _markder.map = nil;
-        _markder = nil;
+    if(!_marker){
+        _marker.map = nil;
+        _marker = nil;
     }
 }
 
