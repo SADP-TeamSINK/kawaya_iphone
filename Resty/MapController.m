@@ -56,6 +56,7 @@
     
     // MapViewにListViewを追加
     [mapView_ addSubview:[listViewController_ getListView]];
+    [listViewController_ registerMapView:mapView_];
     
     
     // ----------------------------------------------------
@@ -109,7 +110,7 @@
     NSLog(@"didTapAtCoordinate %f,%f", coordinate.latitude, coordinate.longitude);
 
     // ListViewを収納するアニメーション
-    [UIView animateWithDuration:0.1f animations:^{
+    [UIView animateWithDuration:0.5f animations:^{
         [listViewController_ offScreen];
     } completion:^(BOOL finished){
     }];
@@ -191,7 +192,7 @@
                                         cameraWithTarget:center zoom:zoomLevel]];
 
     // ListViewを下から出すアニメーション
-    [UIView animateWithDuration:0.1f animations:^{
+    [UIView animateWithDuration:0.4f animations:^{
         //mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
         [listViewController_ onScreen];
     } completion:^(BOOL finished){
@@ -300,7 +301,8 @@
             marker.userData = toilet;
             marker.icon = [self getUIColorForMarker:[toilet getUtillization]];
             marker.zIndex = (int)(1.0 - [toilet getUtillization].doubleValue);
-            toilet.markder = marker;
+            toilet.marker = marker;
+            
         }
     }
 }

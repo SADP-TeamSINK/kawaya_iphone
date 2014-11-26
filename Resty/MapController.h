@@ -14,6 +14,7 @@
 #import "ListViewController.h"
 #import "Building.h"
 #import "FilteringButtonController.h"
+#import "Color.h"
 
 @interface MapController : NSObject <GMSMapViewDelegate>
 
@@ -26,4 +27,5 @@
 - (NSMutableArray *) washFiltering:(NSMutableArray *)buildings; //+
 - (void) markToilets:(Building *)building;
 - (UIImage *) getUIColorForMarker:(NSNumber *)utillization;
+
 @end

@@ -154,25 +154,25 @@
 {
     if (highlighted)
     {
-        self.contentView.backgroundColor = color_.white;
+        //_backView.layer.borderColor = [color_.darkGray CGColor];
     }
     else
     {// 非選択状態
-        self.contentView.backgroundColor = color_.white;
+        //_backView.layer.borderColor = [color_.white CGColor];
     }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     //[super setSelected:selected animated:animated];
-    if (!selected) {
-        //[self transformNotSelected];
+    if (selected) {
+
     }else{
-        // subviewの背景色を復元する
-        //[self transformSelected];
+
     }
 }
 
 - (void) transformSelected{
+    self.contentView.backgroundColor = color_.gray;
     NSInteger imageWidth = self.contentView.frame.size.width * INNER_PANE_WIDTH_RATIO;
     NSInteger imageHeight = _toiletImageView.image.size.height / _toiletImageView.image.size.width * _backView.frame.size.width;
     // TODO: animation
@@ -186,9 +186,28 @@
                                         _toiletImageView.frame.origin.y,
                                         imageWidth,
                                         imageHeight);
+
+    NSInteger markerY = (_backView.frame.size.height + _toiletImageView.frame.size.height) * 0.5f;
+    _multipurposeImageView.frame = CGRectMake(
+                                              _multipurposeImageView.frame.origin.x,
+                                              markerY - _multipurposeImageView.frame.size.height * 0.5,
+                                              _multipurposeImageView.frame.size.width,
+                                              _multipurposeImageView.frame.size.height);
+    _washletImageView.frame = CGRectMake(
+                                              _washletImageView.frame.origin.x,
+                                              markerY - _washletImageView.frame.size.height * 0.5,
+                                              _washletImageView.frame.size.width,
+                                              _washletImageView.frame.size.height);
+
+    _storeName.frame = CGRectMake(
+                                 INNER_PANE_STORE_NAME_LEFT_MARGIN_RATIO * width_,
+                                 markerY - _storeName.frame.size.height * 0.5,
+                                 INNER_PANE_STORE_NAME_WIDTH_RATIO_BIG * _backView.frame.size.width,
+                                 _storeName.frame.size.height);
 }
 
 - (void) transformNotSelected{
+    self.contentView.backgroundColor = color_.white;
     _backView.frame = CGRectMake(
                                  _backView.frame.origin.x,
                                  _backView.frame.origin.y,

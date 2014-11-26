@@ -31,6 +31,7 @@
     UILabel *buildingName_;
     NSIndexPath *selectedIndexPath_;
     Color *color_;
+    GMSMapView *mapView_;
 }
 
 - (id) init{
@@ -97,6 +98,10 @@
     self.tableView.backgroundColor = color_.white;
     
     return self;
+}
+
+- (void) registerMapView:(GMSMapView *)mapView{
+    mapView_ = mapView;
 }
 
 - (void) onScreen{
@@ -241,11 +246,17 @@
 {
     if (selectedIndexPath_.row == indexPath.row && selectedIndexPath_.section == indexPath.section) {
         selectedIndexPath_ = [NSIndexPath indexPathForRow:-1 inSection:-1];
+        [self markToilets];
     }else{
         selectedIndexPath_ = indexPath;
+        [self removeToiletsMarker];
+        Toilet *toilet = ((Toilet *)floorData_[indexPath.section][indexPath.row]);
+        toilet.marker.map = mapView_;
     }
     [self.tableView reloadData];
 
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    
     NSLog(@"選択されました");
 }
 
@@ -300,4 +311,19 @@
     return height;
 }
 
+- (void) removeToiletsMarker{
+    for (NSMutableArray *toiletByFloor in floorData_) {
+        for (Toilet *toilet in toiletByFloor) {
+            toilet.marker.map = nil;
+        }
+    }
+}
+
+- (void) markToilets{
+    for (NSMutableArray *toiletByFloor in floorData_) {
+        for (Toilet *toilet in toiletByFloor) {
+            toilet.marker.map = mapView_;
+        }
+    }
+}
 @end
