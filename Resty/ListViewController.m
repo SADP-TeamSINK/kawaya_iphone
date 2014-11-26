@@ -32,6 +32,8 @@
     NSIndexPath *selectedIndexPath_;
     Color *color_;
     GMSMapView *mapView_;
+    
+    UIImageView *handleImageView_;
 }
 
 - (id) init{
@@ -50,13 +52,23 @@
     baseView_ = [[UIView alloc] initWithFrame:CGRectMake(0, height_, baseWidth_, baseHeignt_)];
     baseView_.backgroundColor = color_.white;
     
-    // ヘッダを設定
+    // トップヘッダを設定
     headerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width_, LIST_TOP_BAR_HEIGHT)];
     headerView_.backgroundColor = color_.gray;
     headerView_.layer.shadowOpacity = 0.4; // 濃さを指定
     headerView_.layer.shadowRadius = 2.0f;
     headerView_.layer.shadowOffset = CGSizeMake(0.0, 0); // 影までの距離を指定
     [baseView_ addSubview:headerView_];
+    // ハンドル画像の設定
+    UIImage *handleImage = [UIImage imageNamed:@"handle.png"];
+    double handleRatio = handleImage.size.height / handleImage.size.width;
+    handleImageView_ = [[UIImageView alloc] initWithImage:handleImage];
+    handleImageView_.frame = CGRectMake(
+                                    (width_ - HANDLE_WIDTH) * 0.5,
+                                    HANDLE_TOP_MARGIN,
+                                    HANDLE_WIDTH,
+                                    HANDLE_WIDTH * handleRatio);
+    [headerView_ addSubview:handleImageView_];
     
     // buildingNameを準備
     buildingName_ = [[UILabel alloc] initWithFrame:CGRectMake( width_ - BUILDING_NAME_RIGHT_MARGIN - BUILDING_NAME_WIDTH_RATIO * width_, 0, BUILDING_NAME_WIDTH_RATIO * width_, LIST_TOP_BAR_HEIGHT)];
