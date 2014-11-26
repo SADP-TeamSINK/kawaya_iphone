@@ -66,12 +66,12 @@
              "floor": 1,
              "store_name": "",
              "room": [
-                      {"id": 13, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 14, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 15, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 16, "available": false, "washlet": true, "multipurpose": false},
+                      {"id": 13, "available": false, "washlet": false, "multipurpose": false},
+                      {"id": 14, "available": false, "washlet": false, "multipurpose": false},
+                      {"id": 15, "available": false, "washlet": false, "multipurpose": false},
+                      {"id": 16, "available": false, "washlet": false, "multipurpose": false},
                       {"id": 17, "available": false, "washlet": false, "multipurpose": false},
-                      {"id": 18, "available": true, "washlet": true, "multipurpose": false}
+                      {"id": 18, "available": true, "washlet": false, "multipurpose": false}
                       ],
              "latitude": 35.026665,
              "longitude" : 135.781873,
@@ -82,12 +82,12 @@
              "floor": 2,
              "store_name": "",
              "room": [
-                      {"id": 19, "available": true, "washlet": true, "multipurpose": false},
+                      {"id": 19, "available": true, "washlet": false, "multipurpose": false},
                       {"id": 20, "available": true, "washlet": false, "multipurpose": false},
                       {"id": 21, "available": true, "washlet": false, "multipurpose": false},
                       {"id": 22, "available": true, "washlet": false, "multipurpose": false},
-                      {"id": 23, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 24, "available": true, "washlet": true, "multipurpose": false}
+                      {"id": 23, "available": true, "washlet": false, "multipurpose": false},
+                      {"id": 24, "available": true, "washlet": false, "multipurpose": false}
                       ],
              "latitude": 35.026685,
              "longitude" : 135.781893,
@@ -98,12 +98,12 @@
             "floor": -1,
             "store_name": "食堂前",
             "room": [
-                     {"id": 19, "available": true, "washlet": true, "multipurpose": false},
+                     {"id": 19, "available": true, "washlet": false, "multipurpose": false},
                      {"id": 20, "available": false, "washlet": false, "multipurpose": false},
                      {"id": 21, "available": false, "washlet": false, "multipurpose": false},
                      {"id": 22, "available": false, "washlet": false, "multipurpose": false},
-                     {"id": 23, "available": false, "washlet": true, "multipurpose": true},
-                     {"id": 24, "available": false, "washlet": true, "multipurpose": false}
+                     {"id": 23, "available": false, "washlet": false, "multipurpose": true},
+                     {"id": 24, "available": false, "washlet": false, "multipurpose": false}
                      ],
             "latitude": 35.026685,
             "longitude" : 135.781883,

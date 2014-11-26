@@ -69,10 +69,14 @@
     
     // dammy json からパースした建物オブジェクトをマップ上にマーキング
     
+    NSLog(@"stateOfWash:%@", stateOfWash ? @"YES" : @"NO"); //→最初はNO
     //ウォシュレットがある建物をフィルタリング ++++++
-    if(stateOfWash){//FiltrerButtonControllerボタンの判定　(依然赤Error) //Use of undeclared identifier 'stateOfWash'
+    if(stateOfWash){//FiltrerButtonControllerボタンの判定
+        //最終的には1行でボタンの判定とメソッド呼び出しを行ってbuildingsを更新する//[self filtering:buildings stateOfSex:stateOfSex stateOfWashlet:stateOfWashlet stateOfMultipurpose]
         buildings = [self washFiltering:buildings];//フィルタリングメソッド呼び出し
+        NSLog(@"washfiltering: %@",buildings);
     }
+    
     // TODO: フィルタリングした結果を表示
     [self markBuildings:buildings];
     [buildings_ addObjectsFromArray:buildings];
@@ -263,19 +267,24 @@
 
 //ウォシュレットフィルタリングのメソッド(ウォシュレットがない建物を抜き出す) ++
 - (NSMutableArray *) washFiltering:(NSMutableArray *)buildings{
-    NSMutableArray *tmp; //ウォシュレットがある建物だけの配列の仮箱
+    NSLog(@"inMethod1:%@",buildings);
+    NSMutableArray *tmp = [NSMutableArray array]; //ウォシュレットがある建物だけの配列の仮箱
+    NSLog(@"TmpCheck:%@",tmp);//check
     for(Building *building in buildings){ //建物を順番に調べる
         for (NSMutableArray *toiletByFloor in building.toilets) {
             for (Toilet *toilet in toiletByFloor) {
-                if(toilet.hasWashlet){ //建物内のトイレにウォシュレットがあるかを調べる　 (依然赤Error) //Use of undeclared identifier 'toilet'
-                    [tmp addObject:building];
+                if(toilet.hasWashlet){ //建物内のトイレにウォシュレットがあるかを調べる
+                    //NSLog(@"hasWashletの判定:%@",toilet.hasWashlet ? @YES : @NO);
+                    [tmp addObject:building]; //dummyでウォシュレットないやつを追加。
+                    //NSLog(@"inMethodTmp:%@",tmp);
+                    break;
                 }
             }
         }
     }
+    NSLog(@"finaltmp:%@",tmp);
     return tmp; //ウォシュレットがある建物だけの配列を返す
 }
-
 
 - (void) markBuildings:(NSMutableArray *)buildings{
     for (Building *building in buildings) {
