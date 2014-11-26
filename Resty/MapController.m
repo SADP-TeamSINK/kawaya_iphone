@@ -21,7 +21,9 @@
     ListViewController *listViewController_;
     NSMutableArray *buildings_;
     FilteringButtonController *filteringButtonController_;
-    Boolean stateOfWash;
+    Sex stateOfSex;
+    Boolean stateOfWashlet;
+    Boolean stateOfMultipurpose;
 }
 
 - (id) initWithFilteringButtonController:(FilteringButtonController *)filteringButtonController{
@@ -72,10 +74,7 @@
     //ウォシュレットがある建物をフィルタリング ++++++
     //NSLog(@"stateOfWash:%@", stateOfWash ? @"true" : @"false"); //→stateOFWashの初期値:false
     NSLog(@"buildingsの初期配列:%@",buildings);
-    if(!stateOfWash){//ボタンの判定 決めで'!'の有り無しでマップ表示変更
-        buildings = [self washFiltering:buildings];//フィルタリングメソッド呼び出し
-        NSLog(@"washfilteringの結果: %@",buildings);
-    }
+    buildings = [self filtering:buildings stateOfSex:(Sex)stateOfSex stateOfWashlet:(BOOL)stateOfWashlet stateOfMultipurpose:(BOOL)stateOfMultipurpose];//filteringメソッドに対して配列buildingsと、男女、ウォシュレット、多目的トイレのボタンの状態を因数に渡し、フィルタリングメソッドを呼び出し
     
     // TODO: フィルタリングした結果を表示
     [self markBuildings:buildings];
@@ -263,25 +262,135 @@
     return sqrt(pow(topLeft.latitude - bottomLeft.latitude, 2) + pow(topLeft.longitude - bottomLeft.longitude, 2));
 }
 
-
-
-//ウォシュレットフィルタリングのメソッド ++
-- (NSMutableArray *) washFiltering:(NSMutableArray *)buildings{
-    bool out = false; //脱出用
-    NSMutableArray *hasWashletBuilding = [NSMutableArray array];
-    for(Building *building in buildings){
-        for (NSMutableArray *toiletByFloor in building.toilets) {
-            for (Toilet *toilet in toiletByFloor) {
-                if(toilet.hasWashlet){
-                    [hasWashletBuilding addObject:building];
-                    out = true;
+//フィルタリングメソッド ex.性別：男　ウォシュレット：有り　多目的トイレ：有り
+- (NSMutableArray *) filtering:(NSMutableArray *)buildings stateOfSex:(Sex)sex stateOfWashlet:(BOOL)washlet stateOfMultipurpose:(BOOL)multipurpose{
+    
+    NSLog(@"stateOfSex初期値:%@", sex==0 ? @"男(0)" : @"女(1)"); //男
+    NSLog(@"stateOfWash初期値:%@", washlet ? @"true" : @"false"); //false
+    NSLog(@"stateOfMultipurpose初期値:%@", multipurpose ? @"true" : @"false"); //false
+    
+    sex = 1;
+    washlet = false;
+    multipurpose = true;
+    
+    NSMutableArray *filteringResultBuildings = [NSMutableArray array]; //フィルタリング結果の配列 //位置情報は建物とトイレ
+    BOOL sexFrag;
+    BOOL washletFrag;
+    BOOL multipurposeFrag;
+    BOOL buildingFrag;
+    
+    if(sex==0 && washlet==false && multipurpose==false){//男 ∧ ウ× ∧ 多×
+        for(Building *building in buildings){
+            sexFrag=false;
+            buildingFrag=false;
+            for (NSMutableArray *toiletByFloor in building.toilets) {
+                for (Toilet *toilet in toiletByFloor) {
+                    if(toilet.sex==0){ //条件は性別のみ
+                        [filteringResultBuildings addObject:toilet]; //トイレ位置
+                        sexFrag=true;
+                        buildingFrag=true;
+                    }
                 }
-                if(out == true){break;}
             }
-            if(out == true){break;}
+            if(sexFrag==true && buildingFrag==true){ //男のトイレがあるとわかっていればその建物を追加
+                [filteringResultBuildings addObject:building]; //建物位置
+            }
         }
     }
-    return hasWashletBuilding;
+    
+    if(sex==1 && washlet==false && multipurpose==false){//女 ∧ ウ× ∧ 多×
+        for(Building *building in buildings){
+            sexFrag=false;
+            buildingFrag=false;
+            for (NSMutableArray *toiletByFloor in building.toilets) {
+                for (Toilet *toilet in toiletByFloor) {
+                    if(toilet.sex==1){
+                        [filteringResultBuildings addObject:toilet]; //トイレ位置
+                        sexFrag=true;
+                        buildingFrag=true;
+                    }
+                }
+            }
+            if(sexFrag==true && buildingFrag==true){ //女のトイレがあるとわかっていればその建物を追加
+                [filteringResultBuildings addObject:building]; //建物位置
+            }
+        }
+    }
+    if(sex==0 && washlet==true){  //男 ∧ ウ◯ ∧ (多◯or×)
+        for(Building *building in buildings){
+            washletFrag=false; //建物ごとに初期化
+            buildingFrag=false;
+            for (NSMutableArray *toiletByFloor in building.toilets) {
+                for (Toilet *toilet in toiletByFloor) {
+                    if(toilet.sex==0 && toilet.hasWashlet==true){
+                        [filteringResultBuildings addObject:toilet]; //トイレ位置
+                        washletFrag=true;
+                        buildingFrag=true;
+                    }
+                }
+            }
+            if(washletFrag==true && buildingFrag==true){ //男・ウォシュレットがあるとわかっていればその建物を追加
+                [filteringResultBuildings addObject:building]; //建物位置
+            }
+        }
+    }
+    if(sex==1 && washlet==true){  //女 ∧ ウ◯ ∧ (多◯or×)
+        for(Building *building in buildings){
+            washletFrag=false; //建物ごとに初期化
+            buildingFrag=false;
+            for (NSMutableArray *toiletByFloor in building.toilets) {
+                for (Toilet *toilet in toiletByFloor) {
+                    if(toilet.sex==1 && toilet.hasWashlet==true){//
+                        [filteringResultBuildings addObject:toilet]; //トイレ位置
+                        washletFrag=true;
+                        buildingFrag=true;
+                    }
+                }
+            }
+            if(washletFrag==true && buildingFrag==true){ //女・ウォシュレットがあるとわかっていればその建物を追加
+                [filteringResultBuildings addObject:building]; //建物位置
+            }
+        }
+    }
+    
+    if(sex==0 && washlet==false && multipurpose==true){//男 ∧ ウ× ∧ 多◯)
+        for(Building *building in buildings){
+            multipurposeFrag=false; //建物ごとに初期化
+            buildingFrag=false;
+            for (NSMutableArray *toiletByFloor in building.toilets) {
+                for (Toilet *toilet in toiletByFloor) {
+                    if(toilet.sex==0 && toilet.hasMultipurpose==true){//
+                        [filteringResultBuildings addObject:toilet]; //トイレ位置
+                        multipurposeFrag=true;
+                        buildingFrag=true;
+                    }
+                }
+            }
+            if(multipurposeFrag==true && buildingFrag==true){ //男・多目的トイレがあるとわかっていればその建物を追加
+                [filteringResultBuildings addObject:building];
+            }
+        }
+    }
+    if(sex==1 && washlet==false && multipurpose==true){//女 ∧ ウ× ∧ 多◯)
+        for(Building *building in buildings){
+            multipurposeFrag=false; //建物ごとに初期化
+            buildingFrag=false;
+            for (NSMutableArray *toiletByFloor in building.toilets) {
+                for (Toilet *toilet in toiletByFloor) {
+                    if(toilet.sex==1 && toilet.hasMultipurpose==true){
+                        [filteringResultBuildings addObject:toilet]; //トイレ位置
+                        multipurposeFrag=true;
+                        buildingFrag=true;
+                    }
+                }
+            }
+            if(multipurposeFrag==true && buildingFrag==true){ //女・多目的トイレがあるとわかっていればその建物を追加
+                [filteringResultBuildings addObject:building];
+            }
+        }
+    }
+    NSLog(@"フィルタ出力:%@",filteringResultBuildings);
+    return filteringResultBuildings; //フィルタリングした配列を返す
 }
 
 - (void) markBuildings:(NSMutableArray *)buildings{
