@@ -20,4 +20,5 @@
 - (void) onScreen;
 - (void) offScreen;
 - (void) listUpToilets:(Building *)building;
+- (UITableViewCell *) makeCustomCell:(NSString *)cellIdentifier indexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
 @end

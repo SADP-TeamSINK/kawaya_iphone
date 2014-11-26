@@ -23,7 +23,7 @@
         color_ = [[Color alloc] init];
         height_ = [[UIScreen mainScreen] bounds].size.height;
         width_ = [[UIScreen mainScreen] bounds].size.width;
-        
+        self.selectionStyle = UITableViewCellSelectionStyleGray;
         self.contentView.frame = CGRectMake(0, 0, width_, height_ * PANE_HEIGHT_RATIO);
         self.contentView.backgroundColor = color_.white;
         
@@ -59,6 +59,10 @@
         _storeName.textColor = color_.white;
         [_backView addSubview:_storeName];
         
+        // 利用率マーカの設定
+        _markerImageView = [[UIImageView alloc] init];
+
+        
         // ウォシュレットマークの設定
         _washletImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"washletMarker.png"]];
         _washletImageView.frame
@@ -89,7 +93,6 @@
         _toiletImageView.image = toiletImage;
         [_backView addSubview:_toiletImageView];
         
-        
     }
     
     // レイアウトをアップデート
@@ -102,41 +105,40 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void) setUtillization:(NSNumber *)utillization{
 
-    UIImage *markerImage;
-    if(utillization.doubleValue < GREEN_UTILLIZATION){
-        _backView.backgroundColor = color_.green;
-        markerImage = [UIImage imageNamed:@"greenMarkerSmall.png"];
-    }else if(utillization.doubleValue < YELLOW_UTILLIZATION){
-        _backView.backgroundColor = color_.yellow;
-        markerImage = [UIImage imageNamed:@"yellowMarkerSmall.png"];
-    }else{
-        _backView.backgroundColor = color_.red;
-        markerImage = [UIImage imageNamed:@"redMarkerSmall.png"];
+    if(![_markerImageView isDescendantOfView:_backView]){
+        UIImage *markerImage;
+        if(utillization.doubleValue < GREEN_UTILLIZATION){
+            _backView.backgroundColor = color_.green;
+            markerImage = [UIImage imageNamed:@"greenMarkerSmall.png"];
+        }else if(utillization.doubleValue < YELLOW_UTILLIZATION){
+            _backView.backgroundColor = color_.yellow;
+            markerImage = [UIImage imageNamed:@"yellowMarkerSmall.png"];
+        }else{
+            _backView.backgroundColor = color_.red;
+            markerImage = [UIImage imageNamed:@"redMarkerSmall.png"];
+        }
+        _markerImageView.image = markerImage;
+        _markerImageView.frame = CGRectMake(
+                                            _backView.frame.origin.x - UTILLIZATION_MARKER_SIZE * UTILLIZATION_MARKER_LEFT_OUT,
+                                            _backView.frame.origin.y - UTILLIZATION_MARKER_SIZE * UTILLIZATION_MARKER_TOP_OUT,
+                                            UTILLIZATION_MARKER_SIZE,
+                                            UTILLIZATION_MARKER_SIZE);
+[self.contentView addSubview:_markerImageView];
     }
-
-    _markerImageView = [[UIImageView alloc] initWithImage:markerImage];
-    _markerImageView.frame = CGRectMake(
-                                        _backView.frame.origin.x - UTILLIZATION_MARKER_SIZE * UTILLIZATION_MARKER_LEFT_OUT,
-                                        _backView.frame.origin.y - UTILLIZATION_MARKER_SIZE * UTILLIZATION_MARKER_TOP_OUT,
-                                        UTILLIZATION_MARKER_SIZE,
-                                        UTILLIZATION_MARKER_SIZE);
-    [self.contentView addSubview:_markerImageView];
 }
 
 - (void) setWashletMarker{
-    [_backView addSubview:_washletImageView];
+    if(![_washletImageView isDescendantOfView:_backView]){
+        [_backView addSubview:_washletImageView];
+    }
 }
 
 - (void) setMultipurposeMarker{
-    [_backView addSubview:_multipurposeImageView];
+    if(![_multipurposeImageView isDescendantOfView:_backView]){
+        [_backView addSubview:_multipurposeImageView];
+    }
 }
 
 - (void) adjustStoreName{
@@ -146,5 +148,60 @@
                                   _backView.frame.size.width * INNER_PANE_STORE_NAME_WIDTH_RATIO,
                                   _storeName.frame.size.height);
 }
+
+// セルが選択されている時の状態設定
+-(void) setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    if (highlighted)
+    {
+        self.contentView.backgroundColor = color_.white;
+    }
+    else
+    {// 非選択状態
+        self.contentView.backgroundColor = color_.white;
+    }
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    //[super setSelected:selected animated:animated];
+    if (!selected) {
+        //[self transformNotSelected];
+    }else{
+        // subviewの背景色を復元する
+        //[self transformSelected];
+    }
+}
+
+- (void) transformSelected{
+    NSInteger imageWidth = self.contentView.frame.size.width * INNER_PANE_WIDTH_RATIO;
+    NSInteger imageHeight = _toiletImageView.image.size.height / _toiletImageView.image.size.width * _backView.frame.size.width;
+    // TODO: animation
+    _backView.frame = CGRectMake(
+                                 _backView.frame.origin.x,
+                                 _backView.frame.origin.y,
+                                 _backView.frame.size.width,
+                                 height_ * PANE_HEIGHT_RATIO * INNER_PANE_HEIGHT_RATIO + imageHeight);
+    _toiletImageView.frame = CGRectMake(
+                                        _toiletImageView.frame.origin.x,
+                                        _toiletImageView.frame.origin.y,
+                                        imageWidth,
+                                        imageHeight);
+}
+
+- (void) transformNotSelected{
+    _backView.frame = CGRectMake(
+                                 _backView.frame.origin.x,
+                                 _backView.frame.origin.y,
+                                 self.contentView.frame.size.width * INNER_PANE_WIDTH_RATIO,
+                                 self.contentView.frame.size.height * INNER_PANE_HEIGHT_RATIO +2);
+
+    double scale = (double)_backView.frame.size.height / (double)_toiletImageView.image.size.height;
+    _toiletImageView.frame = CGRectMake(
+                                        0,
+                                        0,
+                                        scale * _toiletImageView.image.size.width,
+                                        scale * _toiletImageView.image.size.height);
+}
+
 
 @end

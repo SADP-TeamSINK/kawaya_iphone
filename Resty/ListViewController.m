@@ -29,7 +29,7 @@
     NSMutableArray *floorData_;
     
     UILabel *buildingName_;
-    
+    NSIndexPath *selectedIndexPath_;
     Color *color_;
 }
 
@@ -39,6 +39,7 @@
     color_ = [[Color alloc] init];
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
+    selectedIndexPath_ = [NSIndexPath indexPathForRow:-1 inSection:-1];
     
     // ベースのサイズを設定
     baseHeignt_ = height_ * (1 - MAP_RATIO);
@@ -101,11 +102,13 @@
 - (void) onScreen{
     baseView_.frame = CGRectMake(0, height_ * (MAP_RATIO), baseWidth_, baseHeignt_);
     [baseView_ bringSubviewToFront:headerView_];
-    [self.tableView flashScrollIndicators];
+    [self viewDidAppear:YES];
+    
 }
 
 - (void) offScreen{
     baseView_.frame = CGRectMake(0, height_, baseWidth_, baseHeignt_);
+    selectedIndexPath_ = [NSIndexPath indexPathForRow:-1 inSection:-1];
 }
 
 - (UIView *) getListView{
@@ -158,8 +161,22 @@
  */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = @"Cell";
-    ToiletTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    ToiletTableViewCell *cell;
+
+    if (selectedIndexPath_.row == indexPath.row && selectedIndexPath_.section == indexPath.section) {
+        cell = (ToiletTableViewCell *)[self makeCustomCell:@"SelectedCell" indexPath:indexPath tableView:tableView];
+        [cell transformSelected];
+    }else{
+        cell = (ToiletTableViewCell *)[self makeCustomCell:@"NotSelectedCell" indexPath:indexPath tableView:tableView];
+        [cell transformNotSelected];
+    }
+    
+    return cell;
+}
+
+- (UITableViewCell *) makeCustomCell:(NSString *)cellIdentifier indexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView{
+    ToiletTableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     Toilet *toilet = ((Toilet *)floorData_[indexPath.section][indexPath.row]);
     
@@ -192,6 +209,12 @@
     // 利用率の設定
     [cell setUtillization:[toilet getUtillization]];
     
+    if (selectedIndexPath_.row == indexPath.row && selectedIndexPath_.section == indexPath.section) {
+        [(ToiletTableViewCell *)cell transformSelected];
+    }else{
+        [(ToiletTableViewCell *)cell transformNotSelected];
+    }
+    
     return cell;
 }
 
@@ -216,6 +239,13 @@
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (selectedIndexPath_.row == indexPath.row && selectedIndexPath_.section == indexPath.section) {
+        selectedIndexPath_ = [NSIndexPath indexPathForRow:-1 inSection:-1];
+    }else{
+        selectedIndexPath_ = indexPath;
+    }
+    [self.tableView reloadData];
+
     NSLog(@"選択されました");
 }
 
@@ -257,6 +287,17 @@
     
     view.backgroundColor = color_.white;
     return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger height = 0;
+    if (selectedIndexPath_.row == indexPath.row && selectedIndexPath_.section == indexPath.section) {
+        height = 300;
+    }else{
+        height = PANE_HEIGHT_RATIO * height_;
+    }
+    return height;
 }
 
 @end

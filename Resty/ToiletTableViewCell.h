@@ -22,5 +22,7 @@
 - (void) setWashletMarker;
 - (void) setMultipurposeMarker;
 - (void) adjustStoreName;
+- (void) transformSelected;
+- (void) transformNotSelected;
 @end
 

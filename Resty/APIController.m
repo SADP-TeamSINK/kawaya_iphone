@@ -72,7 +72,7 @@ NSMutableSet *obtainedMeshMutableSet_;
 
     //送信するパラメータの組み立て
     NSMutableDictionary *mutableDic = [NSMutableDictionary dictionary];
-    [mutableDic setValue:meshArray forKey:@"meshNuber"];
+    [mutableDic setValue:meshArray forKey:@"mesh_nuber"];
     
     NSError *error;
     if([NSJSONSerialization isValidJSONObject:mutableDic]){
