@@ -33,10 +33,6 @@
 
     aPIController_ = [[APIController alloc] initWithUrl:[NSURL URLWithString:API_URL]];
     
-    CLLocationCoordinate2D tmp;
-    tmp.latitude = 35.026685;
-    tmp.longitude = 135.781883;
-    NSLog(@"mesh: %lu", (unsigned long)[aPIController_ getMeshNumberFromCoordinate:tmp]);
     //画面サイズ取得
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
@@ -95,7 +91,6 @@
     mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, width_, height_) camera:camera];
     mapView_.myLocationEnabled = YES;
 
-    
     // delegateにこのMapControllerを設定
     mapView_.delegate = self;
     
@@ -330,6 +325,9 @@
 }
 
 - (void) updateBuildings{
+    if(!listViewController_.isOn){
+        [mapView_ clear];
+    }
     [buildings_ removeAllObjects];
     [aPIController_ clearMeshCash];
     [self callApi:mapView_];
@@ -337,7 +335,7 @@
 
 - (void) callApi:(GMSMapView *)mapView{
     // 縮小しすぎている場合はAPIを叩かない
-    if (mapView.camera.zoom < 15) return;
+    if (mapView.camera.zoom < 16) return;
     
     CLLocationCoordinate2D topLeftCoordinate = [self getTopLeftCoordinate];
     CLLocationCoordinate2D bottomRightCoordinate = [self getBottomRightCoordinate];

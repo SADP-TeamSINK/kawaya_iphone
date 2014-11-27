@@ -24,7 +24,7 @@
     _longitude = longitude;
 
     
-    for (int i = 0; i < self.floorSize * 2; i++) {
+    for (int i = 0; i < self.floorSize * 2 + 1; i++) {
         [self.toilets addObject:[NSMutableArray array]];
     }
     

@@ -27,6 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    CLLocation *myLocation = mapView_.myLocation;
+    mapView_.camera = [GMSCameraPosition cameraWithTarget:myLocation.coordinate
+                                                     zoom:17];
 }
 
 
@@ -55,6 +58,16 @@
     mapController_ = [[MapController alloc] initWithFilteringButtonController:filteringButtonController_];
     mapView_ = [mapController_ getMapView];
     mapView_.settings.myLocationButton = YES;
+    // Listen to the myLocation property of GMSMapView.
+    [mapView_ addObserver:self
+               forKeyPath:@"myLocation"
+                  options:NSKeyValueObservingOptionNew
+                  context:NULL];
+    
+    // Ask for My Location data after the map has already been added to the UI.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        mapView_.myLocationEnabled = YES;
+    });
     
     [self.view addSubview:mapView_];
     // フッターの背景Viewを作成
@@ -93,9 +106,8 @@
 
 -(void)pushBtnUpdate:(UIButton*)button{
     [filteringButtonController_ tappedUpdateButton:button];
-    [mapView_ clear];
     [mapController_ updateBuildings];
-    [self pushAnyButton];
+    [mapController_ updateListForState];
 }
 
 -(void)pushBtnWashlet:(UIButton*)button{
@@ -123,5 +135,28 @@
     [mapController_ updateListForState];
 }
 
+
+
+- (void)dealloc {
+    [mapView_ removeObserver:self
+                  forKeyPath:@"myLocation"
+                     context:NULL];
+}
+
+#pragma mark - KVO updates
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+    if (!firstLocationUpdate_) {
+        // If the first location update has not yet been recieved, then jump to that
+        // location.
+        firstLocationUpdate_ = YES;
+        CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+        mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
+                                                         zoom:17];
+    }
+}
 
 @end
