@@ -265,7 +265,7 @@
 - (NSMutableArray *) filtering:(NSMutableArray *)buildings stateOfSex:(Sex)sex stateOfWashlet:(BOOL)washlet stateOfMultipurpose:(BOOL)multipurpose{
     
     //初期状態のチェック
-    NSLog(@"stateOfSex初期値:%@", sex==0 ? @"男(0)" : @"女(1)"); //>>男
+    NSLog(@"stateOfSex初期値:%@", sex==0 ? @"男(0)" :@"女(1)"); //>>男
     NSLog(@"stateOfWash初期値:%@", washlet ? @"true" : @"false"); //>>false
     NSLog(@"stateOfMultipurpose初期値:%@", multipurpose ? @"true" : @"false"); //>>false
     
@@ -284,13 +284,13 @@
     BOOL buildingFrag;
     
     //ボタン状態に分けてフィルタリング
-    if(sex==0 && washlet==false && multipurpose==false){//男 ∧ ウ× ∧多×
+    if((sex==0 || sex==2) && washlet==false && multipurpose==false){//男 ∧ ウ× ∧多×
         for(Building *building in buildings){
             sexFrag=false; //建物ごとに初期化
             buildingFrag=false;
             for (NSMutableArray *toiletByFloor in building.toilets) {
                 for (Toilet *toilet in toiletByFloor) {
-                    if(toilet.sex==0){ //条件は性別のみ
+                    if(toilet.sex==0 || toilet.sex==2){ //条件は性別のみ
                         //[filteringResultBuildings addObject:toilet]; //トイレ位置を追加 > Thread1:signal SIGABRT
                         sexFrag=true; //フラグを立てる
                         buildingFrag=true;
@@ -302,13 +302,13 @@
             }
         }
     }
-    if(sex==1 && washlet==false && multipurpose==false){//女 ∧ ウ× ∧ 多×
+    if((sex==1 || sex==2) && washlet==false && multipurpose==false){//女 ∧ ウ× ∧ 多×
         for(Building *building in buildings){
             sexFrag=false;
             buildingFrag=false;
             for (NSMutableArray *toiletByFloor in building.toilets) {
                 for (Toilet *toilet in toiletByFloor) {
-                    if(toilet.sex==1){
+                    if(toilet.sex==1 || toilet.sex==2){
                         //[filteringResultBuildings addObject:toilet];
                         sexFrag=true;
                         buildingFrag=true;
@@ -320,13 +320,13 @@
             }
         }
     }
-    if(sex==0 && washlet==true){  //男 ∧ ウ◯ ∧ (多◯ or ×)
+    if((sex==0 || sex==2) && washlet==true){  //男 ∧ ウ◯ ∧ (多◯ or ×)
         for(Building *building in buildings){
             washletFrag=false;
             buildingFrag=false;
             for (NSMutableArray *toiletByFloor in building.toilets) {
                 for (Toilet *toilet in toiletByFloor) {
-                    if(toilet.sex==0 && toilet.hasWashlet==true){
+                    if((toilet.sex==0 || toilet.sex==2) && toilet.hasWashlet==true){
                         //[filteringResultBuildings addObject:toilet];
                         washletFrag=true; //ウォシュレットフラグを立てる
                         buildingFrag=true;
@@ -338,13 +338,13 @@
             }
         }
     }
-    if(sex==1 && washlet==true){  //女 ∧ ウ◯ ∧ (多◯ or ×)
+    if((sex==1 || sex==2) && washlet==true){  //女 ∧ ウ◯ ∧ (多◯ or ×)
         for(Building *building in buildings){
             washletFrag=false;
             buildingFrag=false;
             for (NSMutableArray *toiletByFloor in building.toilets) {
                 for (Toilet *toilet in toiletByFloor) {
-                    if(toilet.sex==1 && toilet.hasWashlet==true){
+                    if((toilet.sex==1 || toilet.sex==2) && toilet.hasWashlet==true){
                         //[filteringResultBuildings addObject:toilet];
                         washletFrag=true;
                         buildingFrag=true;
@@ -357,13 +357,13 @@
         }
     }
     
-    if(sex==0 && washlet==false && multipurpose==true){//男 ∧ ウ× ∧ 多◯)
+    if((sex==0 || sex==1) && washlet==false && multipurpose==true){//男 ∧ ウ× ∧ 多◯)
         for(Building *building in buildings){
             multipurposeFrag=false;
             buildingFrag=false;
             for (NSMutableArray *toiletByFloor in building.toilets) {
                 for (Toilet *toilet in toiletByFloor) {
-                    if(toilet.sex==0 && toilet.hasMultipurpose==true){
+                    if((toilet.sex==0 || toilet.sex==2) && toilet.hasMultipurpose==true){
                         //[filteringResultBuildings addObject:toilet];
                         multipurposeFrag=true; //多目的トイレフラグを立てる
                         buildingFrag=true;
@@ -375,13 +375,13 @@
             }
         }
     }
-    if(sex==1 && washlet==false && multipurpose==true){//女 ∧ ウ× ∧ 多◯)
+    if((sex==1 || sex==2) && washlet==false && multipurpose==true){//女 ∧ ウ× ∧ 多◯)
         for(Building *building in buildings){
             multipurposeFrag=false;
             buildingFrag=false;
             for (NSMutableArray *toiletByFloor in building.toilets) {
                 for (Toilet *toilet in toiletByFloor) {
-                    if(toilet.sex==1 && toilet.hasMultipurpose==true){
+                    if((toilet.sex==1 || toilet.sex==2) && toilet.hasMultipurpose==true){
                         //[filteringResultBuildings addObject:toilet];
                         multipurposeFrag=true;
                         buildingFrag=true;
