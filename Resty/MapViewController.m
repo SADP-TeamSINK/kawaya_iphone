@@ -37,7 +37,7 @@
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
     
-    filteringButtonController_ = [[FilteringButtonController alloc] initWithState:BOTH empty:FALSE washlet:TRUE multipurpose:FALSE parent:self];
+    filteringButtonController_ = [[FilteringButtonController alloc] initWithState:MAN washlet:FALSE multipurpose:FALSE parent:self];
     UIButton *btnSex = filteringButtonController_.sexButton;
     UIButton *btnUpdate = filteringButtonController_.updateButton;
     UIButton *btnWashlet = filteringButtonController_.washletButton;
@@ -87,18 +87,25 @@
 -(void)pushBtnSex:(UIButton*)button{
     [filteringButtonController_ tappedSexButton:button];
     NSLog(@"myLocation: (%@)", mapView_.myLocation);
+    
+    [self pushAnyButton];
 }
 
 -(void)pushBtnUpdate:(UIButton*)button{
     [filteringButtonController_ tappedUpdateButton:button];
+    [mapView_ clear];
+    [mapController_ updateBuildings];
+    [self pushAnyButton];
 }
 
 -(void)pushBtnWashlet:(UIButton*)button{
     [filteringButtonController_ tappedWashletButton:button];
+    [self pushAnyButton];
 }
 
 -(void)pushBtnMultipurpose:(UIButton*)button{
     [filteringButtonController_ tappedMultipurposeButton:button];
+    [self pushAnyButton];
 }
 
 
@@ -111,6 +118,10 @@
 // Rather than setting -myLocationEnabled to YES directly,
 // call this method:
 
+- (void) pushAnyButton{
+    [mapController_ updateAllBuildingMarkerForState];
+    [mapController_ updateListForState];
+}
 
 
 @end

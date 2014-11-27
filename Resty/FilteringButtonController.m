@@ -25,7 +25,7 @@
     UIImage *updateButtonImage;
     UIImage *updateButtonHighlightedImage;
 }
-- (id) initWithState:(Sex)sex empty:(Boolean)empty washlet:(Boolean)washlet multipurpose:(Boolean)multipurpose parent:(UIViewController*)p
+- (id) initWithState:(Sex)sex washlet:(Boolean)washlet multipurpose:(Boolean)multipurpose parent:(UIViewController*)p
 {
     self = [super init];
     parent = p;

@@ -10,7 +10,6 @@
 #import <Foundation/Foundation.h>
 
 @implementation Building {
-    double utillization_;
 }
 
 -(id) initWithSetting:(NSInteger)buildingID name:(NSString *)name floorSize:(NSInteger)floorSize latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude{
@@ -24,7 +23,6 @@
     _latitude = latitude;
     _longitude = longitude;
 
-    utillization_ = -1;
     
     for (int i = 0; i < self.floorSize * 2; i++) {
         [self.toilets addObject:[NSMutableArray array]];
@@ -42,24 +40,24 @@
 
 // 建物の持っているトイレの利用率の平均を，その建物のトイレ利用率とする
 // すでにutilizationを計算している場合は使い回し．
-- (NSNumber *) getUtillization{
-    if(utillization_ == -1){
-        double sum = 0;
-        double numberOfToilet = 0;
-        for (NSMutableArray *toiletsByFloor in self.toilets) {
-            for (Toilet *toilet in toiletsByFloor) {
-                numberOfToilet++;
-                sum += [toilet getUtillization].doubleValue;
+- (NSNumber *) getUtillizationWithState:(Sex)sex washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose{
+    double sum = 0;
+    double numberOfToilet = 0;
+    for (NSMutableArray *toiletsByFloor in self.toilets) {
+        for (Toilet *toilet in toiletsByFloor) {
+            if(sex == BOTH || sex == toilet.sex){
+                double util = [toilet getUtillizationWithState:washlet multipurpose:multipurpose].doubleValue;
+                if(!isnan(util)){
+                    numberOfToilet++;
+                    sum += util;
+                }
             }
         }
-        utillization_ = sum / numberOfToilet;
     }
-    return [[NSNumber alloc] initWithDouble:utillization_];
+    return [[NSNumber alloc] initWithDouble:sum / numberOfToilet];
 }
 
 + (NSMutableArray *) parseBuildingFromJson:(NSString *)json{
-    
-
     NSMutableArray *buildings = [NSMutableArray array];
     NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -132,4 +130,18 @@
         _marker.map = mapView;
     }
 }
+
+- (BOOL) hasFilteringToilet:(Sex)sex washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose{
+    for (NSMutableArray *toiletByFloor in _toilets) {
+        for (Toilet *toilet in toiletByFloor) {
+            if(!(sex == BOTH || sex == toilet.sex)){ continue; }
+            if((!washlet || toilet.hasWashlet) && (!multipurpose || toilet.hasMultipurpose)){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+
 @end

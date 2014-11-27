@@ -25,9 +25,9 @@
 - (id) initWithSetting:(NSInteger) buildingID name:(NSString *)name floorSize:(NSInteger) floorSize latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 
 - (NSInteger) addToilet:(Toilet *)toilet;
-- (NSNumber *) getUtillization;
+- (NSNumber *) getUtillizationWithState:(Sex)sex washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose;
 + (NSMutableArray *) parseBuildingFromJson:(NSString *)json;
 - (void) removeMarker;
-- (void) clearMarker;
 - (void) putMarker:(GMSMapView *)mapView;
+- (BOOL) hasFilteringToilet:(Sex)sex washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose;
 @end

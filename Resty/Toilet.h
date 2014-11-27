@@ -30,7 +30,7 @@
 - (id) initWithSetting:(NSInteger)toiletID floor:(NSInteger)floor storeName:(NSString*)storeName latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude sex:(Sex)sex;
 
 - (NSInteger) addRoom:(Room*)room;
-- (NSNumber *) getUtillization;
+- (NSNumber *) getUtillizationWithState:(BOOL)washlet multipurpose:(BOOL)multipurpose;
 - (UIView *) getToiletPane;
 - (void) setOwner:(Building *)building;
 - (Building *) getOwner;

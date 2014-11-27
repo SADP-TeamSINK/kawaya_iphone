@@ -117,6 +117,9 @@ NSMutableSet *obtainedMeshMutableSet_;
     return returnedJson;
 }
 
+- (void) clearMeshCash{
+    [obtainedMeshMutableSet_ removeAllObjects];
+}
 
 
 @end

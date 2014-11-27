@@ -25,6 +25,9 @@
 - (CLLocationCoordinate2D) getBottomRightCoordinate;
 - (void) markBuildings:(NSMutableArray *)buildings;
 - (void) markToilets:(Building *)building;
-- (UIImage *) getUIColorForMarker:(NSNumber *)utillization;
-
+- (UIImage *) getUIImageForMarker:(NSNumber *)utillization;
+- (void) updateAllBuildingMarkerForState;
+- (void) updateListForState;
+- (void) updateBuildings;
+- (void) callApi:(GMSMapView *)mapView;
 @end

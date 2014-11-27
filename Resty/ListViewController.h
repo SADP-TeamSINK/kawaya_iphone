@@ -15,7 +15,8 @@
 #import "Color.h"
 
 @interface ListViewController : UITableViewController <GMSMapViewDelegate, UITableViewDelegate, UITableViewDataSource>
-- (id) init;
+@property (nonatomic) BOOL isOn;
+- (id) initWithForState:(Sex)sex washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose;
 - (UIView *) getListView;
 - (void) onScreen;
 - (void) offScreen;
@@ -25,5 +26,9 @@
 - (void) markToilets;
 
 - (void) registerMapView:(GMSMapView *)mapView;
+
+- (void) updateListForState:(Sex)sex washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose;
+
+- (void) filteringToilts;
 
 @end

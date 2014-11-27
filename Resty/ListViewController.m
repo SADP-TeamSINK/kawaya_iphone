@@ -25,6 +25,8 @@
     NSInteger baseWidth_;
     Building *building_;
     
+    NSMutableArray *toilets_;
+    
     NSMutableArray *floorName_;
     NSMutableArray *floorData_;
     
@@ -34,11 +36,20 @@
     GMSMapView *mapView_;
     
     UIImageView *handleImageView_;
+    
+    Sex sex_;
+    BOOL washlet_;
+    BOOL multipurpose_;
 }
 
-- (id) init{
+- (id) initWithForState:(Sex)sex washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose{
     self = [super initWithStyle:UITableViewStyleGrouped];
-
+    
+    sex_ = sex;
+    washlet_ = washlet;
+    multipurpose = multipurpose;
+    _isOn = false;
+    
     color_ = [[Color alloc] init];
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
@@ -121,11 +132,14 @@
     [baseView_ bringSubviewToFront:headerView_];
     [self viewDidAppear:YES];
     
+    _isOn = true;
+    
 }
 
 - (void) offScreen{
     baseView_.frame = CGRectMake(0, height_, baseWidth_, baseHeignt_);
     selectedIndexPath_ = [NSIndexPath indexPathForRow:-1 inSection:-1];
+    _isOn = false;
 }
 
 - (UIView *) getListView{
@@ -133,17 +147,33 @@
 }
 
 - (void) listUpToilets:(Building *)building{
+    toilets_ = building.toilets;
+    [self filteringToilts];
+    buildingName_.text = building.name;
+    [self markToilets];
+    [self.tableView reloadData];
+}
+- (void) filteringToilts{
     [floorName_ removeAllObjects];
     [floorData_ removeAllObjects];
-    for (NSMutableArray *toiletByFloor in building.toilets) {
-        if ([toiletByFloor count] == 0) continue;
+    for (NSMutableArray *toiletByFloor in toilets_) {
         // その階層にトイレが登録されていない場合は continue
+        if ([toiletByFloor count] == 0) continue;
         NSLog(@"floor: %ld, toilet: %@", (long)((Toilet *)toiletByFloor[0]).floor, ((Toilet *)toiletByFloor[0]).storeName);
-        [floorName_ addObject:[NSString stringWithFormat:@"%d", (int)((Toilet *)toiletByFloor[0]).floor]];
-        [floorData_ addObject:toiletByFloor];
+        
+        NSMutableArray *filteredToiletByFloor = [NSMutableArray array];
+        for (Toilet *toilet in toiletByFloor) {
+            if(sex_ == BOTH || sex_ == toilet.sex){
+                if((!washlet_ || toilet.hasWashlet) && (!multipurpose_ || toilet.hasMultipurpose)){
+                    [filteredToiletByFloor addObject:toilet];
+                }
+            }
+        }
+        if([filteredToiletByFloor count] > 0){
+            [floorName_ addObject:[NSString stringWithFormat:@"%d", (int)((Toilet *)toiletByFloor[0]).floor]];
+            [floorData_ addObject:filteredToiletByFloor];
+        }
     }
-    buildingName_.text = building.name;
-    [self.tableView reloadData];
 }
 
 // テーブルが表示されるときに，データのリロードと選択業の削除を行う
@@ -224,7 +254,7 @@
     }
     
     // 利用率の設定
-    [cell setUtillization:[toilet getUtillization]];
+    [cell setUtillization:[toilet getUtillizationWithState:washlet_ multipurpose:multipurpose_]];
     
     if (selectedIndexPath_.row == indexPath.row && selectedIndexPath_.section == indexPath.section) {
         [(ToiletTableViewCell *)cell transformSelected];
@@ -324,7 +354,7 @@
 }
 
 - (void) removeToiletsMarker{
-    for (NSMutableArray *toiletByFloor in floorData_) {
+    for (NSMutableArray *toiletByFloor in toilets_) {
         for (Toilet *toilet in toiletByFloor) {
             toilet.marker.map = nil;
         }
@@ -338,4 +368,15 @@
         }
     }
 }
+
+- (void) updateListForState:(Sex)sex washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose{
+    sex_ = sex;
+    washlet_ = washlet;
+    multipurpose_ = multipurpose;
+    [self filteringToilts];
+    selectedIndexPath_ = [NSIndexPath indexPathForRow:-1 inSection:-1];
+    [self.tableView reloadData];
+    [self markToilets];
+}
+
 @end

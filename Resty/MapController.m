@@ -1,4 +1,4 @@
-//
+        //
 //  MapController.m
 //  Resty
 //
@@ -45,7 +45,7 @@
     buildings_ = [NSMutableArray array];
     
     // ListViewControllerの初期化
-    listViewController_ = [[ListViewController alloc] init];
+    listViewController_ = [[ListViewController alloc] initWithForState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
     
     // マルチスレッド処理の準備
     // メインスレッド用で処理を実行するキューを定義する
@@ -65,11 +65,11 @@
     [mapView_ addSubview:[listViewController_ getListView]];
     [listViewController_ registerMapView:mapView_];
     
-    /*
     
+    /*
     // ----------------------------------------------------
     // ダミーデータの読み込み
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"dammy2" ofType:@"json"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"dammy" ofType:@"json"];
     NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:filePath];
     NSData *dammyJsonData = [fileHandle readDataToEndOfFile];
     
@@ -78,9 +78,6 @@
     
     //フィルタリング
     NSLog(@"buildingsの初期配列:%@",buildings);
-    buildings = [self filtering:buildings stateOfSex:(Sex)stateOfSex stateOfWashlet:(BOOL)stateOfWashlet stateOfMultipurpose:(BOOL)stateOfMultipurpose]; //filteringメソッドにボタン状態を渡す
-    
-    //フィルタリングした結果を表示
     [self markBuildings:buildings];
     [buildings_ addObjectsFromArray:buildings];
     // ----------------------------------------------------
@@ -140,27 +137,8 @@
     //NSLog(@"didChangeCameraPosition %f,%f", position.target.latitude, position.target.longitude);
     [mapView_ bringSubviewToFront:[listViewController_ getListView]];
     
+    [self callApi:mapView_];
 
-    // 縮小しすぎている場合はAPIを叩かない
-    if (mapView.camera.zoom < 15) return;
-
-    CLLocationCoordinate2D topLeftCoordinate = [self getTopLeftCoordinate];
-    CLLocationCoordinate2D bottomRightCoordinate = [self getBottomRightCoordinate];
-
-    // 並列処理開始
-    dispatch_async(sub_queue_, ^{
-        //ここはサブスレッド
-        NSString *json = [aPIController_ callFromCoordinate:topLeftCoordinate  BottomRightCoordinate:bottomRightCoordinate];
-
-        dispatch_async(main_queue_, ^{
-            // ここはメインスレッド
-            // APIを叩いたあとの処理をここへ記述
-            if([json isEqualToString:@"{}"]){ return ;}
-            NSLog(@"%@", json);
-            NSMutableArray *buildings = [Building parseBuildingFromJson:json];
-            [buildings_ addObjectsFromArray:buildings];
-        });
-    });
 }
 
 
@@ -208,13 +186,13 @@
     } completion:^(BOOL finished){
     }];
 
-    NSLog(@"Utillization: %@", [building getUtillization]);
+    NSLog(@"Utillization: %@", [building getUtillizationWithState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose]);
 
     // タップされたマーカに対応している建物のもつトイレを，ListViewにリストアップ
     // その際，すべてのマーカを一旦クリア
     [mapView_ clear];
-    [listViewController_ listUpToilets:building];
     [self markToilets:building];
+    [listViewController_ listUpToilets:building];
     
     return YES;
 }
@@ -271,14 +249,18 @@
 }
 
 - (void) markBuildings:(NSMutableArray *)buildings{
+    if(listViewController_.isOn) return;
     for (Building *building in buildings) {
+        // 建物がフィルタリングに該当するトイレを持っていない場合はcontinue
+        if(![building hasFilteringToilet:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose]){ continue; }
+
         CLLocationCoordinate2D position = CLLocationCoordinate2DMake(building.latitude.doubleValue, building.longitude.doubleValue);
         GMSMarker *marker = [GMSMarker markerWithPosition:position];
         marker.title = building.name;
         marker.map = mapView_;
         marker.userData = building;
-        marker.icon = [self getUIColorForMarker:[building getUtillization]];
-        marker.zIndex = (int)(1.0 - [building getUtillization].doubleValue);
+        marker.icon = [self getUIImageForMarker:[building getUtillizationWithState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose]];
+        marker.zIndex = (int)(1.0 - [building getUtillizationWithState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose].doubleValue);
         building.marker = marker;
     }
 }
@@ -289,12 +271,12 @@
             CLLocationCoordinate2D position = CLLocationCoordinate2DMake(toilet.latitude.doubleValue, toilet.longitude.doubleValue);
             GMSMarker *marker = [GMSMarker markerWithPosition:position];
             marker.title = toilet.storeName;
-            marker.map = mapView_;
+            //marker.map = mapView_;
             marker.userData = toilet;
-            marker.icon = [self getUIColorForMarker:[toilet getUtillization]];
-            marker.zIndex = (int)(1.0 - [toilet getUtillization].doubleValue);
+            NSNumber *utillization = [toilet getUtillizationWithState:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
+            marker.icon = [self getUIImageForMarker:utillization];
+            marker.zIndex = (int)(1.0 - utillization.doubleValue);
             toilet.marker = marker;
-            
         }
     }
 }
@@ -307,7 +289,7 @@
     }
 }
 
-- (UIImage *) getUIColorForMarker:(NSNumber *)utillization{
+- (UIImage *) getUIImageForMarker:(NSNumber *)utillization{
     UIImage *markerImage;
     
     if(utillization.doubleValue < GREEN_UTILLIZATION){
@@ -331,5 +313,50 @@
 }
 
 
+- (void) updateAllBuildingMarkerForState{
+   for (Building *building in buildings_) {
+       GMSMarker *marker = building.marker;
+       NSNumber *utillization = [building getUtillizationWithState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
+       marker.icon = [self getUIImageForMarker:utillization];
+       marker.zIndex = (int)(1.0 - utillization.doubleValue);
+       building.marker = marker;
+    }
+    [mapView_ clear];
+    [self markBuildings:buildings_];
+}
+
+- (void) updateListForState{
+    [listViewController_ updateListForState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
+}
+
+- (void) updateBuildings{
+    [buildings_ removeAllObjects];
+    [aPIController_ clearMeshCash];
+    [self callApi:mapView_];
+}
+
+- (void) callApi:(GMSMapView *)mapView{
+    // 縮小しすぎている場合はAPIを叩かない
+    if (mapView.camera.zoom < 15) return;
+    
+    CLLocationCoordinate2D topLeftCoordinate = [self getTopLeftCoordinate];
+    CLLocationCoordinate2D bottomRightCoordinate = [self getBottomRightCoordinate];
+    
+    // 並列処理開始
+    dispatch_async(sub_queue_, ^{
+        //ここはサブスレッド
+        NSString *json = [aPIController_ callFromCoordinate:topLeftCoordinate  BottomRightCoordinate:bottomRightCoordinate];
+        
+        dispatch_async(main_queue_, ^{
+            // ここはメインスレッド
+            // APIを叩いたあとの処理をここへ記述
+            if([json isEqualToString:@"{}"]){ return ;}
+            NSLog(@"%@", json);
+            NSMutableArray *buildings = [Building parseBuildingFromJson:json];
+            [buildings_ addObjectsFromArray:buildings];
+            [self markBuildings:buildings];
+        });
+    });
+}
 @end
 

@@ -43,13 +43,15 @@
 }
 
 // トイレの利用率を計算するメソッド
-- (NSNumber *) getUtillization{
+- (NSNumber *) getUtillizationWithState:(BOOL)washlet multipurpose:(BOOL)multipurpose{
     double sizeAllRoom = 0;
     double sizeUnavailableRoom = 0;
     for (Room *room in self.rooms) {
-        sizeAllRoom++;
-        if(!room.available){
-            sizeUnavailableRoom++;
+        if((!washlet || room.washlet) && (!multipurpose || room.multipurpose)){
+            sizeAllRoom++;
+            if(!room.available){
+                sizeUnavailableRoom++;
+            }
         }
     }
     return [[NSNumber alloc] initWithDouble:(sizeUnavailableRoom / sizeAllRoom)];

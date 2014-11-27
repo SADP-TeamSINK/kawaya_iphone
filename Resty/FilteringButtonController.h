@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "Const.m"
+#import "Building.h"
 
 @interface FilteringButtonController: NSObject
 @property UIButton *sexButton;
@@ -19,7 +20,7 @@
 @property Boolean stateOfMultipurpose;
 @property Sex stateOfSex;
 
-- (id) initWithState:(Sex)sex empty:(Boolean)empty washlet:(Boolean)wash multipurpose:(Boolean)multipurpose parent:(UIViewController*)parent;
+- (id) initWithState:(Sex)sex washlet:(Boolean)wash multipurpose:(Boolean)multipurpose parent:(UIViewController*)parent;
 - (void) changeSexButton;
 - (void) changeWashletButton;
 - (void) changeMultipurposeButton;
@@ -28,7 +29,6 @@
 - (void) tappedWashletButton:(UIButton*)button;
 - (void) tappedMultipurposeButton:(UIButton*)button;
 - (NSMutableArray *) filtering:(NSMutableArray *)buildings stateOfSex:(Sex)sex stateOfWashlet:(BOOL)washlet stateOfMultipurpose:(BOOL)multipurpose;
-
 @end
 
 
