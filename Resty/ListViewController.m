@@ -246,11 +246,15 @@
     // ウォシュレットマーク
     if(toilet.hasWashlet){
         [cell setWashletMarker];
+    }else{
+        [cell removeWashletMarker];
     }
     
     // 多目的トイレマーク
     if(toilet.hasMultipurpose){
         [cell setMultipurposeMarker];
+    }else{
+        [cell removeMultipurposeMarker];
     }
     
     // 利用率の設定
@@ -294,6 +298,12 @@
         [self removeToiletsMarker];
         Toilet *toilet = ((Toilet *)floorData_[indexPath.section][indexPath.row]);
         toilet.marker.map = mapView_;
+        CLLocationCoordinate2D location;
+        location.latitude = toilet.latitude.doubleValue;
+        location.longitude = toilet.longitude.doubleValue;
+        if(_mapController){
+            [_mapController animateTopScreen:location zoomLevel:mapView_.camera.zoom];
+        }
     }
     [self.tableView reloadData];
 

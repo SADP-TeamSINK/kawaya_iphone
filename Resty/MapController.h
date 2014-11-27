@@ -30,4 +30,5 @@
 - (void) updateListForState;
 - (void) updateBuildings;
 - (void) callApi:(GMSMapView *)mapView;
+- (void) animateTopScreen:(CLLocationCoordinate2D) location zoomLevel:(double)zoomLevel;
 @end

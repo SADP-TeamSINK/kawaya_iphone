@@ -14,8 +14,11 @@
 #import "ToiletTableViewCell.h"
 #import "Color.h"
 
+@class MapController;
+
 @interface ListViewController : UITableViewController <GMSMapViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) BOOL isOn;
+@property (nonatomic) MapController *mapController;
 - (id) initWithForState:(Sex)sex washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose;
 - (UIView *) getListView;
 - (void) onScreen;

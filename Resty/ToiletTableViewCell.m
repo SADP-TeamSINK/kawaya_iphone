@@ -141,6 +141,18 @@
     }
 }
 
+- (void) removeWashletMarker{
+    if([_washletImageView isDescendantOfView:_backView]){
+        [_washletImageView removeFromSuperview];
+    }
+}
+
+- (void) removeMultipurposeMarker{
+    if([_multipurposeImageView isDescendantOfView:_backView]){
+        [_multipurposeImageView removeFromSuperview];
+    }
+}
+
 - (void) adjustStoreName{
     _storeName.frame = CGRectMake(
                                   _toiletImageView.frame.size.width + _backView.frame.size.width * INNER_PANE_STORE_NAME_LEFT_MARGIN_RATIO,

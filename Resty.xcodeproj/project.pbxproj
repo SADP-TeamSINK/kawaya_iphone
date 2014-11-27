@@ -14,7 +14,6 @@
 		5D2802161A230B89005C98DB /* ToiletTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2802151A230B89005C98DB /* ToiletTableViewCell.m */; };
 		5D28022E1A232E80005C98DB /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D28022D1A232E80005C98DB /* Color.m */; };
 		5D2802311A23563A005C98DB /* toilet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D2802301A23563A005C98DB /* toilet.jpg */; };
-		5D28023E1A2368C1005C98DB /* washletMarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D28023D1A2368C1005C98DB /* washletMarker.png */; };
 		5D2802521A238A20005C98DB /* greenMarkerSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D28024F1A238A20005C98DB /* greenMarkerSmall.png */; };
 		5D2802531A238A20005C98DB /* yellowMarkerSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2802501A238A20005C98DB /* yellowMarkerSmall.png */; };
 		5D2802541A238A20005C98DB /* redMarkerSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2802511A238A20005C98DB /* redMarkerSmall.png */; };
@@ -35,6 +34,8 @@
 		5DA4E38D1A2639A500B684F5 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA4E38C1A2639A500B684F5 /* GoogleMaps.framework */; };
 		5DA4E38F1A2639C100B684F5 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4E38E1A2639C100B684F5 /* GoogleMaps.bundle */; };
 		5DA4E3911A26D36000B684F5 /* dammy2.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4E3901A26D36000B684F5 /* dammy2.json */; };
+		5DA4E3941A27932A00B684F5 /* multipurposeMarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4E3921A27932A00B684F5 /* multipurposeMarker.png */; };
+		5DA4E3951A27932A00B684F5 /* washletMarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4E3931A27932A00B684F5 /* washletMarker.png */; };
 		5DD64EBF1A16452C00FECE1A /* FilteringButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD64EBE1A16452C00FECE1A /* FilteringButtonController.m */; };
 		5DD64EC21A1647BD00FECE1A /* Const.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD64EC11A1647BD00FECE1A /* Const.m */; };
 		5DFDF1BC1A24CF4600452336 /* manWomanButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1BA1A24CF4600452336 /* manWomanButton.png */; };
@@ -95,7 +96,6 @@
 		5D28022D1A232E80005C98DB /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
 		5D28022F1A232E8D005C98DB /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		5D2802301A23563A005C98DB /* toilet.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = toilet.jpg; sourceTree = "<group>"; };
-		5D28023D1A2368C1005C98DB /* washletMarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = washletMarker.png; sourceTree = "<group>"; };
 		5D28024F1A238A20005C98DB /* greenMarkerSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenMarkerSmall.png; sourceTree = "<group>"; };
 		5D2802501A238A20005C98DB /* yellowMarkerSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowMarkerSmall.png; sourceTree = "<group>"; };
 		5D2802511A238A20005C98DB /* redMarkerSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redMarkerSmall.png; sourceTree = "<group>"; };
@@ -118,6 +118,8 @@
 		5DA4E38C1A2639A500B684F5 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		5DA4E38E1A2639C100B684F5 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		5DA4E3901A26D36000B684F5 /* dammy2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dammy2.json; sourceTree = "<group>"; };
+		5DA4E3921A27932A00B684F5 /* multipurposeMarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multipurposeMarker.png; sourceTree = "<group>"; };
+		5DA4E3931A27932A00B684F5 /* washletMarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = washletMarker.png; sourceTree = "<group>"; };
 		5DD64EBE1A16452C00FECE1A /* FilteringButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringButtonController.m; sourceTree = "<group>"; };
 		5DD64EC01A1645DE00FECE1A /* FilteringButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringButtonController.h; sourceTree = "<group>"; };
 		5DD64EC11A1647BD00FECE1A /* Const.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Const.m; sourceTree = "<group>"; };
@@ -303,7 +305,6 @@
 		A47E25FD1A0017FA00254347 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				5D28023D1A2368C1005C98DB /* washletMarker.png */,
 				5D2802301A23563A005C98DB /* toilet.jpg */,
 				5D28024F1A238A20005C98DB /* greenMarkerSmall.png */,
 				5D2802501A238A20005C98DB /* yellowMarkerSmall.png */,
@@ -311,6 +312,8 @@
 				5D9E06E71A24EAFE00EBC74C /* icon-76.png */,
 				5D9E06FC1A24EEB100EBC74C /* womanButton.png */,
 				5D9E06E81A24EAFE00EBC74C /* icon-72@2x.png */,
+				5DA4E3921A27932A00B684F5 /* multipurposeMarker.png */,
+				5DA4E3931A27932A00B684F5 /* washletMarker.png */,
 				5D9E06E91A24EAFE00EBC74C /* icon-72.png */,
 				5D9E06EC1A24EAFE00EBC74C /* icon-57@2x.png */,
 				5D9E06ED1A24EAFE00EBC74C /* icon-57.png */,
@@ -440,7 +443,7 @@
 				5D9E06F41A24EAFE00EBC74C /* icon-57@2x.png in Resources */,
 				5D2802531A238A20005C98DB /* yellowMarkerSmall.png in Resources */,
 				A41CF5DA19F2731000F6B49C /* LaunchScreen.xib in Resources */,
-				5D28023E1A2368C1005C98DB /* washletMarker.png in Resources */,
+				5DA4E3941A27932A00B684F5 /* multipurposeMarker.png in Resources */,
 				5DA4E3911A26D36000B684F5 /* dammy2.json in Resources */,
 				A41CF5D719F2731000F6B49C /* Images.xcassets in Resources */,
 				5DFDF1CF1A24D5F500452336 /* handle.png in Resources */,
@@ -457,6 +460,7 @@
 				5D2802311A23563A005C98DB /* toilet.jpg in Resources */,
 				5D9E06F91A24ED4D00EBC74C /* icon-60@3x.png in Resources */,
 				5DFDF1C91A24D13500452336 /* washletButton.png in Resources */,
+				5DA4E3951A27932A00B684F5 /* washletMarker.png in Resources */,
 				5DFDF1C61A24D13500452336 /* updateButtonHighlighted.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

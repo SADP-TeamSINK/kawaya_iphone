@@ -42,6 +42,7 @@
     
     // ListViewControllerの初期化
     listViewController_ = [[ListViewController alloc] initWithForState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
+    listViewController_.mapController = self;
     
     // マルチスレッド処理の準備
     // メインスレッド用で処理を実行するキューを定義する
@@ -166,13 +167,7 @@
     // マーカーの位置から，中心に来るべき座標を計算する．
     // mapは画面の "縦サイズ * MAP_RATIO" の表示領域になるので，
     // その表示領域の中心にマーカーの座標が来るように計算した．
-    CLLocationCoordinate2D center;
-    center.latitude = ((GMSMarker *)marker).position.latitude
-                      - (([self getLatitudeGapOnScreen]
-                      * (0.5f - MAP_RATIO/2.0f)) * pow(2, mapView_.camera.zoom - zoomLevel));
-    center.longitude = ((GMSMarker *)marker).position.longitude;
-    [mapView_ animateToCameraPosition: [GMSCameraPosition
-                                        cameraWithTarget:center zoom:zoomLevel]];
+    [self animateTopScreen:((GMSMarker *)marker).position zoomLevel:zoomLevel];
 
     // ListViewを下から出すアニメーション
     [UIView animateWithDuration:0.4f animations:^{
@@ -188,7 +183,7 @@
     [mapView_ clear];
     [self markToilets:building];
     [listViewController_ listUpToilets:building];
-    
+    [self updateListForState];
     return YES;
 }
 
@@ -321,7 +316,9 @@
 }
 
 - (void) updateListForState{
-    [listViewController_ updateListForState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
+    if(listViewController_.isOn){
+        [listViewController_ updateListForState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
+    }
 }
 
 - (void) updateBuildings{
@@ -356,5 +353,16 @@
         });
     });
 }
+
+- (void) animateTopScreen:(CLLocationCoordinate2D)location zoomLevel:(double)zoomLevel{
+    CLLocationCoordinate2D center;
+    center.latitude = location.latitude
+    - (([self getLatitudeGapOnScreen]
+        * (0.5f - MAP_RATIO/2.0f)) * pow(2, mapView_.camera.zoom - zoomLevel));
+    center.longitude = location.longitude;
+    [mapView_ animateToCameraPosition: [GMSCameraPosition
+                                        cameraWithTarget:center zoom:zoomLevel]];
+}
+
 @end
 
