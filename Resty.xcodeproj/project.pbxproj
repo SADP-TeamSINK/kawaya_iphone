@@ -57,7 +57,6 @@
 		A41CF60719F2742500F6B49C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF60619F2742500F6B49C /* OpenGLES.framework */; };
 		A41CF60919F2742D00F6B49C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF60819F2742D00F6B49C /* QuartzCore.framework */; };
 		A41CF60B19F2743400F6B49C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41CF60A19F2743400F6B49C /* SystemConfiguration.framework */; };
-		A41CF62119F28ACB00F6B49C /* th_picture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A41CF62019F28ACB00F6B49C /* th_picture.jpg */; };
 		A47E26071A00195300254347 /* resty_350x1.png in Resources */ = {isa = PBXBuildFile; fileRef = A47E26061A00195300254347 /* resty_350x1.png */; };
 		FE520AC242D5205E7B9CC9F6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A732996E51BD08F5221DFB69 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -140,7 +139,6 @@
 		A41CF60619F2742500F6B49C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A41CF60819F2742D00F6B49C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A41CF60A19F2743400F6B49C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A41CF62019F28ACB00F6B49C /* th_picture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = th_picture.jpg; sourceTree = "<group>"; };
 		A47E26061A00195300254347 /* resty_350x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resty_350x1.png; sourceTree = "<group>"; };
 		A732996E51BD08F5221DFB69 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBFA6A6D971746DFF7A6D743 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 				A41CF5D319F2731000F6B49C /* Main.storyboard */,
 				A41CF5D619F2731000F6B49C /* Images.xcassets */,
 				A41CF5D819F2731000F6B49C /* LaunchScreen.xib */,
-				A41CF62019F28ACB00F6B49C /* th_picture.jpg */,
 				A41CF5C919F2731000F6B49C /* Supporting Files */,
 				5DD64EBE1A16452C00FECE1A /* FilteringButtonController.m */,
 				5DD64EC01A1645DE00FECE1A /* FilteringButtonController.h */,
@@ -427,6 +424,7 @@
 				A41CF62119F28ACB00F6B49C /* th_picture.jpg in Resources */,
 				5DFDF1C91A24D13500452336 /* washletButton.png in Resources */,
 				5DFDF1C61A24D13500452336 /* updateButtonHighlighted.png in Resources */,
+				5D27480F1A24777E003A6D77 /* multipurposeButtonHighlighted.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
