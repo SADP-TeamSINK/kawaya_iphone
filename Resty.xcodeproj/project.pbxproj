@@ -14,7 +14,6 @@
 		5D2802161A230B89005C98DB /* ToiletTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2802151A230B89005C98DB /* ToiletTableViewCell.m */; };
 		5D28022E1A232E80005C98DB /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D28022D1A232E80005C98DB /* Color.m */; };
 		5D2802311A23563A005C98DB /* toilet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D2802301A23563A005C98DB /* toilet.jpg */; };
-		5D28023C1A23664E005C98DB /* UIFont+Font.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D28023B1A23664E005C98DB /* UIFont+Font.m */; };
 		5D28023E1A2368C1005C98DB /* washletMarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D28023D1A2368C1005C98DB /* washletMarker.png */; };
 		5D2802521A238A20005C98DB /* greenMarkerSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D28024F1A238A20005C98DB /* greenMarkerSmall.png */; };
 		5D2802531A238A20005C98DB /* yellowMarkerSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2802501A238A20005C98DB /* yellowMarkerSmall.png */; };
@@ -95,8 +94,6 @@
 		5D28022D1A232E80005C98DB /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
 		5D28022F1A232E8D005C98DB /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		5D2802301A23563A005C98DB /* toilet.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = toilet.jpg; sourceTree = "<group>"; };
-		5D28023A1A23664E005C98DB /* UIFont+Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Font.h"; sourceTree = "<group>"; };
-		5D28023B1A23664E005C98DB /* UIFont+Font.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Font.m"; sourceTree = "<group>"; };
 		5D28023D1A2368C1005C98DB /* washletMarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = washletMarker.png; sourceTree = "<group>"; };
 		5D28024F1A238A20005C98DB /* greenMarkerSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenMarkerSmall.png; sourceTree = "<group>"; };
 		5D2802501A238A20005C98DB /* yellowMarkerSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowMarkerSmall.png; sourceTree = "<group>"; };
@@ -218,38 +215,36 @@
 		A41CF5C819F2731000F6B49C /* Resty */ = {
 			isa = PBXGroup;
 			children = (
-				5D28023A1A23664E005C98DB /* UIFont+Font.h */,
-				5D28023B1A23664E005C98DB /* UIFont+Font.m */,
-				A47E25FD1A0017FA00254347 /* images */,
-				A41CF5CD19F2731000F6B49C /* AppDelegate.h */,
-				A41CF5CE19F2731000F6B49C /* AppDelegate.m */,
-				A41CF5D019F2731000F6B49C /* MapViewController.h */,
-				A41CF5D119F2731000F6B49C /* MapViewController.m */,
 				A41CF5D319F2731000F6B49C /* Main.storyboard */,
-				A41CF5D619F2731000F6B49C /* Images.xcassets */,
 				A41CF5D819F2731000F6B49C /* LaunchScreen.xib */,
-				A41CF5C919F2731000F6B49C /* Supporting Files */,
-				5DD64EBE1A16452C00FECE1A /* FilteringButtonController.m */,
-				5DD64EC01A1645DE00FECE1A /* FilteringButtonController.h */,
-				5DD64EC11A1647BD00FECE1A /* Const.m */,
 				5D3BCAA01A16FB6100C07CA8 /* dammy.json */,
-				5D3133A31A19F57400D7B2EF /* MapController.m */,
-				5D3133A51A19F58400D7B2EF /* MapController.h */,
+				A41CF5D619F2731000F6B49C /* Images.xcassets */,
+				5DD64EC11A1647BD00FECE1A /* Const.m */,
 				5D3133A61A19FBE600D7B2EF /* kyoto-u.gpx */,
 				5D3133A81A19FDB200D7B2EF /* APIController.m */,
 				5D3133AB1A19FDD000D7B2EF /* APIController.h */,
-				5D10C5521A1E4641004247BC /* ListViewController.m */,
-				5D10C5541A1E4657004247BC /* ListViewController.h */,
+				A41CF5CD19F2731000F6B49C /* AppDelegate.h */,
+				A41CF5CE19F2731000F6B49C /* AppDelegate.m */,
 				5D10C5551A20814B004247BC /* Building.m */,
 				5D10C5571A208156004247BC /* Building.h */,
+				5D28022D1A232E80005C98DB /* Color.m */,
+				5D28022F1A232E8D005C98DB /* Color.h */,
+				5DD64EBE1A16452C00FECE1A /* FilteringButtonController.m */,
+				5DD64EC01A1645DE00FECE1A /* FilteringButtonController.h */,
+				5D10C5521A1E4641004247BC /* ListViewController.m */,
+				5D10C5541A1E4657004247BC /* ListViewController.h */,
+				5D3133A31A19F57400D7B2EF /* MapController.m */,
+				5D3133A51A19F58400D7B2EF /* MapController.h */,
+				A41CF5D019F2731000F6B49C /* MapViewController.h */,
+				A41CF5D119F2731000F6B49C /* MapViewController.m */,
 				5D10C5581A20847F004247BC /* Room.m */,
 				5D10C55A1A208486004247BC /* Room.h */,
 				5D10C55B1A2089DC004247BC /* Toilet.m */,
 				5D10C55D1A2089EA004247BC /* Toilet.h */,
 				5D2802141A230B89005C98DB /* ToiletTableViewCell.h */,
 				5D2802151A230B89005C98DB /* ToiletTableViewCell.m */,
-				5D28022D1A232E80005C98DB /* Color.m */,
-				5D28022F1A232E8D005C98DB /* Color.h */,
+				A47E25FD1A0017FA00254347 /* images */,
+				A41CF5C919F2731000F6B49C /* Supporting Files */,
 			);
 			path = Resty;
 			sourceTree = "<group>";
@@ -522,7 +517,6 @@
 				5D10C55C1A2089DC004247BC /* Toilet.m in Sources */,
 				5D3133A41A19F57400D7B2EF /* MapController.m in Sources */,
 				A41CF5CC19F2731000F6B49C /* main.m in Sources */,
-				5D28023C1A23664E005C98DB /* UIFont+Font.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
