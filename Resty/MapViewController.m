@@ -8,12 +8,10 @@
 
 #import "MapViewController.h"
 
-@interface MapViewController ()
-
-@end
-
 @implementation MapViewController {
     GMSMapView *mapView_;
+    BOOL firstLocationUpdate_;
+
     FilteringButtonController *filteringButtonController_;
     NSDictionary *toiletData_;
     NSInteger height_;
@@ -21,6 +19,14 @@
     MapController *mapController_;
     UIView *footer_;
     Color *color_;
+    
+    CLLocationManager *locationAuthorizationManager_;
+    UIView *backView_;
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
 }
 
 
@@ -31,26 +37,26 @@
     height_ = [[UIScreen mainScreen] bounds].size.height;
     width_ = [[UIScreen mainScreen] bounds].size.width;
     
-    // 背景のviewの初期化
-    UIView *backView;
-    backView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.view = backView;
-    
     filteringButtonController_ = [[FilteringButtonController alloc] initWithState:BOTH empty:FALSE washlet:TRUE multipurpose:FALSE parent:self];
     UIButton *btnSex = filteringButtonController_.sexButton;
     UIButton *btnUpdate = filteringButtonController_.updateButton;
     UIButton *btnWashlet = filteringButtonController_.washletButton;
     UIButton *btnMultipurpose = filteringButtonController_.multipurposeButton;
     
+    // 背景Viewの設定
+    backView_ = [[UIView alloc] initWithFrame:CGRectMake(
+                                                         0,
+                                                         0,
+                                                         width_,
+                                                         height_)];
+    self.view = backView_;
     
     // MapControllerの初期化
     mapController_ = [[MapController alloc] initWithFilteringButtonController:filteringButtonController_];
     mapView_ = [mapController_ getMapView];
-    
+    mapView_.settings.myLocationButton = YES;
     
     [self.view addSubview:mapView_];
-    
-    
     // フッターの背景Viewを作成
     footer_ = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                        height_- BUTTON_BOTTOM_MARGIN - BUTTON_TOP_MARGIN - BUTTON_SIZE,
@@ -62,23 +68,25 @@
     footer_.layer.shadowRadius = 2.0f;
     footer_.layer.shadowOffset = CGSizeMake(0.0, 0.0); // 影までの距離を指定
     [self.view addSubview:footer_];
-               
+    [self.view bringSubviewToFront:footer_];
     
     // ボタンがタップされた時のメソッド登録
     [btnSex             addTarget:self action:@selector(pushBtnSex:)            forControlEvents:UIControlEventTouchDown];
     [btnUpdate           addTarget:self action:@selector(pushBtnUpdate:)          forControlEvents:UIControlEventTouchDown];
     [btnWashlet            addTarget:self action:@selector(pushBtnWashlet:)           forControlEvents:UIControlEventTouchDown];
     [btnMultipurpose    addTarget:self action:@selector(pushBtnMultipurpose:)   forControlEvents:UIControlEventTouchDown];
-
+    
     [self.view addSubview:btnSex];
     [self.view addSubview:btnUpdate];
     [self.view addSubview:btnWashlet];
     [self.view addSubview:btnMultipurpose];
+    
 }
 
 
 -(void)pushBtnSex:(UIButton*)button{
     [filteringButtonController_ tappedSexButton:button];
+    NSLog(@"myLocation: (%@)", mapView_.myLocation);
 }
 
 -(void)pushBtnUpdate:(UIButton*)button{
@@ -93,14 +101,16 @@
     [filteringButtonController_ tappedMultipurposeButton:button];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+// Rather than setting -myLocationEnabled to YES directly,
+// call this method:
+
+
 
 @end

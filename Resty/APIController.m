@@ -58,7 +58,7 @@ NSMutableSet *obtainedMeshMutableSet_;
 }
 
 - (NSUInteger) getMeshNumberFromCoordinate:(CLLocationCoordinate2D)coordinate{
-    double latitude = coordinate.latitude + 180.0f;
+    double latitude = coordinate.latitude + 90.0f;
     double longitude = coordinate.longitude + 180.0f;
 
     NSUInteger meshNumber = ((NSUInteger)(latitude * 100) * 100000) + ((NSUInteger)(longitude * 100));
@@ -72,7 +72,7 @@ NSMutableSet *obtainedMeshMutableSet_;
 
     //送信するパラメータの組み立て
     NSMutableDictionary *mutableDic = [NSMutableDictionary dictionary];
-    [mutableDic setValue:meshArray forKey:@"meshNuber"];
+    [mutableDic setValue:meshArray forKey:@"mesh_nuber"];
     
     NSError *error;
     if([NSJSONSerialization isValidJSONObject:mutableDic]){
