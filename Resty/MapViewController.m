@@ -21,12 +21,16 @@
     Color *color_;
     
     CLLocationManager *locationAuthorizationManager_;
+    UIView *backView_;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
 
+
+- (void)loadView {
     color_ = [[Color alloc] init];
     
     //画面サイズ取得
@@ -39,13 +43,20 @@
     UIButton *btnWashlet = filteringButtonController_.washletButton;
     UIButton *btnMultipurpose = filteringButtonController_.multipurposeButton;
     
+    // 背景Viewの設定
+    backView_ = [[UIView alloc] initWithFrame:CGRectMake(
+                                                         0,
+                                                         0,
+                                                         width_,
+                                                         height_)];
+    self.view = backView_;
     
     // MapControllerの初期化
     mapController_ = [[MapController alloc] initWithFilteringButtonController:filteringButtonController_];
     mapView_ = [mapController_ getMapView];
     mapView_.settings.myLocationButton = YES;
     
-    self.view = mapView_;
+    [self.view addSubview:mapView_];
     // フッターの背景Viewを作成
     footer_ = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                        height_- BUTTON_BOTTOM_MARGIN - BUTTON_TOP_MARGIN - BUTTON_SIZE,
@@ -56,8 +67,8 @@
     footer_.layer.shadowOpacity = 0.4; // 濃さを指定
     footer_.layer.shadowRadius = 2.0f;
     footer_.layer.shadowOffset = CGSizeMake(0.0, 0.0); // 影までの距離を指定
-    //[self.view addSubview:footer_];
-    
+    [self.view addSubview:footer_];
+    [self.view bringSubviewToFront:footer_];
     
     // ボタンがタップされた時のメソッド登録
     [btnSex             addTarget:self action:@selector(pushBtnSex:)            forControlEvents:UIControlEventTouchDown];
@@ -66,16 +77,10 @@
     [btnMultipurpose    addTarget:self action:@selector(pushBtnMultipurpose:)   forControlEvents:UIControlEventTouchDown];
     
     [self.view addSubview:btnSex];
-    //[self.view addSubview:btnUpdate];
+    [self.view addSubview:btnUpdate];
     [self.view addSubview:btnWashlet];
     [self.view addSubview:btnMultipurpose];
     
-
-    
-}
-
-
-- (void)loadView {
 }
 
 
