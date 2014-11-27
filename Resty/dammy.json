@@ -1,20 +1,20 @@
  [
   {
   "id": 1,
-  "building"  : "京都大学工学部7号館",
+  "name"  : "京都大学工学部7号館",
   "floor_size" : 4,
-  "toilet": [
+  "toilets": [
              {
              "id": 1,
              "floor": 1,
              "store_name": "エレベータ横エレベータ横エレベータ横エレベータ横エレベータ横エレベータ横エレベータ横エレベータ横",
-             "room": [
-                      {"id": 1, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 2, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 3, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 4, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 5, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 6, "available": true, "washlet": true, "multipurpose": false}
+             "rooms": [
+                      {"id": 1, "available": 0, "washlet": 1, "multipurpose": 0},
+                      {"id": 2, "available": 0, "washlet": 1, "multipurpose": 0},
+                      {"id": 3, "available": 1, "washlet": 1, "multipurpose": 0},
+                      {"id": 4, "available": 1, "washlet": 1, "multipurpose": 0},
+                      {"id": 5, "available": 1, "washlet": 1, "multipurpose": 0},
+                      {"id": 6, "available": 1, "washlet": 1, "multipurpose": 0}
                       ],
              "latitude": 35.027541,
              "longitude" : 135.783817,
@@ -24,13 +24,13 @@
              "id": 2,
              "floor": 1,
              "store_name": "階段横",
-             "room": [
-                      {"id": 7, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 8, "available": true, "washlet": false, "multipurpose": false},
-                      {"id": 9, "available": false, "washlet": false, "multipurpose": false},
-                      {"id": 10, "available": false, "washlet": false, "multipurpose": false},
-                      {"id": 11, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 12, "available": true, "washlet": true, "multipurpose": true}
+             "rooms": [
+                      {"id": 7, "available": 1, "washlet": 1, "multipurpose": 0},
+                      {"id": 8, "available": 1, "washlet": 0, "multipurpose": 0},
+                      {"id": 9, "available": 0, "washlet": 0, "multipurpose": 0},
+                      {"id": 10, "available": 0, "washlet": 0, "multipurpose": 0},
+                      {"id": 11, "available": 0, "washlet": 1, "multipurpose": 0},
+                      {"id": 12, "available": 1, "washlet": 1, "multipurpose": 1}
                       ],
              "latitude": 35.027531,
              "longitude" : 135.783827,
@@ -40,13 +40,13 @@
              "id": 3,
              "floor": 2,
              "store_name": "階段上がってすぐ",
-             "room": [
-                      {"id": 7, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 8, "available": false, "washlet": false, "multipurpose": false},
-                      {"id": 9, "available": false, "washlet": false, "multipurpose": false},
-                      {"id": 10, "available": false, "washlet": false, "multipurpose": false},
-                      {"id": 11, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 12, "available": false, "washlet": true, "multipurpose": false}
+             "rooms": [
+                      {"id": 7, "available": 0, "washlet": 1, "multipurpose": 0},
+                      {"id": 8, "available": 0, "washlet": 0, "multipurpose": 0},
+                      {"id": 9, "available": 0, "washlet": 0, "multipurpose": 0},
+                      {"id": 10, "available": 0, "washlet": 0, "multipurpose": 0},
+                      {"id": 11, "available": 0, "washlet": 1, "multipurpose": 0},
+                      {"id": 12, "available": 0, "washlet": 1, "multipurpose": 0}
                       ],
              "latitude": 35.0275321,
              "longitude" : 135.783847,
@@ -58,20 +58,20 @@
   },
   {
   "id": 1,
-  "building"  : "京都大学工学部8号館",
+  "name"  : "京都大学工学部8号館",
   "floor_size" : 4,
-  "toilet": [
+  "toilets": [
              {
              "id": 4,
              "floor": 1,
              "store_name": "",
-             "room": [
-                      {"id": 13, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 14, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 15, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 16, "available": false, "washlet": true, "multipurpose": false},
-                      {"id": 17, "available": false, "washlet": false, "multipurpose": false},
-                      {"id": 18, "available": true, "washlet": true, "multipurpose": false}
+             "rooms": [
+                      {"id": 13, "available": 0, "washlet": 1, "multipurpose": 0},
+                      {"id": 14, "available": 0, "washlet": 1, "multipurpose": 0},
+                      {"id": 15, "available": 0, "washlet": 1, "multipurpose": 0},
+                      {"id": 16, "available": 0, "washlet": 1, "multipurpose": 0},
+                      {"id": 17, "available": 0, "washlet": 0, "multipurpose": 0},
+                      {"id": 18, "available": 1, "washlet": 1, "multipurpose": 0}
                       ],
              "latitude": 35.026665,
              "longitude" : 135.781873,
@@ -81,13 +81,13 @@
              "id": 5,
              "floor": 2,
              "store_name": "",
-             "room": [
-                      {"id": 19, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 20, "available": true, "washlet": false, "multipurpose": false},
-                      {"id": 21, "available": true, "washlet": false, "multipurpose": false},
-                      {"id": 22, "available": true, "washlet": false, "multipurpose": false},
-                      {"id": 23, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 24, "available": true, "washlet": true, "multipurpose": false}
+             "rooms": [
+                      {"id": 19, "available": 1, "washlet": 1, "multipurpose": 0},
+                      {"id": 20, "available": 1, "washlet": 0, "multipurpose": 0},
+                      {"id": 21, "available": 1, "washlet": 0, "multipurpose": 0},
+                      {"id": 22, "available": 1, "washlet": 0, "multipurpose": 0},
+                      {"id": 23, "available": 1, "washlet": 1, "multipurpose": 0},
+                      {"id": 24, "available": 1, "washlet": 1, "multipurpose": 0}
                       ],
              "latitude": 35.026685,
              "longitude" : 135.781893,
@@ -97,13 +97,13 @@
              "id": 6,
              "floor": -1,
              "store_name": "食堂前",
-             "room": [
-                      {"id": 19, "available": true, "washlet": true, "multipurpose": false},
-                      {"id": 20, "available": false, "washlet": false, "multipurpose": false},
-                      {"id": 21, "available": false, "washlet": false, "multipurpose": false},
-                      {"id": 22, "available": false, "washlet": false, "multipurpose": false},
-                      {"id": 23, "available": false, "washlet": true, "multipurpose": true},
-                      {"id": 24, "available": false, "washlet": true, "multipurpose": false}
+             "rooms": [
+                      {"id": 19, "available": 1, "washlet": 1, "multipurpose": 0},
+                      {"id": 20, "available": 0, "washlet": 0, "multipurpose": 0},
+                      {"id": 21, "available": 0, "washlet": 0, "multipurpose": 0},
+                      {"id": 22, "available": 0, "washlet": 0, "multipurpose": 0},
+                      {"id": 23, "available": 0, "washlet": 1, "multipurpose": 1},
+                      {"id": 24, "available": 0, "washlet": 1, "multipurpose": 0}
                       ],
              "latitude": 35.026685,
              "longitude" : 135.781883,

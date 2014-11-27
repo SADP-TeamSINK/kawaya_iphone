@@ -44,7 +44,7 @@ NSMutableSet *obtainedMeshMutableSet_;
             }
             
             for (meshNumber in obtainedMeshMutableSet_) {
-                NSLog(@"%@", meshNumber);
+                //NSLog(@"%@", meshNumber);
             }
         }
     }
@@ -72,15 +72,13 @@ NSMutableSet *obtainedMeshMutableSet_;
 
     //送信するパラメータの組み立て
     NSMutableDictionary *mutableDic = [NSMutableDictionary dictionary];
-    [mutableDic setValue:meshArray forKey:@"mesh_nuber"];
+    [mutableDic setValue:meshArray forKey:@"mesh_numbers"];
     
     NSError *error;
     if([NSJSONSerialization isValidJSONObject:mutableDic]){
         NSData *json = [NSJSONSerialization dataWithJSONObject:mutableDic
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
-        NSLog(@"json %@", [[NSString alloc] initWithData:json
-                                                encoding:NSUTF8StringEncoding]);
     
         NSMutableURLRequest *request;
         request =
@@ -102,8 +100,16 @@ NSMutableSet *obtainedMeshMutableSet_;
         //HTTPリクエスト送信  
         NSData *result = [NSURLConnection sendSynchronousRequest:request   
                                                returningResponse:&resp error:&err];
-        returnedJson = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
-        //NSLog(@"Result: %@, err: %@", returnedJson, err);
+        returnedJson = [[NSString alloc] initWithData:result encoding:
+                        NSUTF8StringEncoding];
+
+        // 返ってきた文字列の処理
+        NSInteger front = 2;
+        NSInteger end = 2;
+        returnedJson = [returnedJson substringWithRange:NSMakeRange(front, returnedJson.length - front - end)];
+        returnedJson = [returnedJson stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
+
+        NSLog(@"Result: %@, err: %@", returnedJson, err);
         
     }else{
         NSLog(@"!!!The Array can not convert json!!!");

@@ -58,25 +58,28 @@
 }
 
 + (NSMutableArray *) parseBuildingFromJson:(NSString *)json{
+    
+
     NSMutableArray *buildings = [NSMutableArray array];
     NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+    
     NSError* error;
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-    //NSLog(@"%@ %@", dic, error);
+    NSLog(@"%@ %@", dic, error);
     
     // jsonをパースして得た辞書型から，建物オブジェクト，トイレオブジェクト，個室オブジェクトを生成．
     for (NSDictionary *building in dic) {
-        NSLog(@"building: %@", building[@"building"]);
+        NSLog(@"building: %@", building[@"name"]);
         Building *buildingObject
         = [[Building alloc]
            initWithSetting:[building[@"id"] integerValue]
-           name:(NSString *)building[@"building"]
+           name:(NSString *)building[@"name"]
            floorSize:[building[@"floor_size"] integerValue]
            latitude:(NSNumber *)building[@"latitude"]
            longitude:(NSNumber *)building[@"longitude"]];
         
         // トイレオブジェクトを読み込むためのループ
-        for (NSDictionary *toilet in building[@"toilet"]) {
+        for (NSDictionary *toilet in building[@"toilets"]) {
             NSLog(@"toilet: %@", toilet[@"store_name"]);
             
             Toilet *toiletObject
@@ -91,7 +94,7 @@
             // 所有している建物を登録
             [toiletObject setOwner:buildingObject];
             
-            for (NSDictionary *room in toilet[@"room"]) {
+            for (NSDictionary *room in toilet[@"rooms"]) {
                 NSLog(@"room: %d", (BOOL)room[@"available"]);
                 Room *roomObject
                 = [[Room alloc]

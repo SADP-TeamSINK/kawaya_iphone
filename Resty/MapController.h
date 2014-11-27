@@ -24,7 +24,6 @@
 - (CLLocationCoordinate2D) getBottomLeftCoordinate;
 - (CLLocationCoordinate2D) getBottomRightCoordinate;
 - (void) markBuildings:(NSMutableArray *)buildings;
-- (NSMutableArray *) filtering:(NSMutableArray *)buildings stateOfSex:(Sex)stateOfSex stateOfWashlet:(BOOL)stateOfWashlet stateOfMultipurpose:(BOOL)stateOfmultipurpose; //+
 - (void) markToilets:(Building *)building;
 - (UIImage *) getUIColorForMarker:(NSNumber *)utillization;
 

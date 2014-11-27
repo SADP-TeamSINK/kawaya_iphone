@@ -15,7 +15,7 @@ typedef NS_ENUM (NSInteger, Sex){
     OTHER
 };
 
-static NSString * const API_URL= @"http://apple.com";
+static NSString * const API_URL= @"http://ec2-54-65-10-97.ap-northeast-1.compute.amazonaws.com/api/v1/toilets";
 
 static double const FLOOR_MARGIN_RATIO = 0.04;
 

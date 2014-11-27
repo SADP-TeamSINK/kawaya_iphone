@@ -34,6 +34,7 @@
 		5D9E06FD1A24EEB100EBC74C /* womanButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06FC1A24EEB100EBC74C /* womanButton.png */; };
 		5DA4E38D1A2639A500B684F5 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA4E38C1A2639A500B684F5 /* GoogleMaps.framework */; };
 		5DA4E38F1A2639C100B684F5 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4E38E1A2639C100B684F5 /* GoogleMaps.bundle */; };
+		5DA4E3911A26D36000B684F5 /* dammy2.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DA4E3901A26D36000B684F5 /* dammy2.json */; };
 		5DD64EBF1A16452C00FECE1A /* FilteringButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD64EBE1A16452C00FECE1A /* FilteringButtonController.m */; };
 		5DD64EC21A1647BD00FECE1A /* Const.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD64EC11A1647BD00FECE1A /* Const.m */; };
 		5DFDF1BC1A24CF4600452336 /* manWomanButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DFDF1BA1A24CF4600452336 /* manWomanButton.png */; };
@@ -116,6 +117,7 @@
 		5D9E06FC1A24EEB100EBC74C /* womanButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womanButton.png; sourceTree = "<group>"; };
 		5DA4E38C1A2639A500B684F5 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		5DA4E38E1A2639C100B684F5 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		5DA4E3901A26D36000B684F5 /* dammy2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dammy2.json; sourceTree = "<group>"; };
 		5DD64EBE1A16452C00FECE1A /* FilteringButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringButtonController.m; sourceTree = "<group>"; };
 		5DD64EC01A1645DE00FECE1A /* FilteringButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringButtonController.h; sourceTree = "<group>"; };
 		5DD64EC11A1647BD00FECE1A /* Const.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Const.m; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				5D2802151A230B89005C98DB /* ToiletTableViewCell.m */,
 				A47E25FD1A0017FA00254347 /* images */,
 				A41CF5C919F2731000F6B49C /* Supporting Files */,
+				5DA4E3901A26D36000B684F5 /* dammy2.json */,
 			);
 			path = Resty;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				5D2802531A238A20005C98DB /* yellowMarkerSmall.png in Resources */,
 				A41CF5DA19F2731000F6B49C /* LaunchScreen.xib in Resources */,
 				5D28023E1A2368C1005C98DB /* washletMarker.png in Resources */,
+				5DA4E3911A26D36000B684F5 /* dammy2.json in Resources */,
 				A41CF5D719F2731000F6B49C /* Images.xcassets in Resources */,
 				5DFDF1CF1A24D5F500452336 /* handle.png in Resources */,
 				5D2802521A238A20005C98DB /* greenMarkerSmall.png in Resources */,

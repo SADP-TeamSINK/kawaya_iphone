@@ -27,6 +27,7 @@
 - (void) tappedUpdateButton:(UIButton*)button;
 - (void) tappedWashletButton:(UIButton*)button;
 - (void) tappedMultipurposeButton:(UIButton*)button;
+- (NSMutableArray *) filtering:(NSMutableArray *)buildings stateOfSex:(Sex)sex stateOfWashlet:(BOOL)washlet stateOfMultipurpose:(BOOL)multipurpose;
 
 @end
 
