@@ -18,7 +18,7 @@
     dispatch_queue_t main_queue_;
     dispatch_queue_t sub_queue_;
     CGRect windowRect_;
-    ListViewController *listViewController_;
+    //ListViewController *_listViewController;
     NSMutableArray *buildings_;
     FilteringButtonController *filteringButtonController_;
     Sex stateOfSex;
@@ -41,8 +41,8 @@
     buildings_ = [NSMutableArray array];
     
     // ListViewControllerの初期化
-    listViewController_ = [[ListViewController alloc] initWithForState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
-    listViewController_.mapController = self;
+    _listViewController = [[ListViewController alloc] initWithForState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
+    _listViewController.mapController = self;
     
     // マルチスレッド処理の準備
     // メインスレッド用で処理を実行するキューを定義する
@@ -59,8 +59,8 @@
     mapView_.clipsToBounds = NO;
     
     // MapViewにListViewを追加
-    [mapView_ addSubview:[listViewController_ getListView]];
-    [listViewController_ registerMapView:mapView_];
+    [mapView_ addSubview:[_listViewController getListView]];
+    [_listViewController registerMapView:mapView_];
     
     
     /*
@@ -109,18 +109,7 @@
 - (void)mapView:(GMSMapView *)mapVie didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     NSLog(@"didTapAtCoordinate %f,%f", coordinate.latitude, coordinate.longitude);
 
-    // ListViewを収納するアニメーション
-    [UIView animateWithDuration:0.5f animations:^{
-        [listViewController_ offScreen];
-    } completion:^(BOOL finished){
-    }];
-    
-    // ズームを元に戻す
-    [mapView_ animateToZoom:17.0f];
-    
-    // 建物をリマーク
-    [mapView_ clear];
-    [self markBuildings:buildings_];
+    [self offList];
     NSLog(@"タップした場所: lati: %f, long: %f", coordinate.latitude, coordinate.longitude);
 }
 
@@ -131,7 +120,7 @@
  */
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     //NSLog(@"didChangeCameraPosition %f,%f", position.target.latitude, position.target.longitude);
-    [mapView_ bringSubviewToFront:[listViewController_ getListView]];
+    [mapView_ bringSubviewToFront:[_listViewController getListView]];
     
     [self callApi:mapView_];
 
@@ -169,20 +158,14 @@
     // その表示領域の中心にマーカーの座標が来るように計算した．
     [self animateTopScreen:((GMSMarker *)marker).position zoomLevel:zoomLevel];
 
-    // ListViewを下から出すアニメーション
-    [UIView animateWithDuration:0.4f animations:^{
-        //mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
-        [listViewController_ onScreen];
-    } completion:^(BOOL finished){
-    }];
-
+    [self onList];
     NSLog(@"Utillization: %@", [building getUtillizationWithState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose]);
 
     // タップされたマーカに対応している建物のもつトイレを，ListViewにリストアップ
     // その際，すべてのマーカを一旦クリア
     [mapView_ clear];
     [self markToilets:building];
-    [listViewController_ listUpToilets:building];
+    [_listViewController listUpToilets:building];
     [self updateListForState];
     return YES;
 }
@@ -239,7 +222,7 @@
 }
 
 - (void) markBuildings:(NSMutableArray *)buildings{
-    if(listViewController_.isOn) return;
+    if(_listViewController.isOn) return;
     for (Building *building in buildings) {
         // 建物がフィルタリングに該当するトイレを持っていない場合はcontinue
         if(![building hasFilteringToilet:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose]){ continue; }
@@ -316,13 +299,13 @@
 }
 
 - (void) updateListForState{
-    if(listViewController_.isOn){
-        [listViewController_ updateListForState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
+    if(_listViewController.isOn){
+        [_listViewController updateListForState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
     }
 }
 
 - (void) updateBuildings{
-    if(!listViewController_.isOn){
+    if(!_listViewController.isOn){
         [mapView_ clear];
     }
     [buildings_ removeAllObjects];
@@ -362,6 +345,32 @@
     center.longitude = location.longitude;
     [mapView_ animateToCameraPosition: [GMSCameraPosition
                                         cameraWithTarget:center zoom:zoomLevel]];
+}
+
+- (void) onList{
+    // ListViewを下から出すアニメーション
+    [UIView animateWithDuration:0.4f animations:^{
+        //mapView_.frame = CGRectMake(0, 0, width_, height_ * MAP_RATIO);
+        [_listViewController onScreen];
+        self.listHeaderHandle.frame = CGRectMake(0, height_ * (MAP_RATIO), width_, LIST_TOP_BAR_HEIGHT);
+    } completion:^(BOOL finished){
+    }];
+}
+
+- (void) offList{
+    // ListViewを収納するアニメーション
+    [UIView animateWithDuration:0.5f animations:^{
+        [_listViewController offScreen];
+        self.listHeaderHandle.frame = CGRectMake(0, height_, width_, LIST_TOP_BAR_HEIGHT);
+    } completion:^(BOOL finished){
+    }];
+    
+    // ズームを元に戻す
+    [mapView_ animateToZoom:17.0f];
+    
+    // 建物をリマーク
+    [mapView_ clear];
+    [self markBuildings:buildings_];
 }
 
 @end

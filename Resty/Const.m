@@ -20,6 +20,8 @@ static NSString * const API_URL= @"http://ec2-54-65-10-97.ap-northeast-1.compute
 static double const FLOOR_MARGIN_RATIO = 0.04;
 
 static double const ZOOM_LIMIT = 15;
+static NSInteger const LIMIT_TOP = 50;
+static double const LIST_OFF_LIMIT_RATIO = 0.5;
 
 static double const MAP_RATIO = 0.3;
 static double const PANE_WIDTH_RATIO = 1;
@@ -39,7 +41,7 @@ static double const SEX_BUTTON_WIDTH_HEIGHT_RATIO = 1.665;
 static NSInteger const UPDATE_BUTTON_SIZE = 50;
 static double const BUTTON_LEFT_MARGIN_RATIO = 1.5;
 
-static NSInteger const LIST_TOP_BAR_HEIGHT = 25;
+static NSInteger const LIST_TOP_BAR_HEIGHT = 30;
 
 static double const GREEN_UTILLIZATION = 0.5;
 static double const YELLOW_UTILLIZATION = 0.9;

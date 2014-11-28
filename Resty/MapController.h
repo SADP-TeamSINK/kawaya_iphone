@@ -16,7 +16,11 @@
 #import "FilteringButtonController.h"
 #import "Color.h"
 
+@class ListViewController;
+
 @interface MapController : NSObject <GMSMapViewDelegate>
+@property UIView *listHeaderHandle;
+@property ListViewController *listViewController;
 
 - (id) initWithFilteringButtonController:(FilteringButtonController *)filteringButtonController;
 - (GMSMapView *) getMapView;
@@ -31,4 +35,8 @@
 - (void) updateBuildings;
 - (void) callApi:(GMSMapView *)mapView;
 - (void) animateTopScreen:(CLLocationCoordinate2D) location zoomLevel:(double)zoomLevel;
+
+- (void) offList;
+- (void) onList;
+
 @end

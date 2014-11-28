@@ -22,6 +22,7 @@
     
     CLLocationManager *locationAuthorizationManager_;
     UIView *backView_;
+    UIView *listHeaderHandle_;
 }
 
 
@@ -94,6 +95,15 @@
     [self.view addSubview:btnWashlet];
     [self.view addSubview:btnMultipurpose];
     
+    // リストのヘッダハンドルを準備
+    listHeaderHandle_ = [[UIView alloc] initWithFrame:CGRectMake(0, height_, width_, LIST_TOP_BAR_HEIGHT)];
+    //listHeaderHandle_.backgroundColor = color_.red;
+    [self.view addSubview:listHeaderHandle_];
+    // ヘッダハンドルをドラッグ対応させる
+    UIPanGestureRecognizer *panGestureRecognizer =
+    [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragHeader:)];
+    [listHeaderHandle_ addGestureRecognizer:panGestureRecognizer];
+    mapController_.listHeaderHandle = listHeaderHandle_;
 }
 
 
@@ -156,6 +166,38 @@
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
         mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
                                                          zoom:17];
+    }
+}
+
+- (void) dragHeader:(UIPanGestureRecognizer *)sender{
+    UIView *targetView = sender.view;
+
+    if(sender.state == UIGestureRecognizerStateEnded){
+        NSLog(@"target.y: %f, limit: %ld", targetView.frame.origin.y, LIST_OFF_LIMIT_RATIO * height_);
+        if(targetView.frame.origin.y > MAP_RATIO * height_){
+            [mapController_ offList];
+        }else{
+            [mapController_ onList];
+        }
+    }else{
+        UIView *baseView = mapController_.listViewController.baseView;
+        CGPoint p = [sender translationInView:targetView];
+        CGRect handleRect = CGRectMake(
+                                       targetView.frame.origin.x,
+                                       MAX(targetView.frame.origin.y + p.y, LIMIT_TOP),
+                                       targetView.frame.size.width,
+                                       targetView.frame.size.height);
+        CGRect listRect = CGRectMake(
+                                       baseView.frame.origin.x,
+                                       MAX(baseView.frame.origin.y + p.y, LIMIT_TOP),
+                                       baseView.frame.size.width,
+                                       MAX(baseView.frame.size.height, baseView.frame.size.height - p.y));
+        
+        targetView.frame = handleRect;
+        baseView.frame = listRect;
+
+        [sender setTranslation:CGPointZero inView:targetView];
+        [sender setTranslation:CGPointZero inView:mapController_.listViewController.baseView];
     }
 }
 

@@ -11,7 +11,7 @@
 
 
 @implementation ListViewController{
-    UIView *baseView_;
+    //UIView *_baseView;
     UIView *headerView_;
 
     NSInteger height_;
@@ -60,8 +60,8 @@
     baseWidth_ = width_;
     
     // ベースとなるViewを作成
-    baseView_ = [[UIView alloc] initWithFrame:CGRectMake(0, height_, baseWidth_, baseHeignt_)];
-    baseView_.backgroundColor = color_.darkGray;
+    _baseView = [[UIView alloc] initWithFrame:CGRectMake(0, height_, baseWidth_, baseHeignt_)];
+    _baseView.backgroundColor = color_.darkGray;
     
     // トップヘッダを設定
     headerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width_, LIST_TOP_BAR_HEIGHT)];
@@ -69,11 +69,6 @@
     headerView_.layer.shadowOpacity = 0.4; // 濃さを指定
     headerView_.layer.shadowRadius = 2.0f;
     headerView_.layer.shadowOffset = CGSizeMake(0.0, 0); // 影までの距離を指定
-    // トップヘッダをドラッグ対応させる
-    UIPanGestureRecognizer *panGestureRecognizer =
-    [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragHeader:)];
-    [headerView_ addGestureRecognizer:panGestureRecognizer];
-    [baseView_ addSubview:headerView_];
     
     // ハンドル画像の設定
     UIImage *handleImage = [UIImage imageNamed:@"handle.png"];
@@ -85,6 +80,7 @@
                                     HANDLE_WIDTH,
                                     HANDLE_WIDTH * handleRatio);
     [headerView_ addSubview:handleImageView_];
+    [_baseView addSubview:headerView_];
     
     // buildingNameを準備
     buildingName_ = [[UILabel alloc] initWithFrame:CGRectMake( width_ - BUILDING_NAME_RIGHT_MARGIN - BUILDING_NAME_WIDTH_RATIO * width_, 0, BUILDING_NAME_WIDTH_RATIO * width_, LIST_TOP_BAR_HEIGHT)];
@@ -106,7 +102,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];//白
     
     // baseViewにlistViewを追加
-    [baseView_ addSubview:self.view];
+    [_baseView addSubview:self.view];
     
     
     // list情報の初期化
@@ -133,8 +129,8 @@
 }
 
 - (void) onScreen{
-    baseView_.frame = CGRectMake(0, height_ * (MAP_RATIO), baseWidth_, baseHeignt_);
-    [baseView_ bringSubviewToFront:headerView_];
+    _baseView.frame = CGRectMake(0, height_ * (MAP_RATIO), baseWidth_, baseHeignt_);
+    [_baseView bringSubviewToFront:headerView_];
     [self viewDidAppear:YES];
     
     _isOn = true;
@@ -142,13 +138,13 @@
 }
 
 - (void) offScreen{
-    baseView_.frame = CGRectMake(0, height_, baseWidth_, baseHeignt_);
+    _baseView.frame = CGRectMake(0, height_, baseWidth_, baseHeignt_);
     selectedIndexPath_ = [NSIndexPath indexPathForRow:-1 inSection:-1];
     _isOn = false;
 }
 
 - (UIView *) getListView{
-    return baseView_;
+    return _baseView;
 }
 
 - (void) listUpToilets:(Building *)building{
@@ -394,11 +390,5 @@
     [self markToilets];
 }
 
-- (void) dragHeader:(UIPanGestureRecognizer *)sender{
-    UIView *headerView = sender.view;
-    CGPoint p = [sender translationInView:headerView];
-    //headerView.center = CGPointMake(headerView.center.x + p.x, headerView.center.y + p.y);
-    NSLog(@"drag x:%f, y: %f", p.x, p.y);
-}
 
 @end
