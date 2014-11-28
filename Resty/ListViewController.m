@@ -40,6 +40,8 @@
     Sex sex_;
     BOOL washlet_;
     BOOL multipurpose_;
+    
+    UIImage *noImage;
 }
 
 - (id) initWithForState:(Sex)sex washlet:(BOOL)washlet multipurpose:(BOOL)multipurpose{
@@ -120,6 +122,9 @@
     
     // tableViewの背景を設定
     self.tableView.backgroundColor = color_.white;
+    
+    // no imageの読み込み
+    noImage = [UIImage imageNamed:@"toilet.png"];
     
     return self;
 }
@@ -257,6 +262,9 @@
     }else{
         [cell removeMultipurposeMarker];
     }
+    
+    // トイレ画像
+    [cell setToiletImage:toilet defaultImage:noImage];
     
     // 利用率の設定
     [cell setUtillization:[toilet getUtillizationWithState:washlet_ multipurpose:multipurpose_]];

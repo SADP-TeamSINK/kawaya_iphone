@@ -89,6 +89,13 @@
                longitude:(NSNumber *)toilet[@"longitude"]
                sex:(Sex)[toilet[@"sex"] integerValue]];
             
+            if([toilet[@"toilet_pictures"] count] > 0){
+                NSString *url = toilet[@"toilet_pictures"][0][@"path"];
+                if(url){
+                    [toiletObject setImageUrl:toilet[@"toilet_pictures"][0][@"path"]];
+                }
+            }
+            
             // 所有している建物を登録
             [toiletObject setOwner:buildingObject];
             

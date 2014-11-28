@@ -26,6 +26,8 @@
 @property (nonatomic) Sex sex;
 @property (nonatomic) GMSMarker *marker;
 @property (nonatomic) NSInteger *number;
+@property (nonatomic) UIImage *image;
+@property (nonatomic) NSString *imageUrl;
 
 - (id) initWithSetting:(NSInteger)toiletID floor:(NSInteger)floor storeName:(NSString*)storeName latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude sex:(Sex)sex;
 
@@ -35,5 +37,6 @@
 - (void) setOwner:(Building *)building;
 - (Building *) getOwner;
 - (void) removeMarkder;
+- (void) setImageUrl:(NSString *)url;
 
 @end

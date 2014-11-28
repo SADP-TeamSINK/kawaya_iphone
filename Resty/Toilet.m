@@ -33,7 +33,8 @@
     
     self.hasWashlet = false;
     self.hasMultipurpose = false;
-    
+    _image = nil;
+
     return self;
 }
 
@@ -85,4 +86,8 @@
     }
 }
 
+- (void) setImageUrl:(NSString *)url{
+    NSLog(@"url: %@", url);
+    _imageUrl = url;
+}
 @end

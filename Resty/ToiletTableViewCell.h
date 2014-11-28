@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Const.m"
 #import "Color.h"
+#import "Toilet.h"
 
 @interface ToiletTableViewCell : UITableViewCell
 @property (nonatomic) UILabel *storeName;
@@ -26,7 +27,7 @@
 - (void) transformNotSelected;
 - (void) removeWashletMarker;
 - (void) removeMultipurposeMarker;
-
+- (void) setToiletImage:(Toilet *)toilet defaultImage:(UIImage *)noImage;
 
 @end
 

@@ -12,6 +12,8 @@
     NSInteger height_;
     NSInteger width_;
     Color *color_;
+    dispatch_queue_t main_queue_;
+    dispatch_queue_t sub_queue_;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -26,6 +28,13 @@
         self.selectionStyle = UITableViewCellSelectionStyleGray;
         self.contentView.frame = CGRectMake(0, 0, width_, height_ * PANE_HEIGHT_RATIO);
         self.contentView.backgroundColor = color_.white;
+        
+        // マルチスレッド処理の準備
+        // メインスレッド用で処理を実行するキューを定義する
+        main_queue_ = dispatch_get_main_queue();
+        
+        // サブスレッドで実行するキューを定義する
+        sub_queue_ = dispatch_queue_create("sadp.team.sink.toiletImage", 0);
         
         // 背景Viewの設定
         CGRect backRect
@@ -234,5 +243,27 @@
                                         scale * _toiletImageView.image.size.height);
 }
 
-
+- (void) setToiletImage:(Toilet *)toilet defaultImage:(UIImage *)noImage{
+    // 並列処理開始
+    if(toilet.image){
+        _toiletImageView.image = toilet.image;
+        return;
+    }
+    
+    if(!toilet.imageUrl){
+        _toiletImageView.image = noImage;
+        return;
+    }
+    dispatch_async(sub_queue_, ^{
+        //ここはサブスレッド
+        NSData *dt = [NSData dataWithContentsOfURL:
+                      [NSURL URLWithString:toilet.imageUrl]];
+        
+        dispatch_async(main_queue_, ^{
+            // ここはメインスレッド
+            _toiletImageView.image = [[UIImage alloc] initWithData:dt];
+            toilet.image = _toiletImageView.image;
+        });
+    });
+}
 @end
