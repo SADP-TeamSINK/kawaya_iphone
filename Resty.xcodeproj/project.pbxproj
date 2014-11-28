@@ -20,6 +20,13 @@
 		5D3133A41A19F57400D7B2EF /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3133A31A19F57400D7B2EF /* MapController.m */; };
 		5D3133A71A19FBE600D7B2EF /* kyoto-u.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5D3133A61A19FBE600D7B2EF /* kyoto-u.gpx */; };
 		5D3133A91A19FDB200D7B2EF /* APIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3133A81A19FDB200D7B2EF /* APIController.m */; };
+		5D35A2811A2892A200D0A6B9 /* ACKNOWLEDGEMENTS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A2771A2892A200D0A6B9 /* ACKNOWLEDGEMENTS.txt */; };
+		5D35A2821A2892A200D0A6B9 /* CHANGELOG.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A2781A2892A200D0A6B9 /* CHANGELOG.txt */; };
+		5D35A2831A2892A200D0A6B9 /* DeployGateSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D35A2791A2892A200D0A6B9 /* DeployGateSDK.framework */; };
+		5D35A2841A2892A200D0A6B9 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A27A1A2892A200D0A6B9 /* LICENSE.txt */; };
+		5D35A2851A2892A200D0A6B9 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A27B1A2892A200D0A6B9 /* README.txt */; };
+		5D35A2861A2892A200D0A6B9 /* DeployGateSDK.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A27D1A2892A200D0A6B9 /* DeployGateSDK.strings */; };
+		5D35A2871A2892A200D0A6B9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A27F1A2892A200D0A6B9 /* Info.plist */; };
 		5D3BCAA11A16FB6100C07CA8 /* dammy.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D3BCAA01A16FB6100C07CA8 /* dammy.json */; };
 		5D9E06EE1A24EAFE00EBC74C /* icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06E61A24EAFE00EBC74C /* icon-76@2x.png */; };
 		5D9E06EF1A24EAFE00EBC74C /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06E71A24EAFE00EBC74C /* icon-76.png */; };
@@ -104,6 +111,15 @@
 		5D3133A61A19FBE600D7B2EF /* kyoto-u.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "kyoto-u.gpx"; sourceTree = "<group>"; };
 		5D3133A81A19FDB200D7B2EF /* APIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIController.m; sourceTree = "<group>"; };
 		5D3133AB1A19FDD000D7B2EF /* APIController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIController.h; sourceTree = "<group>"; };
+		5D35A2771A2892A200D0A6B9 /* ACKNOWLEDGEMENTS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ACKNOWLEDGEMENTS.txt; sourceTree = "<group>"; };
+		5D35A2781A2892A200D0A6B9 /* CHANGELOG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.txt; sourceTree = "<group>"; };
+		5D35A2791A2892A200D0A6B9 /* DeployGateSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DeployGateSDK.framework; sourceTree = "<group>"; };
+		5D35A27A1A2892A200D0A6B9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		5D35A27B1A2892A200D0A6B9 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		5D35A27E1A2892A200D0A6B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DeployGateSDK.strings; sourceTree = "<group>"; };
+		5D35A27F1A2892A200D0A6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Info.plist; sourceTree = "<group>"; };
+		5D35A2801A2892A200D0A6B9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DeployGateSDK.strings; sourceTree = "<group>"; };
+		5D35A2881A28936700D0A6B9 /* Resty-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Resty-Prefix.pch"; sourceTree = "<group>"; };
 		5D3BCAA01A16FB6100C07CA8 /* dammy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dammy.json; sourceTree = "<group>"; };
 		5D9E06E61A24EAFE00EBC74C /* icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76@2x.png"; sourceTree = "<group>"; };
 		5D9E06E71A24EAFE00EBC74C /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76.png"; sourceTree = "<group>"; };
@@ -173,6 +189,7 @@
 				A41CF60719F2742500F6B49C /* OpenGLES.framework in Frameworks */,
 				A41CF60519F2741C00F6B49C /* libz.dylib in Frameworks */,
 				A41CF60319F2741300F6B49C /* libicucore.dylib in Frameworks */,
+				5D35A2831A2892A200D0A6B9 /* DeployGateSDK.framework in Frameworks */,
 				A41CF60119F2740C00F6B49C /* libc++.dylib in Frameworks */,
 				A41CF5FF19F2740400F6B49C /* ImageIO.framework in Frameworks */,
 				A41CF5FD19F273FC00F6B49C /* GLKit.framework in Frameworks */,
@@ -195,6 +212,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D35A2761A2892A200D0A6B9 /* DeployGateSDK1.0.3.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				5D35A2771A2892A200D0A6B9 /* ACKNOWLEDGEMENTS.txt */,
+				5D35A2781A2892A200D0A6B9 /* CHANGELOG.txt */,
+				5D35A2791A2892A200D0A6B9 /* DeployGateSDK.framework */,
+				5D35A27A1A2892A200D0A6B9 /* LICENSE.txt */,
+				5D35A27B1A2892A200D0A6B9 /* README.txt */,
+				5D35A27C1A2892A200D0A6B9 /* Resources */,
+			);
+			path = DeployGateSDK1.0.3.embeddedframework;
+			sourceTree = "<group>";
+		};
+		5D35A27C1A2892A200D0A6B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5D35A27D1A2892A200D0A6B9 /* DeployGateSDK.strings */,
+				5D35A27F1A2892A200D0A6B9 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		A41CF5BD19F2731000F6B49C = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +289,7 @@
 				A47E25FD1A0017FA00254347 /* images */,
 				A41CF5C919F2731000F6B49C /* Supporting Files */,
 				5DA4E3901A26D36000B684F5 /* dammy2.json */,
+				5D35A2881A28936700D0A6B9 /* Resty-Prefix.pch */,
 			);
 			path = Resty;
 			sourceTree = "<group>";
@@ -283,6 +323,7 @@
 		A41CF5EF19F2737000F6B49C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D35A2761A2892A200D0A6B9 /* DeployGateSDK1.0.3.embeddedframework */,
 				5DA4E38E1A2639C100B684F5 /* GoogleMaps.bundle */,
 				5DA4E38C1A2639A500B684F5 /* GoogleMaps.framework */,
 				A41CF60A19F2743400F6B49C /* SystemConfiguration.framework */,
@@ -411,6 +452,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = A41CF5BD19F2731000F6B49C;
 			productRefGroup = A41CF5C719F2731000F6B49C /* Products */;
@@ -436,6 +478,7 @@
 				A41CF5D519F2731000F6B49C /* Main.storyboard in Resources */,
 				5DFDF1BC1A24CF4600452336 /* manWomanButton.png in Resources */,
 				5D9E06FA1A24ED4D00EBC74C /* icon-60@2x.png in Resources */,
+				5D35A2871A2892A200D0A6B9 /* Info.plist in Resources */,
 				A47E26071A00195300254347 /* resty_350x1.png in Resources */,
 				5D9E06EF1A24EAFE00EBC74C /* icon-76.png in Resources */,
 				5D3BCAA11A16FB6100C07CA8 /* dammy.json in Resources */,
@@ -444,6 +487,7 @@
 				5D2802531A238A20005C98DB /* yellowMarkerSmall.png in Resources */,
 				A41CF5DA19F2731000F6B49C /* LaunchScreen.xib in Resources */,
 				5DA4E3941A27932A00B684F5 /* multipurposeMarker.png in Resources */,
+				5D35A2851A2892A200D0A6B9 /* README.txt in Resources */,
 				5DA4E3911A26D36000B684F5 /* dammy2.json in Resources */,
 				A41CF5D719F2731000F6B49C /* Images.xcassets in Resources */,
 				5DFDF1CF1A24D5F500452336 /* handle.png in Resources */,
@@ -457,8 +501,12 @@
 				5D9E06F11A24EAFE00EBC74C /* icon-72.png in Resources */,
 				5D2802541A238A20005C98DB /* redMarkerSmall.png in Resources */,
 				5D9E06F01A24EAFE00EBC74C /* icon-72@2x.png in Resources */,
+				5D35A2811A2892A200D0A6B9 /* ACKNOWLEDGEMENTS.txt in Resources */,
 				5D2802311A23563A005C98DB /* toilet.jpg in Resources */,
+				5D35A2861A2892A200D0A6B9 /* DeployGateSDK.strings in Resources */,
+				5D35A2821A2892A200D0A6B9 /* CHANGELOG.txt in Resources */,
 				5D9E06F91A24ED4D00EBC74C /* icon-60@3x.png in Resources */,
+				5D35A2841A2892A200D0A6B9 /* LICENSE.txt in Resources */,
 				5DFDF1C91A24D13500452336 /* washletButton.png in Resources */,
 				5DA4E3951A27932A00B684F5 /* washletMarker.png in Resources */,
 				5DFDF1C61A24D13500452336 /* updateButtonHighlighted.png in Resources */,
@@ -547,6 +595,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5D35A27D1A2892A200D0A6B9 /* DeployGateSDK.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D35A27E1A2892A200D0A6B9 /* en */,
+				5D35A2801A2892A200D0A6B9 /* ja */,
+			);
+			name = DeployGateSDK.strings;
+			sourceTree = "<group>";
+		};
 		A41CF5D319F2731000F6B49C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -653,7 +710,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/DeployGateSDK1.0.3.embeddedframework",
 				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Resty-Prefix.pch";
 				INFOPLIST_FILE = Resty/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -675,7 +734,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/DeployGateSDK1.0.3.embeddedframework",
 				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Resty-Prefix.pch";
 				INFOPLIST_FILE = Resty/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

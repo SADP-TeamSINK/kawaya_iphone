@@ -25,6 +25,8 @@
 
     // フォントの指定
     [[UILabel appearance] setFont:[UIFont fontWithName:@"YourFontName" size:17.0]];
+    
+    [[DeployGateSDK sharedInstance] launchApplicationWithAuthor:@"sadp" key:@"[target_application_api_key]"];
     return YES;
 }
 
