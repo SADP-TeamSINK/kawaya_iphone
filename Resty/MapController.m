@@ -24,6 +24,8 @@
     Sex stateOfSex;
     Boolean stateOfWashlet;
     Boolean stateOfMultipurpose;
+    UIImageView *utillizationImageView;
+    
 }
 
 - (id) initWithFilteringButtonController:(FilteringButtonController *)filteringButtonController{
@@ -39,6 +41,7 @@
 
     // 建物オブジェクト群を格納する配列の確保
     buildings_ = [NSMutableArray array];
+    
     
     // ListViewControllerの初期化
     _listViewController = [[ListViewController alloc] initWithForState:filteringButtonController_.stateOfSex washlet:filteringButtonController_.stateOfWashlet multipurpose:filteringButtonController_.stateOfMultipurpose];
@@ -58,10 +61,22 @@
     
     mapView_.clipsToBounds = NO;
     
+    
     // MapViewにListViewを追加
     [mapView_ addSubview:[_listViewController getListView]];
     [_listViewController registerMapView:mapView_];
     
+    
+    // 混雑度の説明
+    
+    UIImage *utillizationImage = [UIImage imageNamed:@"utillization.png"];
+    double scale = utillizationImage.size.height / utillizationImage.size.width;
+    utillizationImageView = [[UIImageView alloc] initWithImage:utillizationImage];
+    utillizationImageView.frame = CGRectMake(UTILLIZATION_EXPLANATION_IMAGE_LEFT_MARGIN,
+                                             UTILLIZATION_EXPLANATION_IMAGE_TOP_MARGIN,
+                                             UTILLIZATION_EXPLANATION_IMAGE_WIDTH,
+                                             UTILLIZATION_EXPLANATION_IMAGE_WIDTH * scale);
+    [mapView_ addSubview:utillizationImageView];
     
     /*
     // ----------------------------------------------------
@@ -355,6 +370,7 @@
         self.listHeaderHandle.frame = CGRectMake(0, height_ * (MAP_RATIO), width_, LIST_TOP_BAR_HEIGHT);
     } completion:^(BOOL finished){
     }];
+    [utillizationImageView removeFromSuperview];
 }
 
 - (void) offList{
@@ -371,6 +387,11 @@
     // 建物をリマーク
     [mapView_ clear];
     [self markBuildings:buildings_];
+    
+    if(![utillizationImageView isDescendantOfView:mapView_]){
+        [mapView_ addSubview:utillizationImageView];
+    }
+    
 }
 
 @end

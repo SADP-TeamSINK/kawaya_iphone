@@ -104,6 +104,7 @@
     [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragHeader:)];
     [listHeaderHandle_ addGestureRecognizer:panGestureRecognizer];
     mapController_.listHeaderHandle = listHeaderHandle_;
+    
 }
 
 

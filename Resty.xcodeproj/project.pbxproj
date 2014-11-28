@@ -27,6 +27,9 @@
 		5D35A2851A2892A200D0A6B9 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A27B1A2892A200D0A6B9 /* README.txt */; };
 		5D35A2861A2892A200D0A6B9 /* DeployGateSDK.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A27D1A2892A200D0A6B9 /* DeployGateSDK.strings */; };
 		5D35A2871A2892A200D0A6B9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A27F1A2892A200D0A6B9 /* Info.plist */; };
+		5D35A28A1A28B9B000D0A6B9 /* utillization.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A2891A28B9B000D0A6B9 /* utillization.png */; };
+		5D35A28C1A28BBBC00D0A6B9 /* icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A28B1A28BBBC00D0A6B9 /* icon-40@2x.png */; };
+		5D35A28E1A28BBFC00D0A6B9 /* icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A28D1A28BBFC00D0A6B9 /* icon-29@2x.png */; };
 		5D3BCAA11A16FB6100C07CA8 /* dammy.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D3BCAA01A16FB6100C07CA8 /* dammy.json */; };
 		5D9E06EE1A24EAFE00EBC74C /* icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06E61A24EAFE00EBC74C /* icon-76@2x.png */; };
 		5D9E06EF1A24EAFE00EBC74C /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06E71A24EAFE00EBC74C /* icon-76.png */; };
@@ -120,6 +123,9 @@
 		5D35A27F1A2892A200D0A6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Info.plist; sourceTree = "<group>"; };
 		5D35A2801A2892A200D0A6B9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DeployGateSDK.strings; sourceTree = "<group>"; };
 		5D35A2881A28936700D0A6B9 /* Resty-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Resty-Prefix.pch"; sourceTree = "<group>"; };
+		5D35A2891A28B9B000D0A6B9 /* utillization.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = utillization.png; sourceTree = "<group>"; };
+		5D35A28B1A28BBBC00D0A6B9 /* icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40@2x.png"; sourceTree = "<group>"; };
+		5D35A28D1A28BBFC00D0A6B9 /* icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-29@2x.png"; sourceTree = "<group>"; };
 		5D3BCAA01A16FB6100C07CA8 /* dammy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dammy.json; sourceTree = "<group>"; };
 		5D9E06E61A24EAFE00EBC74C /* icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76@2x.png"; sourceTree = "<group>"; };
 		5D9E06E71A24EAFE00EBC74C /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76.png"; sourceTree = "<group>"; };
@@ -346,13 +352,16 @@
 		A47E25FD1A0017FA00254347 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5D35A2891A28B9B000D0A6B9 /* utillization.png */,
 				5D2802301A23563A005C98DB /* toilet.jpg */,
+				5D35A28B1A28BBBC00D0A6B9 /* icon-40@2x.png */,
 				5D28024F1A238A20005C98DB /* greenMarkerSmall.png */,
 				5D2802501A238A20005C98DB /* yellowMarkerSmall.png */,
 				5D9E06E61A24EAFE00EBC74C /* icon-76@2x.png */,
 				5D9E06E71A24EAFE00EBC74C /* icon-76.png */,
 				5D9E06FC1A24EEB100EBC74C /* womanButton.png */,
 				5D9E06E81A24EAFE00EBC74C /* icon-72@2x.png */,
+				5D35A28D1A28BBFC00D0A6B9 /* icon-29@2x.png */,
 				5DA4E3921A27932A00B684F5 /* multipurposeMarker.png */,
 				5DA4E3931A27932A00B684F5 /* washletMarker.png */,
 				5D9E06E91A24EAFE00EBC74C /* icon-72.png */,
@@ -475,6 +484,7 @@
 				5DFDF1C81A24D13500452336 /* multipurposeButton.png in Resources */,
 				5D3133A71A19FBE600D7B2EF /* kyoto-u.gpx in Resources */,
 				5D9E06EE1A24EAFE00EBC74C /* icon-76@2x.png in Resources */,
+				5D35A28C1A28BBBC00D0A6B9 /* icon-40@2x.png in Resources */,
 				A41CF5D519F2731000F6B49C /* Main.storyboard in Resources */,
 				5DFDF1BC1A24CF4600452336 /* manWomanButton.png in Resources */,
 				5D9E06FA1A24ED4D00EBC74C /* icon-60@2x.png in Resources */,
@@ -499,7 +509,9 @@
 				5D9E06FB1A24ED4D00EBC74C /* Default-568h@2x.png in Resources */,
 				5DFDF1CD1A24D23D00452336 /* multipurposeButtonOff.png in Resources */,
 				5D9E06F11A24EAFE00EBC74C /* icon-72.png in Resources */,
+				5D35A28A1A28B9B000D0A6B9 /* utillization.png in Resources */,
 				5D2802541A238A20005C98DB /* redMarkerSmall.png in Resources */,
+				5D35A28E1A28BBFC00D0A6B9 /* icon-29@2x.png in Resources */,
 				5D9E06F01A24EAFE00EBC74C /* icon-72@2x.png in Resources */,
 				5D35A2811A2892A200D0A6B9 /* ACKNOWLEDGEMENTS.txt in Resources */,
 				5D2802311A23563A005C98DB /* toilet.jpg in Resources */,
