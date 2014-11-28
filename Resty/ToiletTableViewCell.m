@@ -82,7 +82,7 @@
                          MULTIPURPOSE_MARKER_SIZE);
 
         // トイレ画像の設定
-        UIImage *toiletImage = [UIImage imageNamed:@"toilet.jpg"];
+        UIImage *toiletImage = [UIImage imageNamed:@"toilet.png"];
         double scale = (double)_backView.frame.size.height / (double)toiletImage.size.height;
         _toiletImageView = [[UIImageView alloc]
                                   initWithFrame:CGRectMake(

@@ -30,13 +30,16 @@
 		5D35A28A1A28B9B000D0A6B9 /* utillization.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A2891A28B9B000D0A6B9 /* utillization.png */; };
 		5D35A28C1A28BBBC00D0A6B9 /* icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A28B1A28BBBC00D0A6B9 /* icon-40@2x.png */; };
 		5D35A28E1A28BBFC00D0A6B9 /* icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A28D1A28BBFC00D0A6B9 /* icon-29@2x.png */; };
+		5D35A2921A28DE8C00D0A6B9 /* toilet.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A2911A28DE8C00D0A6B9 /* toilet.png */; };
+		5D35A2951A28DF7900D0A6B9 /* icon-57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A2931A28DF7900D0A6B9 /* icon-57@2x.png */; };
+		5D35A2961A28DF7900D0A6B9 /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A2941A28DF7900D0A6B9 /* icon-57.png */; };
+		5D35A2981A28DFB000D0A6B9 /* icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A2971A28DFB000D0A6B9 /* icon-40@3x.png */; };
+		5D35A29A1A28E12700D0A6B9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D35A2991A28E12700D0A6B9 /* Default@2x.png */; };
 		5D3BCAA11A16FB6100C07CA8 /* dammy.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D3BCAA01A16FB6100C07CA8 /* dammy.json */; };
 		5D9E06EE1A24EAFE00EBC74C /* icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06E61A24EAFE00EBC74C /* icon-76@2x.png */; };
 		5D9E06EF1A24EAFE00EBC74C /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06E71A24EAFE00EBC74C /* icon-76.png */; };
 		5D9E06F01A24EAFE00EBC74C /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06E81A24EAFE00EBC74C /* icon-72@2x.png */; };
 		5D9E06F11A24EAFE00EBC74C /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06E91A24EAFE00EBC74C /* icon-72.png */; };
-		5D9E06F41A24EAFE00EBC74C /* icon-57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06EC1A24EAFE00EBC74C /* icon-57@2x.png */; };
-		5D9E06F51A24EAFE00EBC74C /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06ED1A24EAFE00EBC74C /* icon-57.png */; };
 		5D9E06F91A24ED4D00EBC74C /* icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06F61A24ED4D00EBC74C /* icon-60@3x.png */; };
 		5D9E06FA1A24ED4D00EBC74C /* icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06F71A24ED4D00EBC74C /* icon-60@2x.png */; };
 		5D9E06FB1A24ED4D00EBC74C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D9E06F81A24ED4D00EBC74C /* Default-568h@2x.png */; };
@@ -126,13 +129,16 @@
 		5D35A2891A28B9B000D0A6B9 /* utillization.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = utillization.png; sourceTree = "<group>"; };
 		5D35A28B1A28BBBC00D0A6B9 /* icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40@2x.png"; sourceTree = "<group>"; };
 		5D35A28D1A28BBFC00D0A6B9 /* icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-29@2x.png"; sourceTree = "<group>"; };
+		5D35A2911A28DE8C00D0A6B9 /* toilet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toilet.png; sourceTree = "<group>"; };
+		5D35A2931A28DF7900D0A6B9 /* icon-57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57@2x.png"; sourceTree = "<group>"; };
+		5D35A2941A28DF7900D0A6B9 /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57.png"; sourceTree = "<group>"; };
+		5D35A2971A28DFB000D0A6B9 /* icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40@3x.png"; sourceTree = "<group>"; };
+		5D35A2991A28E12700D0A6B9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5D3BCAA01A16FB6100C07CA8 /* dammy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dammy.json; sourceTree = "<group>"; };
 		5D9E06E61A24EAFE00EBC74C /* icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76@2x.png"; sourceTree = "<group>"; };
 		5D9E06E71A24EAFE00EBC74C /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76.png"; sourceTree = "<group>"; };
 		5D9E06E81A24EAFE00EBC74C /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
 		5D9E06E91A24EAFE00EBC74C /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
-		5D9E06EC1A24EAFE00EBC74C /* icon-57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57@2x.png"; sourceTree = "<group>"; };
-		5D9E06ED1A24EAFE00EBC74C /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57.png"; sourceTree = "<group>"; };
 		5D9E06F61A24ED4D00EBC74C /* icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60@3x.png"; sourceTree = "<group>"; };
 		5D9E06F71A24ED4D00EBC74C /* icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60@2x.png"; sourceTree = "<group>"; };
 		5D9E06F81A24ED4D00EBC74C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -353,11 +359,16 @@
 			isa = PBXGroup;
 			children = (
 				5D35A2891A28B9B000D0A6B9 /* utillization.png */,
+				5D35A2911A28DE8C00D0A6B9 /* toilet.png */,
 				5D2802301A23563A005C98DB /* toilet.jpg */,
 				5D35A28B1A28BBBC00D0A6B9 /* icon-40@2x.png */,
+				5D35A2971A28DFB000D0A6B9 /* icon-40@3x.png */,
 				5D28024F1A238A20005C98DB /* greenMarkerSmall.png */,
 				5D2802501A238A20005C98DB /* yellowMarkerSmall.png */,
+				5D35A2931A28DF7900D0A6B9 /* icon-57@2x.png */,
+				5D35A2941A28DF7900D0A6B9 /* icon-57.png */,
 				5D9E06E61A24EAFE00EBC74C /* icon-76@2x.png */,
+				5D35A2991A28E12700D0A6B9 /* Default@2x.png */,
 				5D9E06E71A24EAFE00EBC74C /* icon-76.png */,
 				5D9E06FC1A24EEB100EBC74C /* womanButton.png */,
 				5D9E06E81A24EAFE00EBC74C /* icon-72@2x.png */,
@@ -365,8 +376,6 @@
 				5DA4E3921A27932A00B684F5 /* multipurposeMarker.png */,
 				5DA4E3931A27932A00B684F5 /* washletMarker.png */,
 				5D9E06E91A24EAFE00EBC74C /* icon-72.png */,
-				5D9E06EC1A24EAFE00EBC74C /* icon-57@2x.png */,
-				5D9E06ED1A24EAFE00EBC74C /* icon-57.png */,
 				5DFDF1BA1A24CF4600452336 /* manWomanButton.png */,
 				5D9E06F61A24ED4D00EBC74C /* icon-60@3x.png */,
 				5D9E06F71A24ED4D00EBC74C /* icon-60@2x.png */,
@@ -485,30 +494,32 @@
 				5D3133A71A19FBE600D7B2EF /* kyoto-u.gpx in Resources */,
 				5D9E06EE1A24EAFE00EBC74C /* icon-76@2x.png in Resources */,
 				5D35A28C1A28BBBC00D0A6B9 /* icon-40@2x.png in Resources */,
+				5D35A29A1A28E12700D0A6B9 /* Default@2x.png in Resources */,
 				A41CF5D519F2731000F6B49C /* Main.storyboard in Resources */,
 				5DFDF1BC1A24CF4600452336 /* manWomanButton.png in Resources */,
 				5D9E06FA1A24ED4D00EBC74C /* icon-60@2x.png in Resources */,
 				5D35A2871A2892A200D0A6B9 /* Info.plist in Resources */,
+				5D35A2921A28DE8C00D0A6B9 /* toilet.png in Resources */,
 				A47E26071A00195300254347 /* resty_350x1.png in Resources */,
 				5D9E06EF1A24EAFE00EBC74C /* icon-76.png in Resources */,
 				5D3BCAA11A16FB6100C07CA8 /* dammy.json in Resources */,
 				5DFDF1C71A24D13500452336 /* updateButton.png in Resources */,
-				5D9E06F41A24EAFE00EBC74C /* icon-57@2x.png in Resources */,
 				5D2802531A238A20005C98DB /* yellowMarkerSmall.png in Resources */,
 				A41CF5DA19F2731000F6B49C /* LaunchScreen.xib in Resources */,
 				5DA4E3941A27932A00B684F5 /* multipurposeMarker.png in Resources */,
 				5D35A2851A2892A200D0A6B9 /* README.txt in Resources */,
 				5DA4E3911A26D36000B684F5 /* dammy2.json in Resources */,
+				5D35A2961A28DF7900D0A6B9 /* icon-57.png in Resources */,
 				A41CF5D719F2731000F6B49C /* Images.xcassets in Resources */,
 				5DFDF1CF1A24D5F500452336 /* handle.png in Resources */,
 				5D2802521A238A20005C98DB /* greenMarkerSmall.png in Resources */,
-				5D9E06F51A24EAFE00EBC74C /* icon-57.png in Resources */,
 				5DFDF1D31A24DD5F00452336 /* splash.png in Resources */,
 				5DFDF1BD1A24CF4600452336 /* manButton.png in Resources */,
 				5D9E06FD1A24EEB100EBC74C /* womanButton.png in Resources */,
 				5D9E06FB1A24ED4D00EBC74C /* Default-568h@2x.png in Resources */,
 				5DFDF1CD1A24D23D00452336 /* multipurposeButtonOff.png in Resources */,
 				5D9E06F11A24EAFE00EBC74C /* icon-72.png in Resources */,
+				5D35A2951A28DF7900D0A6B9 /* icon-57@2x.png in Resources */,
 				5D35A28A1A28B9B000D0A6B9 /* utillization.png in Resources */,
 				5D2802541A238A20005C98DB /* redMarkerSmall.png in Resources */,
 				5D35A28E1A28BBFC00D0A6B9 /* icon-29@2x.png in Resources */,
@@ -517,6 +528,7 @@
 				5D2802311A23563A005C98DB /* toilet.jpg in Resources */,
 				5D35A2861A2892A200D0A6B9 /* DeployGateSDK.strings in Resources */,
 				5D35A2821A2892A200D0A6B9 /* CHANGELOG.txt in Resources */,
+				5D35A2981A28DFB000D0A6B9 /* icon-40@3x.png in Resources */,
 				5D9E06F91A24ED4D00EBC74C /* icon-60@3x.png in Resources */,
 				5D35A2841A2892A200D0A6B9 /* LICENSE.txt in Resources */,
 				5DFDF1C91A24D13500452336 /* washletButton.png in Resources */,
