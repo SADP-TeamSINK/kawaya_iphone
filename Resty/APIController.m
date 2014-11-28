@@ -104,8 +104,8 @@ NSMutableSet *obtainedMeshMutableSet_;
                         NSUTF8StringEncoding];
 
         // 返ってきた文字列の処理
-        NSInteger front = 2;
-        NSInteger end = 2;
+        NSInteger front = 1;
+        NSInteger end = 1;
         returnedJson = [returnedJson substringWithRange:NSMakeRange(front, returnedJson.length - front - end)];
         returnedJson = [returnedJson stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
 

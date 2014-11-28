@@ -61,7 +61,7 @@
     
     // ベースとなるViewを作成
     baseView_ = [[UIView alloc] initWithFrame:CGRectMake(0, height_, baseWidth_, baseHeignt_)];
-    baseView_.backgroundColor = color_.white;
+    baseView_.backgroundColor = color_.darkGray;
     
     // トップヘッダを設定
     headerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width_, LIST_TOP_BAR_HEIGHT)];
@@ -69,7 +69,12 @@
     headerView_.layer.shadowOpacity = 0.4; // 濃さを指定
     headerView_.layer.shadowRadius = 2.0f;
     headerView_.layer.shadowOffset = CGSizeMake(0.0, 0); // 影までの距離を指定
+    // トップヘッダをドラッグ対応させる
+    UIPanGestureRecognizer *panGestureRecognizer =
+    [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragHeader:)];
+    [headerView_ addGestureRecognizer:panGestureRecognizer];
     [baseView_ addSubview:headerView_];
+    
     // ハンドル画像の設定
     UIImage *handleImage = [UIImage imageNamed:@"handle.png"];
     double handleRatio = handleImage.size.height / handleImage.size.width;
@@ -387,6 +392,13 @@
     selectedIndexPath_ = [NSIndexPath indexPathForRow:-1 inSection:-1];
     [self.tableView reloadData];
     [self markToilets];
+}
+
+- (void) dragHeader:(UIPanGestureRecognizer *)sender{
+    UIView *headerView = sender.view;
+    CGPoint p = [sender translationInView:headerView];
+    //headerView.center = CGPointMake(headerView.center.x + p.x, headerView.center.y + p.y);
+    NSLog(@"drag x:%f, y: %f", p.x, p.y);
 }
 
 @end

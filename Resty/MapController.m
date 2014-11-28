@@ -1,4 +1,4 @@
-        //
+//
 //  MapController.m
 //  Resty
 //
@@ -332,7 +332,7 @@
 
 - (void) callApi:(GMSMapView *)mapView{
     // 縮小しすぎている場合はAPIを叩かない
-    if (mapView.camera.zoom < 16) return;
+    if (mapView.camera.zoom < ZOOM_LIMIT) return;
     
     CLLocationCoordinate2D topLeftCoordinate = [self getTopLeftCoordinate];
     CLLocationCoordinate2D bottomRightCoordinate = [self getBottomRightCoordinate];

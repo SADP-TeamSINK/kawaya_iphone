@@ -19,6 +19,8 @@ static NSString * const API_URL= @"http://ec2-54-65-10-97.ap-northeast-1.compute
 
 static double const FLOOR_MARGIN_RATIO = 0.04;
 
+static double const ZOOM_LIMIT = 15;
+
 static double const MAP_RATIO = 0.3;
 static double const PANE_WIDTH_RATIO = 1;
 static double const PANE_HEIGHT_RATIO = 0.12;
