@@ -28,9 +28,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CLLocation *myLocation = mapView_.myLocation;
-    mapView_.camera = [GMSCameraPosition cameraWithTarget:myLocation.coordinate
-                                                     zoom:17];
+    CLLocationCoordinate2D initLocation;
+    initLocation.latitude = 35.868936;
+    initLocation.longitude = 137.554047;
+    mapView_.camera = [GMSCameraPosition cameraWithTarget:initLocation
+                                                     zoom:4.5];
 }
 
 
@@ -165,8 +167,8 @@
         // location.
         firstLocationUpdate_ = YES;
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
-        mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
-                                                         zoom:17];
+        [mapView_ animateToCameraPosition:[GMSCameraPosition cameraWithTarget:location.coordinate
+                                                         zoom:17]];
     }
 }
 
@@ -174,7 +176,7 @@
     UIView *targetView = sender.view;
 
     if(sender.state == UIGestureRecognizerStateEnded){
-        NSLog(@"target.y: %f, limit: %ld", targetView.frame.origin.y, LIST_OFF_LIMIT_RATIO * height_);
+       // NSLog(@"target.y: %f, limit: %ld", targetView.frame.origin.y, LIST_OFF_LIMIT_RATIO * height_);
         if(targetView.frame.origin.y > MAP_RATIO * height_){
             [mapController_ offList];
         }else{
