@@ -264,6 +264,7 @@
     }
     
     // トイレ画像
+    cell.toiletImageView.image = noImage;
     [cell setToiletImage:toilet defaultImage:noImage];
     
     // 利用率の設定
